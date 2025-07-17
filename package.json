@@ -1,6 +1,15 @@
 {
-  "name": "next-js-boilerplate",
-  "author": "Ixartz (https://github.com/ixartz)",
+  "name": "cfipros-handbook",
+  "version": "1.0.0",
+  "description": "CFIPros - Aviation Knowledge Base Platform for Professional Flight Training",
+  "author": "CFIPros Team <info@cfipros.com>",
+  "homepage": "https://cfipros.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcusgoll/cfipros-handbook.git"
+  },
+  "keywords": ["aviation", "flight-training", "cfi", "pilot", "knowledge-base", "regulations", "next.js", "mdx"],
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },
@@ -10,6 +19,11 @@
     "dev": "run-p db-server:file dev:*",
     "build:next": "next build",
     "build": "run-p db-server:memory build:* --race",
+    "build:railway": "npm run content:validate && npm run content:build && npm run search:index && next build",
+    "start:railway": "next start -p $PORT",
+    "content:validate": "echo 'Content validation placeholder'",
+    "content:build": "echo 'Content build placeholder'",
+    "search:index": "echo 'Search index placeholder'",
     "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "clean": "rimraf .next out coverage",
@@ -105,7 +119,7 @@
   },
   "release": {
     "branches": [
-      "main"
+      "master"
     ],
     "plugins": [
       [

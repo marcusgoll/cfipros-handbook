@@ -103,7 +103,14 @@
       "Bash(cmd /c:*)",
       "Bash(npx next lint:*)",
       "Bash(git init:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(gh:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote:*)",
+      "Bash(railway login:*)",
+      "Bash(railway whoami:*)",
+      "Bash(railway init:*)",
+      "Bash(railway status:*)"
     ],
     "deny": []
   },
