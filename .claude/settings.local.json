@@ -111,7 +111,9 @@
       "Bash(railway whoami:*)",
       "Bash(railway init:*)",
       "Bash(railway status:*)",
-      "Bash(npx @sentry/wizard:*)"
+      "Bash(npx @sentry/wizard:*)",
+      "Bash(npm ci:*)",
+      "Bash(npx next:*)"
     ],
     "deny": []
   },

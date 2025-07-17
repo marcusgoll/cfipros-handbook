@@ -39,18 +39,18 @@ export default async function Layout(props: {
             </li>
             <li>
               <Link
-                href="/counter/"
+                href="/handbook/"
                 className="border-none text-gray-700 hover:text-gray-900"
               >
-                {t('counter_link')}
+                {t('handbook_link')}
               </Link>
             </li>
             <li>
               <Link
-                href="/portfolio/"
+                href="/counter/"
                 className="border-none text-gray-700 hover:text-gray-900"
               >
-                {t('portfolio_link')}
+                {t('resources_link')}
               </Link>
             </li>
             <li>
