@@ -1,0 +1,302 @@
+---
+title: "Aviation Weather Codes - METAR, TAF, and PIREP Reference"
+section: "reference"
+subsection: "weather"
+status: "published"
+author: "CFIPros Team"
+created: "2024-01-15"
+updated: "2024-01-15"
+tags: ["weather", "metar", "taf", "pirep", "codes", "reference"]
+related: ["weather-briefing", "flight-planning", "preflight-procedures"]
+priority: "high"
+---
+
+# Aviation Weather Codes - METAR, TAF, and PIREP Reference
+
+## Overview
+
+Aviation weather codes provide standardized formats for communicating weather information essential for flight safety. Understanding these codes is crucial for proper flight planning and in-flight decision making.
+
+## METAR (Aviation Routine Weather Report)
+
+<DefinitionBox term="METAR">
+Aviation Routine Weather Report - A standardized format for reporting weather information observed at airports and weather stations.
+</DefinitionBox>
+
+### METAR Format Structure
+
+```
+METAR KJFK 121451Z 09014KT 10SM BKN250 24/18 A2992 RMK AO2 SLP132 T02440183
+```
+
+### Breaking Down METAR Components
+
+<QuickRefTable>
+| Component | Example | Meaning |
+|-----------|---------|---------|
+| Type | METAR | Routine weather report |
+| Station | KJFK | Airport identifier |
+| Date/Time | 121451Z | 12th day, 14:51 UTC |
+| Wind | 09014KT | 090° at 14 knots |
+| Visibility | 10SM | 10 statute miles |
+| Weather | BKN250 | Broken clouds at 2,500 feet |
+| Temperature | 24/18 | 24°C / 18°C dewpoint |
+| Altimeter | A2992 | 29.92 inches Hg |
+| Remarks | RMK AO2 | Automated station remarks |
+</QuickRefTable>
+
+### Wind Information
+
+**Wind Format: `dddssGggKT`**
+- `ddd` = Direction (degrees true)
+- `ss` = Speed (knots)
+- `G` = Gust indicator
+- `gg` = Gust speed (knots)
+- `KT` = Knots
+
+**Examples:**
+- `09014KT` = Wind from 090° at 14 knots
+- `27018G25KT` = Wind from 270° at 18 knots, gusting to 25 knots
+- `VRB05KT` = Variable wind at 5 knots
+- `00000KT` = Calm wind
+
+### Visibility
+
+**Visibility Formats:**
+- `10SM` = 10 statute miles
+- `1/2SM` = Half statute mile
+- `M1/4SM` = Less than quarter mile
+- `6000` = 6,000 meters (international format)
+
+### Cloud Coverage
+
+<DefinitionBox term="Cloud Coverage">
+The amount of sky covered by clouds, reported in eighths (oktas) or as descriptive terms.
+</DefinitionBox>
+
+<QuickRefTable>
+| Code | Coverage | Description |
+|------|----------|-------------|
+| SKC/CLR | 0/8 | Sky clear |
+| FEW | 1/8 - 2/8 | Few clouds |
+| SCT | 3/8 - 4/8 | Scattered clouds |
+| BKN | 5/8 - 7/8 | Broken clouds |
+| OVC | 8/8 | Overcast |
+| VV | N/A | Vertical visibility |
+</QuickRefTable>
+
+**Cloud Height:** Always reported in hundreds of feet AGL
+- `BKN025` = Broken clouds at 2,500 feet AGL
+- `OVC008` = Overcast at 800 feet AGL
+
+### Present Weather
+
+**Weather Phenomena Codes:**
+
+<QuickRefTable>
+| Intensity | Descriptor | Precipitation | Obscuration |
+|-----------|------------|---------------|-------------|
+| - (Light) | MI (Shallow) | DZ (Drizzle) | BR (Mist) |
+| (Moderate) | PR (Partial) | RA (Rain) | FG (Fog) |
+| + (Heavy) | BC (Patches) | SN (Snow) | FU (Smoke) |
+| VC (Vicinity) | DR (Drifting) | SG (Snow grains) | VA (Volcanic ash) |
+| | BL (Blowing) | IC (Ice crystals) | DU (Dust) |
+| | SH (Showers) | PL (Ice pellets) | SA (Sand) |
+| | TS (Thunderstorm) | GR (Hail) | HZ (Haze) |
+| | FZ (Freezing) | GS (Small hail) | |
+</QuickRefTable>
+
+## TAF (Terminal Aerodrome Forecast)
+
+<DefinitionBox term="TAF">
+Terminal Aerodrome Forecast - A concise statement of expected meteorological conditions at an airport during a specified time period.
+</DefinitionBox>
+
+### TAF Format Structure
+
+```
+TAF KJFK 121120Z 1212/1318 09014KT P6SM BKN250 
+FM1600 10016KT P6SM SCT250 
+FM0200 35008KT P6SM FEW250
+```
+
+### TAF Components
+
+<QuickRefTable>
+| Component | Example | Meaning |
+|-----------|---------|---------|
+| Type | TAF | Terminal forecast |
+| Station | KJFK | Airport identifier |
+| Issue time | 121120Z | 12th, 11:20 UTC |
+| Valid period | 1212/1318 | 12th 12:00Z to 13th 18:00Z |
+| Wind | 09014KT | 090° at 14 knots |
+| Visibility | P6SM | Greater than 6 statute miles |
+| Weather | BKN250 | Broken at 25,000 feet |
+</QuickRefTable>
+
+### TAF Change Indicators
+
+**FM (From):** Rapid change expected
+- `FM1600` = From 16:00 UTC
+
+**TEMPO (Temporary):** Temporary changes lasting less than 1 hour
+- `TEMPO 1416/1420` = Temporary between 14:00-20:00 UTC
+
+**PROB (Probability):** Probability of conditions
+- `PROB30 1416/1420` = 30% probability
+
+**BECMG (Becoming):** Gradual change over 2-4 hours
+- `BECMG 1416/1420` = Becoming between 14:00-20:00 UTC
+
+## PIREP (Pilot Report)
+
+<DefinitionBox term="PIREP">
+Pilot Report - Real-time weather and flight condition reports provided by pilots to assist other pilots and meteorologists.
+</DefinitionBox>
+
+### PIREP Format
+
+```
+UA /OV KJFK090015 /TM 1455 /FL095 /TP C172 /SK BKN080 /WX FV03SM HZ /TA 15 /WV 27020 /TB LGT-MOD 070-090 /IC LGT-MOD 085-095 /RM BASES 080 TOPS 095
+```
+
+### PIREP Elements
+
+<QuickRefTable>
+| Element | Code | Example | Meaning |
+|---------|------|---------|---------|
+| Location | /OV | KJFK090015 | Over JFK, 090° 15 NM |
+| Time | /TM | 1455 | 14:55 UTC |
+| Flight level | /FL | 095 | 9,500 feet |
+| Aircraft type | /TP | C172 | Cessna 172 |
+| Sky condition | /SK | BKN080 | Broken at 8,000 feet |
+| Flight visibility | /WX | FV03SM | 3 statute miles |
+| Temperature | /TA | 15 | 15°C |
+| Wind | /WV | 27020 | 270° at 20 knots |
+| Turbulence | /TB | LGT-MOD | Light to moderate |
+| Icing | /IC | LGT-MOD | Light to moderate |
+| Remarks | /RM | BASES 080 | Cloud bases at 8,000 |
+</QuickRefTable>
+
+### Turbulence Reporting
+
+<QuickRefTable>
+| Intensity | Code | Description |
+|-----------|------|-------------|
+| None | NEG | No turbulence |
+| Light | LGT | Slight erratic changes |
+| Moderate | MOD | Changes in altitude/attitude |
+| Severe | SEV | Large, abrupt changes |
+| Extreme | EXTRM | Aircraft control difficult |
+</QuickRefTable>
+
+### Icing Reporting
+
+<QuickRefTable>
+| Intensity | Code | Description |
+|-----------|------|-------------|
+| None | NEG | No icing |
+| Trace | TRC | Ice becomes noticeable |
+| Light | LGT | Rate of accumulation slow |
+| Moderate | MOD | Rate of accumulation moderate |
+| Heavy | HVY | Rate of accumulation high |
+</QuickRefTable>
+
+## Common Weather Abbreviations
+
+### Precipitation Types
+
+<QuickRefTable>
+| Code | Weather | Description |
+|------|---------|-------------|
+| DZ | Drizzle | Fine droplets |
+| RA | Rain | Water droplets |
+| SN | Snow | Ice crystals |
+| SG | Snow grains | Small white particles |
+| IC | Ice crystals | Tiny ice particles |
+| PL | Ice pellets | Small balls of ice |
+| GR | Hail | Balls or lumps of ice |
+| GS | Small hail | White pellets |
+| UP | Unknown | Unknown precipitation |
+</QuickRefTable>
+
+### Obscuration Types
+
+<QuickRefTable>
+| Code | Weather | Description |
+|------|---------|-------------|
+| FG | Fog | Visibility < 5/8 mile |
+| BR | Mist | Visibility 5/8 - 6 miles |
+| HZ | Haze | Dust/smoke particles |
+| FU | Smoke | Combustion products |
+| VA | Volcanic ash | Ash particles |
+| DU | Dust | Fine particles |
+| SA | Sand | Coarse particles |
+| PY | Spray | Water droplets |
+</QuickRefTable>
+
+## Practical Applications
+
+### Flight Planning Use
+
+1. **Departure conditions** - METAR analysis
+2. **En route conditions** - TAF interpretation
+3. **Real-time updates** - PIREP evaluation
+4. **Alternate planning** - Weather trend analysis
+
+### Decision Making
+
+**Go/No-Go Decisions:**
+- Compare actual vs. forecast conditions
+- Analyze trend information
+- Consider pilot experience level
+- Evaluate alternate options
+
+### Teaching Weather Codes
+
+**For Flight Instructors:**
+- Start with basic METAR components
+- Progress to TAF interpretation
+- Emphasize PIREP importance
+- Practice with real weather data
+
+## Quick Reference Cards
+
+### METAR Quick Decode
+
+1. **Station + Time**: Who, when
+2. **Wind**: Direction and speed
+3. **Visibility**: How far can you see
+4. **Weather**: What's happening now
+5. **Clouds**: Coverage and height
+6. **Temperature**: Current conditions
+7. **Altimeter**: Pressure setting
+
+### TAF Quick Decode
+
+1. **Valid period**: When forecast applies
+2. **Base conditions**: Initial forecast
+3. **Change groups**: When conditions change
+4. **Probability**: Likelihood of conditions
+5. **Temporary**: Short-term variations
+
+## Common Mistakes
+
+### Interpretation Errors
+
+1. **Confusing UTC vs. local time**
+2. **Misreading cloud heights** (hundreds of feet)
+3. **Ignoring trend information**
+4. **Overlooking remarks section**
+5. **Misunderstanding visibility restrictions**
+
+### Planning Errors
+
+1. **Using outdated weather**
+2. **Ignoring PIREP information**
+3. **Inadequate alternate analysis**
+4. **Underestimating weather changes**
+
+---
+
+*This reference guide provides standard interpretations of aviation weather codes. Always consult current weather sources and consider local conditions when making flight decisions.*
