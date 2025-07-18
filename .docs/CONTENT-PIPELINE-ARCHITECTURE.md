@@ -78,48 +78,48 @@ content/
 ```yaml
 # _module.yml
 id: private-commercial
-title: "Private & Commercial Pilot"
-version: "2024.1"
-description: "Comprehensive ground school for Private and Commercial pilot certification"
+title: 'Private & Commercial Pilot'
+version: '2024.1'
+description: Comprehensive ground school for Private and Commercial pilot certification
 prerequisites: []
 estimatedHours: 40
 chapters:
   - id: aerodynamics
-    title: "Aerodynamics"
+    title: Aerodynamics
     order: 1
     estimatedHours: 6
   - id: aircraft-systems
-    title: "Aircraft Systems"
+    title: Aircraft Systems
     order: 2
     estimatedHours: 8
 
 # Lesson frontmatter in MDX
 ---
-id: "four-forces-flight"
-title: "Four Forces of Flight"
-chapter: "aerodynamics"
+id: four-forces-flight
+title: Four Forces of Flight
+chapter: aerodynamics
 order: 1
 estimatedMinutes: 15
-difficulty: "beginner"
+difficulty: beginner
 learningObjectives:
-  - "Understand the four fundamental forces acting on aircraft"
-  - "Explain how lift is generated"
-  - "Describe the relationship between forces in flight"
+  - Understand the four fundamental forces acting on aircraft
+  - Explain how lift is generated
+  - Describe the relationship between forces in flight
 prerequisites:
-  - "basic-physics-review"
+  - basic-physics-review
 interactives:
-  - "four-forces-simulator"
-  - "lift-demonstration"
+  - four-forces-simulator
+  - lift-demonstration
 keywords:
-  - "lift"
-  - "weight"
-  - "thrust"
-  - "drag"
+  - lift
+  - weight
+  - thrust
+  - drag
 faReferences:
-  - "FAR 1.1"
-  - "AC 61-21A Chapter 4"
-lastUpdated: "2024-01-15"
-reviewedBy: "CFI-12345"
+  - FAR 1.1
+  - AC 61-21A Chapter 4
+lastUpdated: 2024-01-15
+reviewedBy: CFI-12345
 ---
 ```
 
@@ -134,7 +134,7 @@ class ContentValidator {
     this.aviationTerms = new AviationGlossary();
     this.farDatabase = new FARDatabase();
   }
-  
+
   async validateContent(mdxFile) {
     const validation = {
       frontmatter: await this.validateFrontmatter(mdxFile.frontmatter),
@@ -143,28 +143,28 @@ class ContentValidator {
       references: await this.validateReferences(mdxFile.frontmatter.faReferences),
       accessibility: await this.validateAccessibility(mdxFile.content)
     };
-    
+
     return {
       isValid: Object.values(validation).every(v => v.isValid),
       errors: this.collectErrors(validation),
       warnings: this.collectWarnings(validation)
     };
   }
-  
+
   async validateComponents(components) {
     const results = await Promise.all(
-      components.map(async component => {
+      components.map(async (component) => {
         // Verify component exists and props are valid
         const definition = await this.getComponentDefinition(component.name);
         if (!definition) {
           return { error: `Unknown component: ${component.name}` };
         }
-        
+
         // Validate props against schema
         return this.validateProps(component.props, definition.schema);
       })
     );
-    
+
     return {
       isValid: results.every(r => !r.error),
       errors: results.filter(r => r.error).map(r => r.error)
@@ -182,14 +182,14 @@ class ComponentProcessor {
     this.componentRegistry = new ComponentRegistry();
     this.bundler = new ComponentBundler();
   }
-  
+
   async processComponents(mdxContent) {
     // Extract component usage from MDX
     const components = this.extractComponents(mdxContent);
-    
+
     // Build component bundles for offline use
     const bundles = await Promise.all(
-      components.map(async component => {
+      components.map(async (component) => {
         const definition = await this.componentRegistry.get(component.name);
         return {
           name: component.name,
@@ -199,14 +199,14 @@ class ComponentProcessor {
         };
       })
     );
-    
+
     return {
       components: bundles,
       totalSize: bundles.reduce((sum, b) => sum + b.size, 0),
       loadingStrategy: this.determineLoadingStrategy(bundles)
     };
   }
-  
+
   // Determine lazy vs eager loading based on component usage
   determineLoadingStrategy(components) {
     return components.map(component => ({
@@ -227,18 +227,18 @@ class MediaProcessor {
     this.cloudinary = new CloudinaryClient();
     this.ffmpeg = new FFmpegProcessor();
   }
-  
+
   async processMedia(assets) {
     return Promise.all(assets.map(asset => this.processAsset(asset)));
   }
-  
+
   async processAsset(asset) {
     const optimized = {
       original: asset,
       variants: {}
     };
-    
-    switch(asset.type) {
+
+    switch (asset.type) {
       case 'image':
         optimized.variants = await this.optimizeImage(asset);
         break;
@@ -249,10 +249,10 @@ class MediaProcessor {
         optimized.variants = await this.optimizeAnimation(asset);
         break;
     }
-    
+
     return optimized;
   }
-  
+
   async optimizeImage(image) {
     return {
       // Responsive images
@@ -284,7 +284,7 @@ class SearchIndexer {
     this.stopwords = new StopwordFilter();
     this.aviationTerms = new AviationGlossary();
   }
-  
+
   async buildSearchIndex(modules) {
     const index = {
       documents: {},
@@ -292,32 +292,32 @@ class SearchIndexer {
       definitions: {},
       regulations: {}
     };
-    
+
     for (const module of modules) {
       for (const lesson of module.lessons) {
         const doc = await this.processDocument(lesson);
         index.documents[lesson.id] = doc;
-        
+
         // Extract and index terms
         await this.indexTerms(doc, index.terms);
-        
+
         // Index aviation definitions
         await this.indexDefinitions(doc, index.definitions);
-        
+
         // Index regulation references
         await this.indexRegulations(doc, index.regulations);
       }
     }
-    
+
     return this.optimizeIndex(index);
   }
-  
+
   async processDocument(lesson) {
     const content = this.stripMarkdown(lesson.content);
     const tokens = this.tokenize(content);
     const filtered = this.stopwords.filter(tokens);
     const stemmed = filtered.map(token => this.stemmer.stem(token));
-    
+
     return {
       id: lesson.id,
       title: lesson.frontmatter.title,
@@ -351,11 +351,11 @@ const nextConfig = {
       }
     }
   },
-  
+
   // Railway-specific optimizations
   output: 'standalone',
   compress: true,
-  
+
   // PWA configuration
   pwa: {
     dest: 'public',
@@ -373,7 +373,7 @@ const nextConfig = {
       }
     ]
   },
-  
+
   // Content security
   async headers() {
     return [
@@ -388,7 +388,7 @@ const nextConfig = {
       }
     ];
   },
-  
+
   // Image optimization
   images: {
     domains: ['res.cloudinary.com'],
@@ -430,15 +430,15 @@ const Lesson = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: (lesson) => `/modules/${lesson.chapter}/${lesson._raw.flattenedPath.split('/').pop()}`
+      resolve: lesson => `/modules/${lesson.chapter}/${lesson._raw.flattenedPath.split('/').pop()}`
     },
     slug: {
       type: 'string',
-      resolve: (lesson) => lesson._raw.flattenedPath.split('/').pop()
+      resolve: lesson => lesson._raw.flattenedPath.split('/').pop()
     },
     readingTime: {
       type: 'number',
-      resolve: (lesson) => Math.ceil(lesson.body.raw.split(' ').length / 200)
+      resolve: lesson => Math.ceil(lesson.body.raw.split(' ').length / 200)
     }
   }
 }));
@@ -480,25 +480,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-      
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Validate content
         run: npm run content:validate
-      
+
       - name: Build search index
         run: npm run content:index
-      
+
       - name: Generate offline packages
         run: npm run content:package
-      
+
       - name: Run accessibility checks
         run: npm run content:a11y
 
@@ -508,7 +508,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Deploy to Railway
         uses: railway-app/railway-deploy@v1
         with:
@@ -525,25 +525,25 @@ class ContentVersioner {
     this.semver = new SemVer();
     this.changeDetector = new ChangeDetector();
   }
-  
+
   async determineVersionBump(changes) {
     const analysis = await this.analyzeChanges(changes);
-    
+
     if (analysis.hasBreakingChanges) {
       return 'major'; // New module structure, removed content
     }
-    
+
     if (analysis.hasNewContent || analysis.hasUpdatedRegulations) {
       return 'minor'; // New lessons, updated FAR references
     }
-    
+
     return 'patch'; // Typo fixes, minor content updates
   }
-  
+
   async packageContentVersion(version) {
     const modules = await this.getAllModules();
     const packages = {};
-    
+
     for (const module of modules) {
       packages[module.id] = {
         version,
@@ -553,7 +553,7 @@ class ContentVersioner {
         dependencies: await this.extractDependencies(module)
       };
     }
-    
+
     return {
       version,
       packages,
@@ -571,44 +571,43 @@ class ContentVersioner {
 ```javascript
 // build-optimizer.js
 class BuildOptimizer {
-  
   async optimizeBuild() {
     // Tree shake unused components
     await this.treeShakeComponents();
-    
+
     // Generate critical CSS
     await this.generateCriticalCSS();
-    
+
     // Create service worker with precache manifest
     await this.generateServiceWorker();
-    
+
     // Build offline content packages
     await this.buildOfflinePackages();
-    
+
     // Generate performance budget report
     await this.generatePerformanceBudget();
   }
-  
+
   async treeShakeComponents() {
     const usedComponents = await this.analyzeComponentUsage();
     const componentLibrary = await this.getComponentLibrary();
-    
+
     // Remove unused components from build
     const optimizedLibrary = componentLibrary.filter(
       component => usedComponents.includes(component.name)
     );
-    
+
     await this.writeOptimizedLibrary(optimizedLibrary);
   }
-  
+
   async generateCriticalCSS() {
     const pages = await this.getAllPages();
     const criticalCSS = {};
-    
+
     for (const page of pages) {
       criticalCSS[page.route] = await this.extractCriticalCSS(page);
     }
-    
+
     await this.writeCriticalCSS(criticalCSS);
   }
 }
@@ -619,30 +618,29 @@ class BuildOptimizer {
 ```javascript
 // content-delivery.js
 class ContentDelivery {
-  
   async deliverContent(lessonId, userContext) {
     // Check user's device capabilities
     const capabilities = await this.assessDeviceCapabilities();
-    
+
     // Determine optimal content variant
     const variant = this.selectContentVariant(capabilities, userContext);
-    
+
     // Progressive loading strategy
     const loadingPlan = this.createLoadingPlan(lessonId, variant);
-    
+
     // Deliver content in phases
     return this.deliverProgressively(loadingPlan);
   }
-  
+
   selectContentVariant(capabilities, userContext) {
     if (capabilities.connection === 'slow' || capabilities.storage < 100) {
       return 'lite'; // Reduced media, simplified interactions
     }
-    
+
     if (capabilities.webgl && capabilities.storage > 500) {
       return 'enhanced'; // Full 3D interactions, HD media
     }
-    
+
     return 'standard'; // Default experience
   }
 }

@@ -10,7 +10,7 @@ Multi-dimensional analysis on code, arch, or problem in $ARGUMENTS.
 
 Examples:
 - `/user:analyze --code --think` - Code review w/ context
-- `/user:analyze --arch --think-hard` - Deep arch analysis  
+- `/user:analyze --arch --think-hard` - Deep arch analysis
 - `/user:analyze --security --ultrathink` - Comprehensive security audit
 
 Analysis modes:
@@ -19,7 +19,7 @@ Analysis modes:
 
 **--arch:** System design & patterns | Layer coupling | Scalability bottlenecks | Maintainability assessment | Improvement suggestions
 
-**--profile:** CPU, memory, execution time | Network latency, DB queries | Frontend metrics | Bottleneck identification | Optimization recommendations  
+**--profile:** CPU, memory, execution time | Network latency, DB queries | Frontend metrics | Bottleneck identification | Optimization recommendations
 
 **--security:** OWASP top 10 | Auth & authorization | Data handling & encryption | Attack vector identification
 

@@ -249,21 +249,21 @@ After presenting all data models, apply `tasks#advanced-elicitation` protocol]]
 **TypeScript Interface:**
 
 ```typescript
-interface User {
+type User = {
   id: string;
   email: string;
   name: string;
-  role: "admin" | "user" | "guest";
+  role: 'admin' | 'user' | 'guest';
   createdAt: Date;
   updatedAt: Date;
   profile?: UserProfile;
-}
+};
 
-interface UserProfile {
+type UserProfile = {
   avatarUrl?: string;
   bio?: string;
   preferences: Record<string, any>;
-}
+};
 ```
 
 **Relationships:**
@@ -953,7 +953,7 @@ After presenting this section, apply `tasks#advanced-elicitation` protocol]]
 ### Error Response Format
 
 ```typescript
-interface ApiError {
+type ApiError = {
   error: {
     code: string;
     message: string;
@@ -961,7 +961,7 @@ interface ApiError {
     timestamp: string;
     requestId: string;
   };
-}
+};
 ```
 
 ### Frontend Error Handling

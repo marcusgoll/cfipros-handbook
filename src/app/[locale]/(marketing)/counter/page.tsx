@@ -20,7 +20,7 @@ export default function Resources() {
     <>
       <div className="prose prose-lg max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Aviation Resources</h1>
-        
+
         <p className="text-lg mb-6">
           Essential aviation resources for certified flight instructors, pilots, and aviation professionals.
         </p>
@@ -35,7 +35,7 @@ export default function Resources() {
               <li><a href="https://www.faa.gov/training_testing/testing/" className="text-blue-600 hover:underline">Knowledge Testing</a></li>
             </ul>
           </div>
-          
+
           <div className="bg-green-50 p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Weather Resources</h3>
             <ul className="space-y-2">
@@ -57,7 +57,7 @@ export default function Resources() {
               <li><a href="https://notams.aim.faa.gov/" className="text-blue-600 hover:underline">NOTAM Search</a></li>
             </ul>
           </div>
-          
+
           <div className="bg-purple-50 p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Training Resources</h3>
             <ul className="space-y-2">

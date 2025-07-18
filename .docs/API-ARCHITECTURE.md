@@ -88,27 +88,27 @@ Start with just what you need:
 ### Module Content API
 ```javascript
 // pages/api/modules/[id].js
-import { requireAuth, hasPurchased } from '../../../lib/auth';
+import { hasPurchased, requireAuth } from '../../../lib/auth';
 import { prisma } from '../../../lib/db';
 
-export default requireAuth(async function handler(req, res) {
+export default requireAuth(async (req, res) => {
   const { id } = req.query;
-  
+
   // Check if user purchased this module
   if (!await hasPurchased(req.user.id, id)) {
     return res.status(403).json({ error: 'Purchase required' });
   }
-  
+
   // Get module content (simplified)
   const module = await prisma.module.findUnique({
     where: { id },
     include: { lessons: true }
   });
-  
+
   if (!module) {
     return res.status(404).json({ error: 'Module not found' });
   }
-  
+
   res.json(module);
 });
 ```
@@ -119,15 +119,15 @@ export default requireAuth(async function handler(req, res) {
 import { requireAuth } from '../../../lib/auth';
 import { prisma } from '../../../lib/db';
 
-export default requireAuth(async function handler(req, res) {
+export default requireAuth(async (req, res) => {
   const { id } = req.query;
-  
+
   if (req.method === 'GET') {
     // Get lesson content
     const lesson = await prisma.lesson.findUnique({ where: { id } });
     res.json(lesson);
   }
-  
+
   if (req.method === 'POST') {
     // Update progress
     await prisma.progress.upsert({
@@ -153,14 +153,14 @@ export function rateLimit(req, limit = 100) {
   const now = Date.now();
   const hour = Math.floor(now / 3600000);
   const key = `${ip}-${hour}`;
-  
+
   const current = limits.get(key) || 0;
   if (current >= limit) {
     throw new Error('Rate limit exceeded');
   }
-  
+
   limits.set(key, current + 1);
-  
+
   // Clean old entries occasionally
   if (Math.random() < 0.01) {
     for (const [k] of limits) {
@@ -178,15 +178,15 @@ export function rateLimit(req, limit = 100) {
 // lib/api-utils.js
 export function handleError(error, res) {
   console.error('API Error:', error);
-  
+
   if (error.message === 'Rate limit exceeded') {
     return res.status(429).json({ error: 'Too many requests' });
   }
-  
+
   if (error.message === 'Login required') {
     return res.status(401).json({ error: 'Login required' });
   }
-  
+
   // Default error
   res.status(500).json({ error: 'Something went wrong' });
 }
@@ -240,4 +240,3 @@ export default async function handler(req, res) {
 ---
 
 **Remember**: A working simple app beats a perfect unfinished one every time.
-

@@ -9,7 +9,7 @@ export async function register() {
       // Add optional integrations for additional features
       integrations: [
         // send console.log, console.error, and console.warn calls as logs to Sentry
-        Sentry.consoleLoggingIntegration({ levels: ["log", "error", "warn"] }),
+        Sentry.consoleLoggingIntegration({ levels: ['log', 'error', 'warn'] }),
       ],
 
       // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
@@ -33,7 +33,7 @@ export async function register() {
       // Add optional integrations for additional features
       integrations: [
         // send console.log, console.error, and console.warn calls as logs to Sentry
-        Sentry.consoleLoggingIntegration({ levels: ["log", "error", "warn"] }),
+        Sentry.consoleLoggingIntegration({ levels: ['log', 'error', 'warn'] }),
       ],
 
       // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.

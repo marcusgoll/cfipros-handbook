@@ -90,7 +90,6 @@ Epic content...
 ## 3) Success Metrics
 
 Content here...
-
 ```
 
 ### After (PRD):
@@ -114,7 +113,6 @@ Epic content...
 
 ## Success Metrics
 Content here...
-
 ```
 
 ### Before (Non-PRD):
@@ -139,5 +137,4 @@ Content...
 
 ## Technical Stack Tools
 Content...
-
 ```

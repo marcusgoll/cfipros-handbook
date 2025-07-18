@@ -105,7 +105,7 @@
 ### Enhancement Type Classification
 
 **Primary Enhancement**: Complete application development from specifications
-**Secondary Enhancements**: 
+**Secondary Enhancements**:
 - Interactive aviation component library creation
 - MDX content processing pipeline
 - Offline functionality implementation
@@ -340,7 +340,7 @@ const offlineSchema = {
 **Base Component Architecture**:
 ```typescript
 // Base interface for all interactive components
-interface InteractiveComponentProps {
+type InteractiveComponentProps = {
   id: string;
   title: string;
   description?: string;
@@ -351,23 +351,23 @@ interface InteractiveComponentProps {
   onComplete: (results: ComponentResults) => void;
   accessibilityMode?: boolean;
   offlineMode?: boolean;
-}
+};
 
-interface ComponentProgress {
+type ComponentProgress = {
   componentId: string;
   progressPercentage: number;
   interactionCount: number;
   timeSpent: number;
   currentState: Record<string, any>;
-}
+};
 
-interface ComponentResults {
+type ComponentResults = {
   componentId: string;
   completed: boolean;
   score?: number;
   interactions: InteractionEvent[];
   learningOutcomes: string[];
-}
+};
 ```
 
 **Component Implementation Pattern**:
@@ -529,7 +529,7 @@ const usePerformanceMonitor = (componentName: string) => {
 **Content Access API**:
 ```typescript
 // GET /api/content/[module]/lessons
-interface LessonListResponse {
+type LessonListResponse = {
   lessons: Array<{
     id: string;
     title: string;
@@ -549,19 +549,19 @@ interface LessonListResponse {
     totalTimeSpent: number;
     lastAccessDate: string;
   };
-}
+};
 
 // POST /api/user/progress
-interface ProgressUpdateRequest {
+type ProgressUpdateRequest = {
   contentId: string;
   contentType: 'lesson' | 'interactive_component' | 'chapter';
   progressPercentage: number;
   timeSpent: number; // in minutes
   interactionData?: Record<string, any>;
   completed?: boolean;
-}
+};
 
-interface ProgressUpdateResponse {
+type ProgressUpdateResponse = {
   success: boolean;
   updatedProgress: {
     contentId: string;
@@ -575,32 +575,32 @@ interface ProgressUpdateResponse {
     description: string;
     unlockedAt: string;
   }>;
-}
+};
 ```
 
 **Payment Integration API**:
 ```typescript
 // POST /api/payments/create-checkout
-interface CheckoutRequest {
+type CheckoutRequest = {
   productType: 'private_commercial' | 'instrument' | 'bundle';
   priceId: string;
   successUrl: string;
   cancelUrl: string;
-}
+};
 
-interface CheckoutResponse {
+type CheckoutResponse = {
   sessionId: string;
   checkoutUrl: string;
   expiresAt: string;
-}
+};
 
 // POST /api/payments/webhooks (Stripe webhook handler)
-interface WebhookHandler {
+type WebhookHandler = {
   'payment_intent.succeeded': (data: Stripe.PaymentIntent) => Promise<void>;
   'payment_intent.payment_failed': (data: Stripe.PaymentIntent) => Promise<void>;
   'invoice.payment_succeeded': (data: Stripe.Invoice) => Promise<void>;
   'customer.subscription.updated': (data: Stripe.Subscription) => Promise<void>;
-}
+};
 ```
 
 ### GraphQL Consideration
@@ -618,7 +618,7 @@ interface WebhookHandler {
 export const withAuth = (handler: NextApiHandler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getServerSession(req, res, authOptions);
-    
+
     if (!session) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
@@ -634,8 +634,8 @@ export const withAccess = (requiredAccess: string[]) => {
   return (handler: NextApiHandler) => {
     return withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
       const userAccess = await getUserAccess(req.user.id);
-      
-      const hasAccess = requiredAccess.some(access => 
+
+      const hasAccess = requiredAccess.some(access =>
         userAccess.includes(access)
       );
 
@@ -829,8 +829,8 @@ const rateLimitConfig = {
 ```typescript
 // Absolute imports with TypeScript path mapping
 import { Button } from '@/components/ui';
-import { HypoxiaSimulator } from '@/interactive/components';
 import { useAuth } from '@/hooks/useAuth';
+import { HypoxiaSimulator } from '@/interactive/components';
 import { InteractiveComponentProps } from '@/types/interactive';
 ```
 
@@ -880,7 +880,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ['@prisma/client'],
   },
-  
+
   // Bundle optimization
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -897,7 +897,7 @@ const nextConfig = {
   // Performance optimizations
   swcMinify: true,
   compress: true,
-  
+
   // PWA configuration
   withPWA: {
     dest: 'public',
@@ -969,7 +969,7 @@ module.exports = nextConfig;
 // lib/analytics.ts - Performance and user analytics
 export class PerformanceMonitor {
   private static instance: PerformanceMonitor;
-  
+
   static getInstance(): PerformanceMonitor {
     if (!PerformanceMonitor.instance) {
       PerformanceMonitor.instance = new PerformanceMonitor();
@@ -980,7 +980,7 @@ export class PerformanceMonitor {
   // Core Web Vitals monitoring
   trackWebVitals(metric: any) {
     const { id, name, label, value } = metric;
-    
+
     // Send to analytics service
     if (typeof window !== 'undefined') {
       // Vercel Analytics
@@ -1008,7 +1008,7 @@ export class PerformanceMonitor {
   private reportPerformanceIssue(issue: any) {
     // Log to monitoring service
     console.warn('Performance Issue:', issue);
-    
+
     // Send to error tracking (optional)
     if (process.env.NODE_ENV === 'production') {
       // Send to monitoring service
@@ -1039,7 +1039,7 @@ export class ErrorTracker {
 
   static captureMessage(message: string, level: 'info' | 'warning' | 'error' = 'info') {
     console[level](`[${level.toUpperCase()}] ${message}`);
-    
+
     if (process.env.NODE_ENV === 'production' && level === 'error') {
       // Send important messages to monitoring
     }
@@ -1162,7 +1162,7 @@ interface ComponentNameState {
 
 /**
  * ComponentName - Brief description of the component's educational purpose
- * 
+ *
  * @param props - Component props including base interactive component props
  * @returns React component for interactive aviation learning
  */
@@ -1201,7 +1201,7 @@ export const ComponentName: React.FC<ComponentNameProps> = ({
   // Performance-optimized event handlers
   const handleInteraction = useCallback((event: React.MouseEvent) => {
     markInteraction('user-interaction');
-    
+
     // Handle interaction logic
     setState(prevState => ({
       ...prevState,
@@ -1230,7 +1230,7 @@ export const ComponentName: React.FC<ComponentNameProps> = ({
 
   return (
     <ErrorBoundary>
-      <div 
+      <div
         className="interactive-component component-name"
         role="application"
         aria-label={`${title} - Interactive aviation learning component`}
@@ -1238,7 +1238,7 @@ export const ComponentName: React.FC<ComponentNameProps> = ({
         onKeyDown={handleKeyDown}
       >
         <h3 className="component-title">{title}</h3>
-        
+
         {/* Component content */}
         <div className="component-content">
           <canvas
@@ -1273,11 +1273,11 @@ export default ComponentName;
 /**
  * Calculates oxygen saturation at a given altitude
  * Used by HypoxiaSimulator to provide realistic physiological modeling
- * 
+ *
  * @param altitude - Altitude in feet above sea level
  * @param individualFactor - Individual variation factor (0.8-1.2)
  * @returns Oxygen saturation percentage (0-100)
- * 
+ *
  * @example
  * ```typescript
  * const saturation = calculateOxygenSaturation(10000, 1.0);
@@ -1290,8 +1290,8 @@ export function calculateOxygenSaturation(
 ): number {
   // Implementation with clear variable names and comments
   const seaLevelSaturation = 98;
-  const altitudeFactor = Math.pow(0.9999, altitude * individualFactor);
-  
+  const altitudeFactor = 0.9999 ** (altitude * individualFactor);
+
   return Math.max(0, Math.min(100, seaLevelSaturation * altitudeFactor));
 }
 ```
@@ -1308,14 +1308,14 @@ export function calculateOxygenSaturation(
                  │  Payment Flow   │
                  │  Learning Path  │
                  └─────────────────┘
-                
+
               Integration Tests (20%)
             ┌─────────────────────────┐
             │  API Route Testing      │
             │  Component Integration  │
             │  Database Operations    │
             └─────────────────────────┘
-            
+
           Unit Tests (70%)
     ┌─────────────────────────────────┐
     │  Component Logic               │
@@ -1375,7 +1375,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
-  
+
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
@@ -1444,11 +1444,11 @@ describe('HypoxiaSimulator', () => {
 
   it('maintains 60fps performance during interactions', async () => {
     const performanceMonitor = jest.spyOn(PerformanceMonitor.prototype, 'trackComponentPerformance');
-    
+
     render(<HypoxiaSimulator {...mockProps} />);
-    
+
     const canvas = screen.getByRole('application');
-    
+
     // Simulate rapid interactions
     for (let i = 0; i < 10; i++) {
       fireEvent.click(canvas);
@@ -1466,7 +1466,7 @@ describe('HypoxiaSimulator', () => {
 
   it('reports progress updates correctly', async () => {
     render(<HypoxiaSimulator {...mockProps} />);
-    
+
     const canvas = screen.getByRole('application');
     fireEvent.click(canvas);
 
@@ -1483,12 +1483,12 @@ describe('HypoxiaSimulator', () => {
 
   it('supports keyboard navigation', async () => {
     render(<HypoxiaSimulator {...mockProps} />);
-    
+
     const component = screen.getByRole('application');
     component.focus();
-    
+
     fireEvent.keyDown(component, { key: 'Enter' });
-    
+
     await waitFor(() => {
       expect(mockProps.onProgressUpdate).toHaveBeenCalled();
     });
@@ -1496,7 +1496,7 @@ describe('HypoxiaSimulator', () => {
 
   it('provides accessibility alternative when enabled', () => {
     render(<HypoxiaSimulator {...mockProps} accessibilityMode={true} />);
-    
+
     expect(screen.getByText(/text-based alternative/i)).toBeInTheDocument();
   });
 });
@@ -1553,7 +1553,7 @@ export class SecurityManager {
       }
 
       const current = requests.get(identifier) || { count: 0, resetTime: now + windowMs };
-      
+
       if (current.count >= max) {
         return false; // Rate limit exceeded
       }
@@ -1576,9 +1576,9 @@ export class SecurityManager {
 
 **2. API Security Middleware**:
 ```typescript
+import { getToken } from 'next-auth/jwt';
 // lib/middleware/security.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
 
 export async function securityMiddleware(request: NextRequest) {
   const response = NextResponse.next();
@@ -1590,15 +1590,14 @@ export async function securityMiddleware(request: NextRequest) {
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' api.stripe.com;"
+    'default-src \'self\'; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' js.stripe.com; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data: https:; connect-src \'self\' api.stripe.com;'
   );
 
   // API route protection
   if (request.nextUrl.pathname.startsWith('/api/')) {
     // Check for authentication on protected routes
-    if (request.nextUrl.pathname.startsWith('/api/user') || 
-        request.nextUrl.pathname.startsWith('/api/content')) {
-      
+    if (request.nextUrl.pathname.startsWith('/api/user')
+      || request.nextUrl.pathname.startsWith('/api/content')) {
       const token = await getToken({ req: request });
       if (!token) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -1608,10 +1607,10 @@ export async function securityMiddleware(request: NextRequest) {
     // Rate limiting by IP
     const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
     const rateLimitKey = `api:${ip}:${request.nextUrl.pathname}`;
-    
+
     if (!SecurityManager.checkRateLimit(rateLimitKey)) {
       return NextResponse.json(
-        { error: 'Too many requests' }, 
+        { error: 'Too many requests' },
         { status: 429 }
       );
     }
@@ -1623,9 +1622,9 @@ export async function securityMiddleware(request: NextRequest) {
 
 **3. Payment Security**:
 ```typescript
+import { buffer } from 'micro';
 // lib/payments/security.ts
 import Stripe from 'stripe';
-import { buffer } from 'micro';
 
 export class PaymentSecurity {
   private static stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -1671,9 +1670,9 @@ export class PaymentSecurity {
     amountReceived: number
   ): boolean {
     const expectedPrices = {
-      'private_commercial': 5900, // $59.00 in cents
-      'instrument': 5900,
-      'bundle': 14900, // $149.00 in cents
+      private_commercial: 5900, // $59.00 in cents
+      instrument: 5900,
+      bundle: 14900, // $149.00 in cents
     };
 
     const expectedAmount = expectedPrices[productType as keyof typeof expectedPrices];
@@ -1687,8 +1686,8 @@ export class PaymentSecurity {
 **Encryption and Data Handling**:
 ```typescript
 // lib/encryption.ts
-import { createHash, randomBytes, scrypt, timingSafeEqual } from 'crypto';
-import { promisify } from 'util';
+import { createHash, randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
+import { promisify } from 'node:util';
 
 export class DataProtection {
   private static scryptAsync = promisify(scrypt);
@@ -1705,7 +1704,7 @@ export class DataProtection {
     const [salt, storedHash] = hash.split(':');
     const derivedKey = await this.scryptAsync(data, salt, 64) as Buffer;
     const storedHashBuffer = Buffer.from(storedHash, 'hex');
-    
+
     return timingSafeEqual(derivedKey, storedHashBuffer);
   }
 
@@ -1722,10 +1721,10 @@ export class DataProtection {
   // Sanitize data for logging
   static sanitizeForLogging(data: any): any {
     const sensitiveKeys = ['password', 'token', 'secret', 'key', 'email'];
-    
+
     if (typeof data === 'object' && data !== null) {
       const sanitized = { ...data };
-      
+
       for (const key in sanitized) {
         if (sensitiveKeys.some(sensitive => key.toLowerCase().includes(sensitive))) {
           sanitized[key] = '[REDACTED]';
@@ -1733,10 +1732,10 @@ export class DataProtection {
           sanitized[key] = this.sanitizeForLogging(sanitized[key]);
         }
       }
-      
+
       return sanitized;
     }
-    
+
     return data;
   }
 }
@@ -1841,7 +1840,7 @@ export class MonitoringSystem {
 
   static trackCriticalMetric(metricName: string, value: number) {
     const threshold = this.THRESHOLDS[metricName as keyof typeof this.THRESHOLDS];
-    
+
     if (threshold && value > threshold) {
       this.alertCriticalIssue({
         metric: metricName,
@@ -1863,7 +1862,7 @@ export class MonitoringSystem {
 
   private static alertCriticalIssue(issue: any) {
     console.error('Critical Performance Issue:', issue);
-    
+
     // In production, trigger alerts
     if (process.env.NODE_ENV === 'production') {
       // Send to monitoring service
@@ -1982,7 +1981,7 @@ export class MonitoringSystem {
 
 **Technical Metrics**:
 - [ ] <3 second page load times achieved
-- [ ] 60fps performance maintained in all interactive components  
+- [ ] 60fps performance maintained in all interactive components
 - [ ] >90 Lighthouse scores across all categories
 - [ ] WCAG 2.1 AA accessibility compliance verified
 - [ ] Cross-browser compatibility confirmed
@@ -2002,6 +2001,6 @@ export class MonitoringSystem {
 
 ---
 
-*Brownfield Architecture completed by Winston (Architect Agent)*  
-*Date: 2025-06-24*  
+*Brownfield Architecture completed by Winston (Architect Agent)*
+*Date: 2025-06-24*
 *Next: Product Owner Agent for Final Validation*

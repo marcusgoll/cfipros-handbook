@@ -6,7 +6,7 @@ Setup comprehensive dev env or CI/CD pipeline based on $ARGUMENTS.
 
 Thinking flags (optional):
 - --think→multi-tool env coordination
-- --think-hard→complex CI/CD pipeline architecture  
+- --think-hard→complex CI/CD pipeline architecture
 - --ultrathink→enterprise dev infrastructure design
 
 Examples:

@@ -238,7 +238,7 @@ module.exports = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 1080, 1200]
   }
-}
+};
 ```
 
 ### Critical Performance Targets

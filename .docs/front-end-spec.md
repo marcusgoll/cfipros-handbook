@@ -97,30 +97,30 @@
 graph TB
     A[Landing Page] --> B[Authentication]
     A --> C[Module Dashboard]
-    
+
     B --> B1[Login]
     B --> B2[Register]
     B --> B3[Password Reset]
-    
+
     C --> D[Module Selection]
     C --> E[User Profile]
     C --> F[Purchase History]
-    
+
     D --> G[Private/Commercial Module]
     D --> H[Instrument Module]
     D --> I[Bundle Options]
-    
+
     G --> J[Chapter Navigation]
     H --> J
-    
+
     J --> K[Lesson Content]
     K --> L[Interactive Components]
     K --> M[Progress Tracking]
-    
+
     E --> N[Account Settings]
     E --> O[Download Management]
     E --> P[Learning Analytics]
-    
+
     I --> Q[Payment Flow]
     Q --> R[Stripe Checkout]
     Q --> S[Confirmation]
@@ -159,16 +159,16 @@ flowchart TD
     A[User arrives at dashboard] --> B{Has purchased modules?}
     B -->|No| C[Browse preview content]
     B -->|Yes| D[Select module]
-    
+
     C --> E[View limited lesson]
     C --> F[Purchase prompt]
     F --> G[Payment flow]
     G --> D
-    
+
     D --> H[Choose chapter]
     H --> I[Select lesson]
     I --> J[Load lesson content]
-    
+
     J --> K[Read introduction]
     K --> L[Encounter interactive component]
     L --> M[Engage with simulation]
@@ -188,11 +188,11 @@ flowchart TD
     A[User opens app offline] --> B{Content cached?}
     B -->|No| C[Show available content]
     B -->|Yes| D[Load cached module]
-    
+
     C --> E[Prompt to go online]
     E --> F[Download content]
     F --> D
-    
+
     D --> G[Browse lessons]
     G --> H[Start lesson]
     H --> I[Interactive components load]
@@ -212,12 +212,12 @@ flowchart TD
     A[User reading lesson] --> B[Encounters interactive element]
     B --> C[Component loads progressively]
     C --> D[User interacts with controls]
-    
+
     D --> E[Real-time feedback]
     E --> F[Parameter adjustments]
     F --> G[Visual/numerical updates]
     G --> H[Understanding achieved]
-    
+
     H --> I[Optional: Save state]
     H --> J[Continue reading]
     J --> K[Related content suggested]
@@ -424,7 +424,7 @@ flowchart TD
 
 **Responsive Breakpoints**:
 - **Mobile**: 320px - 767px
-- **Tablet**: 768px - 1023px  
+- **Tablet**: 768px - 1023px
 - **Desktop**: 1024px - 1439px
 - **Large Desktop**: 1440px+
 
@@ -501,7 +501,7 @@ flowchart TD
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
   /* Three-column layouts, hover states, keyboard shortcuts */
-}
+}
 ```
 
 ### Component Adaptation Patterns
@@ -681,6 +681,6 @@ flowchart TD
 
 ---
 
-*Frontend Specification completed by Sally (UX Expert)*  
-*Date: 2025-06-24*  
+*Frontend Specification completed by Sally (UX Expert)*
+*Date: 2025-06-24*
 *Next: Architect Agent for Technical Architecture Document*

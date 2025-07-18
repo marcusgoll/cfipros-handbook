@@ -113,7 +113,11 @@
       "Bash(railway status:*)",
       "Bash(npx @sentry/wizard:*)",
       "Bash(npm ci:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(timeout 10 npm run dev:next)",
+      "Bash(npm run check:types:*)",
+      "Bash(timeout 5 npm run dev:next)",
+      "Bash(timeout 8 npm run dev:next)"
     ],
     "deny": []
   },

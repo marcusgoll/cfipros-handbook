@@ -186,7 +186,7 @@ CFIPros.com evolves into a comprehensive aviation education platform serving all
 
 - **Target Platforms**: Web-based application with mobile-responsive design
 - **Browser Support**: Chrome, Firefox, Safari, Edge (latest 2 versions)
-- **Performance Requirements**: 
+- **Performance Requirements**:
   - Page load times under 3 seconds
   - Support for 1,000+ concurrent users
   - 99.9% uptime SLA
@@ -204,7 +204,7 @@ CFIPros.com evolves into a comprehensive aviation education platform serving all
 
 - **Repository Structure**: Monorepo approach for simplified development
 - **Service Architecture**: Monolithic Next.js application with potential microservices for scaling
-- **Integration Requirements**: 
+- **Integration Requirements**:
   - Stripe webhooks for payment processing
   - Email service for notifications
   - Image CDN for FAA reference materials

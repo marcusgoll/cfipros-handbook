@@ -14,7 +14,7 @@ Manage git workflows for repo in $ARGUMENTS.
 Examples:
 - `/user:git --status` - Comprehensive repo status
 - `/user:git --commit "Add feature"` - Create commit
-- `/user:git --branch feature/ui` - Create & switch→branch  
+- `/user:git --branch feature/ui` - Create & switch→branch
 - `/user:git --sync` - Fetch, pull & push
 - `/user:git --merge develop --think` - Merge w/ conflict analysis
 

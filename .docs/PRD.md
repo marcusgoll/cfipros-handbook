@@ -1,484 +1,428 @@
-# CFIPros.com - Simplified PRD
-## Solo Developer Edition with Aggressive Referral & Quiz Import
+# CFIPros Product Requirements Document (PRD)
 
-### Version 5.0 | Date: January 2025
+## Executive Summary
 
----
+**Product Name:** CFIPros - Aviation Knowledge Base Platform  
+**Product Type:** Subscription-based web application for aviation education  
+**Target Market:** Certified Flight Instructors, pilots, and aviation professionals  
+**Business Model:** Freemium with subscription tiers, lifetime passes, and institutional licenses
 
-## 1. Project Overview
+CFIPros is a streamlined aviation knowledge platform designed to provide fast, accessible, and comprehensive study materials for aviation professionals. The platform follows a hierarchical content structure with interactive elements post-MVP.
 
-**What**: Khan Academy-style flight training with aggressive referral rewards and easy quiz content management.
+## Problem Statement
 
-**Key Features**:
-- Cash + percentage referral rewards
-- JSON quiz import with image support
-- Khan Academy progression system
-- FAA reference materials integration
+Aviation education content is fragmented, slow to access, and lacks modern interactive learning tools. Current solutions don't provide:
+- Fast, mobile-optimized access to comprehensive content
+- Structured learning paths from basic to advanced concepts
+- Analytics on knowledge gaps and test performance
+- Modern, engaging user experience
 
----
+## Product Vision
 
-## 2. Aggressive Referral Program
+Create the definitive aviation knowledge platform that combines comprehensive content with fast performance and engaging learning experiences, enabling aviation professionals to study efficiently and track their progress effectively.
 
-### Dual Reward System
-```javascript
-// REFERRER REWARDS (You who shared)
-1 signup  = $10 credit
-3 signups = $30 credit + 1 month free
-5 signups = $50 credit + 2 months free
-10 signups = $100 credit + 6 months free
+## Target Users
 
-// REFEREE REWARDS (New user)
-First month: 50% off ($14.50 instead of $29)
-Annual plan: $50 off ($240 instead of $290)
+**Primary Users:**
+- Certified Flight Instructors (CFIs)
+- Private and instrument-rated pilots
+- Aviation students and professionals
+
+**Secondary Users:**
+- Aviation training institutions
+- Flight schools seeking white-label solutions
+
+## Product Requirements
+
+### Core Architecture
+
+**Content Hierarchy:**
+```
+Categories (Private, Instrument, Commercial, etc.)
+  └── Study Units (Regulations, Procedures, Systems, etc.)
+      └── Lessons (Individual topics and concepts)
 ```
 
-### Why This Works
-- **Immediate value**: $10 per referral motivates sharing
-- **Stacking rewards**: Credits + free months
-- **New user incentive**: 50% off is aggressive
-- **Annual push**: Better savings drives LTV
+**Technical Stack:**
+- **Frontend:** Next.js with TypeScript
+- **Content:** MDX files for structured content creation
+- **Authentication:** Clerk for user management
+- **Deployment:** Railway with PostgreSQL
+- **Monitoring:** Sentry for error tracking, PostHog for analytics
 
-### Implementation
-```jsx
-// Referral tracking with cash credits
-const referralRewards = {
-  1: { credit: 10, freeMonths: 0 },
-  3: { credit: 30, freeMonths: 1 },
-  5: { credit: 50, freeMonths: 2 },
-  10: { credit: 100, freeMonths: 6 }
-};
+### MVP Features (Phase 1)
 
-// Apply rewards automatically
-async function processReferral(referrerId, newUserId) {
-  const referralCount = await getReferralCount(referrerId);
-  const reward = referralRewards[referralCount];
+#### 1. Core Web Application
+- **Homepage:** Clean, professional landing page
+- **Authentication:** Secure login/signup flow
+- **Content Structure:** Hierarchical navigation system
+- **Performance:** Super-fast loading handbook pages
+- **Mobile-First:** Responsive design for all devices
+
+#### 2. Content Management System
+- **MDX-Based Production:** Streamlined content creation workflow
+- **Knowledge Post Styling:** Clean, readable lesson pages
+- **Table of Contents:** Docusaurus-style navigation
+- **Search Functionality:** Fast content discovery
+
+#### 3. ACS Knowledge Extractor (Free Tool)
+- **Upload Interface:** FAA Knowledge Test results upload
+- **Basic Analytics:** Test performance overview
+- **ACS Code Matching:** Automatic matching with descriptions
+- **Free Tier Limitations:** Basic analytics, no result saving
+
+#### 4. User Management
+- **Account Creation:** Simple onboarding flow
+- **Subscription Management:** Billing and plan management
+- **Progress Tracking:** Basic learning progress indicators
+
+#### 5. ACS Code SEO Pages
+- **Public Landing Pages:** Individual page for each ACS code
+- **SEO Optimization:** Structured data, meta tags, optimized content
+- **Content Structure:**
+  - ACS Code identifier and title
+  - Full description and requirements
+  - Related regulations and references
+  - CTA: "Learn more in our comprehensive lessons" → Subscription upsell
+- **Cross-Linking:** Each ACS page links to relevant handbook lessons
+- **Search Intent Capture:** Target "ACS code [X.X.X]" search queries
+
+**Implementation Example:**
+```
+/acs/PA.I.A.K1 → "Pilot Certification Requirements"
+- Public page with ACS description
+- Links to relevant CFIPros lessons (auth-gated)
+- Related ACS codes navigation
+```
+
+#### 6. Resource Library
+- **Digital Downloads Hub:** Centralized resource center
+- **Content Types:**
+  - Checklists (PDF/Interactive)
+  - Quick reference cards
+  - Study guides and mnemonics
+  - Weather interpretation charts
+  - Airport diagram collections
+  - Regulation summaries
+- **Access Tiers:**
+  - Free resources (lead generation)
+  - Premium resources (subscribers only)
+  - Exclusive content (lifetime members)
+- **Download Tracking:** Analytics on popular resources
+
+### Post-MVP Features (Phase 2+)
+
+#### 1. Interactive Learning Elements
+- **Rich Visualizers:** Interactive diagrams and simulations
+- **Custom Inputs:** Modify parameters and experiment
+- **Procedural Generation:** Dynamic content based on inputs
+- **Playback System:** Pause, rewind, step-through functionality
+
+#### 2. Assessment System
+- **FAA Knowledge Test Quizzes:** Practice tests with official questions
+- **Progress Analytics:** Detailed performance tracking
+- **Weakness Identification:** Gap analysis and recommendations
+- **Study Plans:** Personalized learning paths
+
+#### 3. Enhanced Analytics
+- **Advanced Test Analytics:** Detailed performance insights
+- **Progress Tracking:** Comprehensive learning metrics
+- **Result History:** Saved test results and trends
+- **Comparative Analysis:** Performance benchmarking
+
+### Content Production Workflow
+
+**Current Method (to be maintained):**
+- **Source Format:** Markdown (.md) and MDX (.mdx) files
+- **Content Structure:** Hierarchical file organization matching app structure
+- **Version Control:** Git-based content management
+- **Build Process:** Static generation from MDX sources
+- **Content Types:** 
+  - Regulation references
+  - Procedure guides
+  - Aircraft system explanations
+  - Weather interpretation guides
+
+**Extended Content Structure:**
+```
+/content
+  /handbook
+    /private
+      /study-unit-1
+        - lesson-1.mdx
+        - lesson-2.mdx
+    /instrument
+      /study-unit-1
+        - lesson-1.mdx
+    /commercial
+  /acs-codes
+    /private-pilot
+      - PA.I.A.K1.mdx
+      - PA.I.A.K2.mdx
+    /instrument-rating
+      - IR.I.A.K1.mdx
+  /resources
+    /checklists
+      - cessna-172-preflight.pdf
+      - weather-briefing-checklist.pdf
+    /quick-reference
+      - cloud-clearances.pdf
+      - airspace-requirements.pdf
+    /study-guides
+      - fog-types-guide.pdf
+```
+
+## Business Model
+
+### Revenue Streams
+
+#### 1. Subscription Tiers
+- **Free Tier:** 
+  - Limited handbook access
+  - Basic ACS Knowledge Extractor
+  - No result saving
   
-  if (reward) {
-    await addAccountCredit(referrerId, reward.credit);
-    await addFreeMonths(referrerId, reward.freeMonths);
-    await notifyUser(referrerId, reward);
-  }
-}
-```
-
----
-
-## 3. Khan Academy Style Learning
-
-### Module Structure
-```
-Private Pilot Course
-├── Unit 1: Principles of Flight
-│   ├── Lesson 1.1: Four Forces (mastery required)
-│   ├── Lesson 1.2: Lift Generation
-│   ├── Practice: 5 questions (80% to pass)
-│   ├── Lesson 1.3: Drag Types
-│   └── Unit Test: 10 questions (must pass)
-│
-├── Unit 2: Aircraft Systems (locked until Unit 1 complete)
-```
-
-### Mastery Learning
-```javascript
-// Khan Academy progression logic
-const MASTERY_THRESHOLD = 0.8; // 80% correct
-
-function canProgressToNext(userId, currentLesson) {
-  const quizScore = await getQuizScore(userId, currentLesson);
-  return quizScore >= MASTERY_THRESHOLD;
-}
-
-// Force practice until mastery
-if (!canProgressToNext()) {
-  return <PracticeMorePrompt />;
-}
-```
-
-### Visual Progress
-```jsx
-// Khan Academy style progress indicators
-<ProgressBar>
-  <Module status="mastered" />     // Green
-  <Module status="practiced" />    // Blue  
-  <Module status="struggling" />   // Orange
-  <Module status="not-started" />  // Gray
-</ProgressBar>
-```
-
----
-
-## 4. Quiz Import System
-
-### JSON Format for LLM Generation
-```json
-{
-  "quiz_title": "Aerodynamics Basics",
-  "acs_codes": ["PA.I.F.K1", "PA.I.F.K2"],
-  "questions": [
-    {
-      "id": "aero_001",
-      "question": "What are the four forces acting on an aircraft in flight?",
-      "type": "multiple_choice",
-      "options": [
-        "Lift, Weight, Thrust, Drag",
-        "Lift, Mass, Power, Friction",
-        "Up, Down, Forward, Backward",
-        "Lift, Gravity, Engine, Wind"
-      ],
-      "correct_answer": 0,
-      "explanation": "The four forces are Lift (opposes weight), Weight (gravity), Thrust (opposes drag), and Drag (air resistance).",
-      "image_reference": {
-        "url": "/images/faa/four-forces-diagram.png",
-        "caption": "Figure 1-1: Four Forces of Flight",
-        "source": "FAA Airplane Flying Handbook"
-      },
-      "difficulty": "easy",
-      "points": 1
-    },
-    {
-      "id": "aero_002",
-      "question": "Refer to Figure 2-3. At what angle of attack does the wing stall?",
-      "type": "multiple_choice",
-      "image_reference": {
-        "url": "/images/faa/angle-of-attack-chart.png",
-        "caption": "Figure 2-3: Lift Coefficient vs Angle of Attack",
-        "required": true
-      },
-      "options": ["10°", "15°", "18°", "20°"],
-      "correct_answer": 2,
-      "explanation": "The chart shows maximum lift coefficient at 18° angle of attack, after which the wing stalls."
-    }
-  ]
-}
-```
-
-### Import Interface
-```jsx
-// Admin panel for quiz import
-export default function QuizImporter() {
-  const [jsonFile, setJsonFile] = useState(null);
+- **Premium Monthly ($19.99/month):**
+  - Full handbook access
+  - Advanced analytics
+  - Result history and saving
+  - Quiz practice tests
+  - Premium resource downloads
   
-  async function handleImport() {
-    const data = JSON.parse(await jsonFile.text());
-    
-    // Validate structure
-    if (!validateQuizFormat(data)) {
-      return alert('Invalid format');
-    }
-    
-    // Upload images to storage
-    for (const q of data.questions) {
-      if (q.image_reference?.url) {
-        q.image_reference.url = await uploadImage(q.image_reference.url);
-      }
-    }
-    
-    // Save to database
-    await supabase.from('quiz_imports').insert({
-      title: data.quiz_title,
-      questions: data.questions,
-      acs_codes: data.acs_codes
-    });
-    
-    toast.success(`Imported ${data.questions.length} questions`);
-  }
+- **Premium Annual ($199/year):**
+  - All monthly features
+  - 17% discount
+  - Priority support
+
+#### 2. Lifetime Access
+- **Lifetime Pass ($499):**
+  - One-time payment
+  - All premium features forever
+  - Grandfathered pricing protection
+
+#### 3. Institutional Licenses
+- **Flight School License ($99/month per school):**
+  - White-label branding options
+  - Multiple instructor accounts
+  - Student progress tracking
+  - Custom content uploads
+
+- **Training Organization License ($299/month):**
+  - Full white-label solution
+  - Custom domain
+  - Advanced reporting
+  - API access
+
+### Pricing Strategy
+- **Freemium Model:** Hook users with free ACS extractor
+- **Value-Based Pricing:** Premium features justify subscription cost
+- **Lifetime Option:** Appeals to frequent users, provides upfront revenue
+- **B2B Growth:** Institutional licenses for scalable revenue
+
+### Lead Generation Strategy
+- **Free Resources:** Email capture for valuable downloads
+- **ACS Page CTAs:** Strategic subscription prompts
+- **Newsletter:** Weekly aviation tips and updates
+- **Remarketing:** Target ACS page visitors with offers
+
+### Value Proposition Enhancement
+- **"More than just lessons":** Position as complete aviation toolkit
+- **Resource Library:** Tangible value beyond reading material
+- **ACS Integration:** Only platform linking codes to comprehensive content
+- **Continuous Updates:** Fresh resources added monthly
+
+## SEO & Traffic Strategy
+
+### Organic Search Acquisition
+- **ACS Code Pages:** 500+ indexed pages targeting specific searches
+- **Resource Downloads:** High-value content for backlink generation
+- **Content Clusters:** Topic authority building around aviation education
+- **Local SEO:** Target "flight training near [city]" for institutional sales
+
+### Conversion Funnel
+1. **Discovery:** User searches for specific ACS code
+2. **Landing:** Arrives at optimized ACS page with valuable content
+3. **Engagement:** Sees connection to comprehensive lessons
+4. **Conversion:** Signs up for full access to related content
+5. **Retention:** Downloads resources, increasing subscription value
+
+## Technical Considerations
+
+### Performance Requirements
+- **Page Load Time:** < 2 seconds for handbook pages
+- **Mobile Performance:** Optimized for mobile devices
+- **Search Speed:** < 500ms for content searches
+- **Uptime:** 99.9% availability target
+
+### Scalability
+- **Content Growth:** Support for 10,000+ lessons
+- **User Growth:** Handle thousands of concurrent users
+- **Geographic Distribution:** CDN for global performance
+
+### Security & Compliance
+- **User Data Protection:** GDPR/CCPA compliance
+- **Payment Security:** PCI DSS compliance
+- **Content Protection:** Subscription content security
+
+### SEO Infrastructure
+- **Static Generation:** All ACS pages pre-rendered for speed
+- **Sitemap Generation:** Automatic sitemap for all ACS codes
+- **Schema Markup:** EducationalContent schema for rich snippets
+- **Meta Optimization:** Dynamic meta tags for each ACS code
+
+### Resource Management
+- **CDN Delivery:** Fast global resource downloads
+- **Version Control:** Track resource updates and revisions
+- **Access Control:** Secure premium resource delivery
+- **Analytics Integration:** Track download patterns and popularity
+
+## Success Metrics
+
+### MVP Success Criteria
+- **User Acquisition:** 1,000 registered users in first 3 months
+- **ACS Extractor Usage:** 500 uploads in first month
+- **Conversion Rate:** 10% free-to-paid conversion
+- **Page Performance:** 95% of pages load under 2 seconds
+
+### SEO & Traffic Metrics
+- **Organic Traffic:** 10,000 monthly visitors within 6 months
+- **ACS Page Rankings:** Top 3 for 50% of ACS code searches
+- **Resource Downloads:** 1,000+ monthly downloads
+- **Organic Conversion Rate:** 5% visitor-to-trial conversion
+
+### Engagement Metrics
+- **Resource Library Usage:** 80% of subscribers download resources
+- **Cross-Navigation:** 60% of ACS page visitors explore lessons
+- **Content Sharing:** Resources shared 500+ times monthly
+
+### Long-term Goals
+- **Subscriber Growth:** 5,000 paying subscribers within 12 months
+- **Content Library:** 1,000+ comprehensive lessons
+- **Market Position:** Top 3 aviation study platform recognition
+- **Revenue Target:** $50k MRR within 18 months
+
+## Development Roadmap
+
+### Phase 1: MVP (3-4 months)
+- Core web application development
+- ACS code page generator and infrastructure
+- Basic content management system
+- ACS Knowledge Extractor integration
+- Initial resource library (20-30 resources)
+- User authentication and basic subscription
+
+### Phase 1.5: SEO & Growth Foundation (1 month)
+- Deploy all ACS code pages
+- SEO optimization and monitoring setup
+- Resource upload and management system
+- Email capture and automation setup
+
+### Phase 2: Enhanced Features (4-6 months)
+- Interactive learning elements
+- Quiz system implementation
+- Advanced analytics
+- Mobile app development
+
+### Phase 3: Scale & Optimize (6+ months)
+- Performance optimization
+- White-label solutions
+- API development
+- Advanced institutional features
+
+## Risk Assessment
+
+**Technical Risks:**
+- Content migration complexity
+- Performance optimization challenges
+- Third-party integration dependencies
+
+**Business Risks:**
+- Market competition from established players
+- Regulatory changes in aviation education
+- Subscription model adoption rate
+
+**Mitigation Strategies:**
+- Iterative development approach
+- Strong technical foundation with proven stack
+- Focus on unique value proposition (ACS extraction)
+- Community building and user feedback integration
+
+## Next Steps
+
+1. **Technical Architecture Review:** Validate current Next.js setup supports all requirements
+2. **Content Audit:** Review existing MDX content structure and optimization needs
+3. **Design System Creation:** Develop consistent UI/UX patterns
+4. **Development Sprint Planning:** Break down MVP into manageable sprints
+5. **User Research:** Validate assumptions with target aviation professionals
+
+## Appendix: Technical Implementation Details
+
+### MDX Content Structure Example
+```mdx
+---
+title: "FAR Part 61 - Certification Requirements"
+category: "regulations"
+study_unit: "pilot_certification"
+lesson_number: 1.2
+acs_codes: ["PA.I.A.K1", "PA.I.A.K2"]
+prerequisites: ["lesson-1.1"]
+estimated_time: 25
+---
+
+# FAR Part 61 - Certification Requirements
+
+<Objective>
+Understand the certification requirements for pilots, flight instructors, and ground instructors as outlined in FAR Part 61.
+</Objective>
+
+## Overview
+Federal Aviation Regulation (FAR) Part 61 establishes the requirements for issuing pilot, flight instructor, and ground instructor certificates and ratings...
+
+<InteractiveElement type="regulation-explorer">
+  {/* Post-MVP: Interactive FAR browser */}
+</InteractiveElement>
+
+<QuizSection acsCode="PA.I.A.K1">
+  {/* Auto-generated quiz questions linked to ACS */}
+</QuizSection>
+```
+
+### ACS SEO Page Structure
+```tsx
+// pages/acs/[code].tsx
+export async function generateStaticParams() {
+  const acsCodes = await getAllACSCodes();
+  return acsCodes.map((code) => ({
+    code: code.id,
+  }));
+}
+
+export default function ACSCodePage({ params }) {
+  const acsData = await getACSData(params.code);
   
   return (
-    <div className="p-6">
-      <h2>Import Quiz Questions</h2>
-      <input 
-        type="file" 
-        accept=".json"
-        onChange={(e) => setJsonFile(e.target.files[0])}
+    <>
+      <SEOHead 
+        title={`${acsData.code} - ${acsData.title} | CFIPros`}
+        description={acsData.description}
+        schema="EducationalContent"
       />
-      <button onClick={handleImport}>Import Questions</button>
       
-      <details className="mt-4">
-        <summary>JSON Format Guide</summary>
-        <pre>{JSON.stringify(sampleFormat, null, 2)}</pre>
-      </details>
-    </div>
-  );
-}
-```
-
----
-
-## 5. Image Support System
-
-### FAA Reference Integration
-```jsx
-// Question component with image support
-function QuizQuestion({ question }) {
-  return (
-    <div className="space-y-4">
-      {question.image_reference && (
-        <div className="border rounded-lg p-4">
-          <img 
-            src={question.image_reference.url} 
-            alt={question.image_reference.caption}
-            className="max-w-full h-auto"
-          />
-          <p className="text-sm text-gray-600 mt-2">
-            {question.image_reference.caption}
-          </p>
-        </div>
-      )}
-      
-      <h3 className="text-lg font-medium">{question.question}</h3>
-      
-      <RadioGroup>
-        {question.options.map((option, i) => (
-          <RadioOption key={i} value={i}>{option}</RadioOption>
-        ))}
-      </RadioGroup>
-    </div>
-  );
-}
-```
-
-### Image Storage
-```javascript
-// Store FAA reference images
-/public/images/faa/
-├── charts/
-│   ├── weight-balance-chart.png
-│   ├── performance-charts.png
-│   └── weather-charts.png
-├── diagrams/
-│   ├── aircraft-systems.png
-│   └── airport-markings.png
-└── references/
-    ├── sectional-excerpts.png
-    └── approach-plates.png
-```
-
----
-
-## 6. Database Schema Updates
-
-```sql
--- Enhanced quiz storage
-quiz_questions (
-  id, module_id, question_data jsonb,
-  -- question_data includes:
-  -- question, options, correct_answer,
-  -- explanation, image_reference, difficulty
-  imported_at, import_batch_id
-)
-
--- Referral tracking
-referrals (
-  id, referrer_id, referee_id,
-  status, discount_applied,
-  credit_awarded, months_awarded,
-  created_at
-)
-
--- User credits
-user_account (
-  user_id, cash_credits, free_months,
-  subscription_end_date
-)
-
--- Khan Academy style progress
-user_mastery (
-  user_id, lesson_id, 
-  attempts, best_score,
-  mastery_status, last_attempt
-)
-```
-
----
-
-## 7. LLM Question Generation Guide
-
-### Prompt Template for GPT-4
-```markdown
-Generate FAA Private Pilot quiz questions in this JSON format:
-
-{
-  "quiz_title": "[Topic Name]",
-  "acs_codes": ["PA.I.X.XX"],
-  "questions": [
-    {
-      "id": "[unique_id]",
-      "question": "[Clear question text]",
-      "type": "multiple_choice",
-      "options": ["4 options required"],
-      "correct_answer": [0-3],
-      "explanation": "[Why this answer is correct]",
-      "image_reference": {
-        "url": "[if referencing FAA figure]",
-        "caption": "Figure X-X: [Description]"
-      },
-      "difficulty": "easy|medium|hard"
-    }
-  ]
-}
-
-Requirements:
-- Base questions on FAA test standards
-- Include image references for charts/diagrams
-- Vary difficulty levels
-- Provide clear explanations
-- Use FAA terminology
-```
-
----
-
-## 8. Referral Dashboard
-
-```jsx
-export default function ReferralHub() {
-  const stats = await getReferralStats(user.id);
-  
-  return (
-    <div className="max-w-4xl mx-auto p-6">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg p-8">
-        <h1 className="text-3xl font-bold">Earn Cash & Free Months!</h1>
-        <p className="text-xl mt-2">Share CFIPros and earn up to $100 + 6 months free</p>
+      <article>
+        <h1>{acsData.code}: {acsData.title}</h1>
+        <div className="prose">{acsData.fullDescription}</div>
         
-        <div className="mt-6 bg-white/20 rounded p-4">
-          <p className="text-sm">Your referral link:</p>
-          <div className="flex gap-2 mt-2">
-            <input 
-              value={`cfipros.com/ref/${user.referral_code}`}
-              className="flex-1 bg-white/30 rounded px-3 py-2"
-              readOnly
-            />
-            <button className="bg-white text-blue-600 px-4 py-2 rounded">
-              Copy
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      {/* Stats Grid */}
-      <div className="grid grid-cols-4 gap-4 mt-8">
-        <StatCard 
-          label="Total Referrals" 
-          value={stats.total}
-          icon="users"
-        />
-        <StatCard 
-          label="Converted" 
-          value={stats.converted}
-          icon="check"
-        />
-        <StatCard 
-          label="Cash Earned" 
-          value={`$${stats.cash_earned}`}
-          icon="dollar"
-        />
-        <StatCard 
-          label="Free Months" 
-          value={stats.free_months}
-          icon="calendar"
-        />
-      </div>
-      
-      {/* Progress to Next Reward */}
-      <RewardProgress 
-        current={stats.converted}
-        nextTarget={getNextRewardTarget(stats.converted)}
-      />
-      
-      {/* Share Templates */}
-      <ShareTemplates code={user.referral_code} />
-    </div>
+        <RelatedLessons lessons={acsData.relatedLessons} />
+        
+        <CTASection>
+          <h2>Master This Topic</h2>
+          <p>Get comprehensive lessons, practice questions, and expert explanations.</p>
+          <SubscribeButton />
+        </CTASection>
+      </article>
+    </>
   );
 }
 ```
 
----
-
-## 9. Implementation Timeline
-
-### Week 1-2: Core Setup
-- Railway deployment
-- Database with JSON support
-- Basic auth + referral codes
-
-### Week 3: Khan Academy System
-- Mastery-based progression
-- Module locking logic
-- Progress visualization
-
-### Week 4: Quiz Import
-- JSON upload interface
-- Image handling
-- Validation system
-
-### Week 5: Referral Program
-- Credit system
-- Reward automation
-- Dashboard UI
-
-### Week 6: Content Creation
-- Import 500+ questions
-- Upload FAA images
-- Create first 20 videos
-
-### Week 7: Polish & Launch
-- Testing all flows
-- Payment integration
-- Launch campaign
-
----
-
-## 10. Quick Implementation Tips
-
-### Quiz Import Workflow
-```bash
-1. Generate questions with GPT-4
-2. Save as formatted JSON
-3. Upload via admin panel
-4. Auto-distribute to modules
-5. Track performance metrics
-```
-
-### Referral Email Templates
-```javascript
-// Automated emails
-const templates = {
-  referral_milestone: {
-    subject: "🎉 You earned ${amount} in credits!",
-    body: "Your friend just signed up..."
-  },
-  
-  monthly_summary: {
-    subject: "Your CFIPros rewards this month",
-    body: "You've earned ${credits} and ${months} free..."
-  }
-};
-```
-
----
-
-## Summary
-
-**Key Differentiators**:
-1. **$10 per referral** + stacking rewards
-2. **Khan Academy mastery** learning
-3. **JSON quiz import** for rapid content
-4. **FAA images** in questions
-
-**Revenue Model**:
-- $29/month or $290/year
-- 50% off first month via referral
-- Credits reduce future payments
-
-**Growth Strategy**:
-- Each user refers 2.5 people average
-- 50% conversion on referrals
-- Viral coefficient: 1.25
-
-**Simple Tech**:
-- Next.js + Railway
-- JSON quiz storage
-- Basic image CDN
-- Stripe for payments
-
-This aggressive referral program + easy content management = rapid growth!
+This PRD provides a comprehensive blueprint for building CFIPros with clear MVP boundaries, growth strategies, and technical implementation details.
