@@ -16,19 +16,20 @@ export default async function CenteredLayout(props: {
           <Link href="/" className="flex items-center space-x-2 mb-8">
             <div className="text-3xl font-bold text-primary">CFIPros</div>
           </Link>
-          
+
           <div className="space-y-6">
             <h1 className="text-4xl font-bold text-foreground">
-              Master Aviation Knowledge{" "}
+              Master Aviation Knowledge
+              {' '}
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 10x Faster
               </span>
             </h1>
-            
+
             <p className="text-lg text-muted-foreground">
               Join thousands of aviation professionals who trust CFIPros for their certification success.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center">

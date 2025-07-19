@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,21 +76,24 @@ export function Header() {
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              ></path>
+              >
+              </path>
               <path
                 d="M3 12H16"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              ></path>
+              >
+              </path>
               <path
                 d="M3 19H21"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              ></path>
+              >
+              </path>
             </svg>
             <span className="sr-only">Toggle Menu</span>
           </button>
@@ -106,11 +109,11 @@ export function Header() {
               </Button>
             </SignedOut>
             <SignedIn>
-              <UserButton 
+              <UserButton
                 appearance={{
                   elements: {
-                    avatarBox: "h-8 w-8"
-                  }
+                    avatarBox: 'h-8 w-8',
+                  },
                 }}
               />
             </SignedIn>
@@ -175,11 +178,11 @@ export function Header() {
               </SignedOut>
               <SignedIn>
                 <div className="flex items-center justify-center py-4">
-                  <UserButton 
+                  <UserButton
                     appearance={{
                       elements: {
-                        avatarBox: "h-10 w-10"
-                      }
+                        avatarBox: 'h-10 w-10',
+                      },
                     }}
                   />
                 </div>

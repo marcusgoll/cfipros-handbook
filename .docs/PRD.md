@@ -2,9 +2,9 @@
 
 ## Executive Summary
 
-**Product Name:** CFIPros - Aviation Knowledge Base Platform  
-**Product Type:** Subscription-based web application for aviation education  
-**Target Market:** Certified Flight Instructors, pilots, and aviation professionals  
+**Product Name:** CFIPros - Aviation Knowledge Base Platform
+**Product Type:** Subscription-based web application for aviation education
+**Target Market:** Certified Flight Instructors, pilots, and aviation professionals
 **Business Model:** Freemium with subscription tiers, lifetime passes, and institutional licenses
 
 CFIPros is a streamlined aviation knowledge platform designed to provide fast, accessible, and comprehensive study materials for aviation professionals. The platform follows a hierarchical content structure with interactive elements post-MVP.
@@ -137,7 +137,7 @@ Categories (Private, Instrument, Commercial, etc.)
 - **Content Structure:** Hierarchical file organization matching app structure
 - **Version Control:** Git-based content management
 - **Build Process:** Static generation from MDX sources
-- **Content Types:** 
+- **Content Types:**
   - Regulation references
   - Procedure guides
   - Aircraft system explanations
@@ -177,18 +177,18 @@ Categories (Private, Instrument, Commercial, etc.)
 ### Revenue Streams
 
 #### 1. Subscription Tiers
-- **Free Tier:** 
+- **Free Tier:**
   - Limited handbook access
   - Basic ACS Knowledge Extractor
   - No result saving
-  
+
 - **Premium Monthly ($19.99/month):**
   - Full handbook access
   - Advanced analytics
   - Result history and saving
   - Quiz practice tests
   - Premium resource downloads
-  
+
 - **Premium Annual ($199/year):**
   - All monthly features
   - 17% discount
@@ -392,28 +392,33 @@ Federal Aviation Regulation (FAR) Part 61 establishes the requirements for issui
 // pages/acs/[code].tsx
 export async function generateStaticParams() {
   const acsCodes = await getAllACSCodes();
-  return acsCodes.map((code) => ({
+  return acsCodes.map(code => ({
     code: code.id,
   }));
 }
 
 export default function ACSCodePage({ params }) {
   const acsData = await getACSData(params.code);
-  
+
   return (
     <>
-      <SEOHead 
+      <SEOHead
         title={`${acsData.code} - ${acsData.title} | CFIPros`}
         description={acsData.description}
         schema="EducationalContent"
       />
-      
+
       <article>
-        <h1>{acsData.code}: {acsData.title}</h1>
+        <h1>
+          {acsData.code}
+          :
+          {' '}
+          {acsData.title}
+        </h1>
         <div className="prose">{acsData.fullDescription}</div>
-        
+
         <RelatedLessons lessons={acsData.relatedLessons} />
-        
+
         <CTASection>
           <h2>Master This Topic</h2>
           <p>Get comprehensive lessons, practice questions, and expert explanations.</p>

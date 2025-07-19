@@ -1,8 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -10,8 +10,8 @@ type IIndexProps = {
 
 export async function generateMetadata() {
   return {
-    title: "CFIPros - Master Aviation Knowledge 10x Faster",
-    description: "Fast-loading, comprehensive aviation content with ACS integration for professional flight training.",
+    title: 'CFIPros - Master Aviation Knowledge 10x Faster',
+    description: 'Fast-loading, comprehensive aviation content with ACS integration for professional flight training.',
   };
 }
 
@@ -31,16 +31,17 @@ export default async function Index(props: IIndexProps) {
                 Trusted by 10,000+ aviation professionals
               </div>
             </div>
-            
+
             <h1 className="text-5xl font-semibold tracking-tight text-balance text-foreground sm:text-7xl">
-              Master Aviation Knowledge{" "}
+              Master Aviation Knowledge
+              {' '}
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 10x Faster
               </span>
             </h1>
-            
+
             <p className="mt-8 text-xl font-medium text-pretty text-muted-foreground sm:text-2xl/8">
-              The most comprehensive aviation study platform with ACS integration, 
+              The most comprehensive aviation study platform with ACS integration,
               interactive learning, and AI-powered progress tracking.
             </p>
 
@@ -51,7 +52,7 @@ export default async function Index(props: IIndexProps) {
                   <span className="ml-2">→</span>
                 </Link>
               </Button>
-              
+
               <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4 h-auto">
                 <Link href="#demo">
                   <span className="mr-2">▶</span>
@@ -80,18 +81,18 @@ export default async function Index(props: IIndexProps) {
           <div className="mt-16 sm:mt-20">
             <div className="relative mx-auto max-w-5xl">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 blur-3xl -z-10"></div>
-              
+
               <div className="relative rounded-2xl bg-background/80 backdrop-blur-sm border shadow-2xl">
                 <div className="px-6 py-8 sm:px-8 sm:py-12">
                   <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    
+
                     {/* Left: ACS Extractor Preview */}
                     <div className="space-y-6">
                       <div className="inline-flex items-center rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                         <span className="mr-2">📊</span>
                         ACS Code Extractor
                       </div>
-                      
+
                       <div className="space-y-4">
                         <div className="p-4 bg-muted/50 rounded-lg border">
                           <div className="flex items-center justify-between mb-3">
@@ -113,7 +114,7 @@ export default async function Index(props: IIndexProps) {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="space-y-2">
                           <div className="flex items-center justify-between p-3 bg-background rounded-lg border">
                             <span className="text-sm">PA.I.A.K1 - Certification</span>
@@ -137,7 +138,7 @@ export default async function Index(props: IIndexProps) {
                         <span className="mr-2">🛩️</span>
                         Interactive Learning
                       </div>
-                      
+
                       <div className="relative">
                         <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg border overflow-hidden">
                           <div className="p-6 h-full flex flex-col justify-center items-center text-center">
@@ -155,7 +156,7 @@ export default async function Index(props: IIndexProps) {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* Playback Controls */}
                         <div className="mt-4 flex items-center justify-center space-x-4 p-3 bg-background rounded-lg border">
                           <button className="p-2 hover:bg-muted rounded-lg transition-colors">
@@ -223,10 +224,12 @@ export default async function Index(props: IIndexProps) {
                 Featured Tool
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                ACS Knowledge <span className="text-primary">Extractor</span>
+                ACS Knowledge
+                {' '}
+                <span className="text-primary">Extractor</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Automatically extract and analyze ACS codes from your study materials. 
+                Automatically extract and analyze ACS codes from your study materials.
                 Identify knowledge gaps and create personalized study plans instantly.
               </p>
             </div>
@@ -238,7 +241,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-3xl mb-4">📄</div>
                   <h3 className="text-xl font-semibold mb-3">Document Analysis</h3>
                   <p className="text-muted-foreground">
-                    Upload PDFs, documents, or paste text. Our AI instantly identifies all ACS codes 
+                    Upload PDFs, documents, or paste text. Our AI instantly identifies all ACS codes
                     and cross-references them with our comprehensive database.
                   </p>
                 </CardContent>
@@ -250,7 +253,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-3xl mb-4">🎯</div>
                   <h3 className="text-xl font-semibold mb-3">Gap Analysis</h3>
                   <p className="text-muted-foreground">
-                    Compare extracted codes against your current knowledge level. 
+                    Compare extracted codes against your current knowledge level.
                     Get detailed reports on what you know and what needs attention.
                   </p>
                 </CardContent>
@@ -262,7 +265,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-3xl mb-4">📋</div>
                   <h3 className="text-xl font-semibold mb-3">Study Plans</h3>
                   <p className="text-muted-foreground">
-                    Generate personalized study schedules based on your identified gaps. 
+                    Generate personalized study schedules based on your identified gaps.
                     Focus your time on areas that matter most for your checkride.
                   </p>
                 </CardContent>
@@ -279,16 +282,16 @@ export default async function Index(props: IIndexProps) {
                       Paste any aviation study material and see the ACS extractor in action.
                     </p>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div className="p-4 bg-muted rounded-lg">
                       <p className="text-sm text-muted-foreground mb-2">Sample Input:</p>
                       <p className="text-sm font-mono bg-background p-3 rounded border">
-                        "The pilot must demonstrate knowledge of certification requirements (PA.I.A.K1), 
+                        "The pilot must demonstrate knowledge of certification requirements (PA.I.A.K1),
                         weather systems (PA.II.A.K2), and navigation principles (PA.III.B.K1)..."
                       </p>
                     </div>
-                    
+
                     <Button className="w-full" size="lg">
                       <span className="mr-2">🔍</span>
                       Extract ACS Codes
@@ -317,7 +320,7 @@ export default async function Index(props: IIndexProps) {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <p className="text-sm font-medium text-blue-800 mb-2">Recommendation</p>
                     <p className="text-sm text-blue-700">
@@ -343,12 +346,14 @@ export default async function Index(props: IIndexProps) {
       {/* Features Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          
+
           {/* Interactive Learning Feature */}
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold">
-                <span className="text-primary">Interactive</span> Learning.
+                <span className="text-primary">Interactive</span>
+                {' '}
+                Learning.
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
@@ -368,7 +373,7 @@ export default async function Index(props: IIndexProps) {
                 </p>
               </div>
             </div>
-            
+
             <div className="bg-muted rounded-lg border p-8">
               <div className="bg-background rounded-md p-6">
                 <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
@@ -397,10 +402,12 @@ export default async function Index(props: IIndexProps) {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-6 order-1 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold">
-                <span className="text-primary">ACS Code</span> Analysis.
+                <span className="text-primary">ACS Code</span>
+                {' '}
+                Analysis.
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
@@ -452,10 +459,12 @@ export default async function Index(props: IIndexProps) {
                 Study Resources
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Everything You Need to <span className="text-primary">Succeed</span>
+                Everything You Need to
+                {' '}
+                <span className="text-primary">Succeed</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive study materials, practice tests, and reference guides 
+                Comprehensive study materials, practice tests, and reference guides
                 designed specifically for aviation professionals.
               </p>
             </div>
@@ -467,7 +476,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">✅</div>
                   <h3 className="text-xl font-semibold mb-3">Practice Tests</h3>
                   <p className="text-muted-foreground mb-4">
-                    Realistic practice exams that mirror actual FAA knowledge tests. 
+                    Realistic practice exams that mirror actual FAA knowledge tests.
                     Track your progress and identify weak areas.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -485,7 +494,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">📖</div>
                   <h3 className="text-xl font-semibold mb-3">Study Guides</h3>
                   <p className="text-muted-foreground mb-4">
-                    Comprehensive study materials covering all ACS knowledge areas 
+                    Comprehensive study materials covering all ACS knowledge areas
                     with clear explanations and examples.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -503,7 +512,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">🛠️</div>
                   <h3 className="text-xl font-semibold mb-3">Reference Tools</h3>
                   <p className="text-muted-foreground mb-4">
-                    Essential aviation calculators, converters, and quick-reference 
+                    Essential aviation calculators, converters, and quick-reference
                     tools for both study and real-world use.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -521,7 +530,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">🎥</div>
                   <h3 className="text-xl font-semibold mb-3">Video Library</h3>
                   <p className="text-muted-foreground mb-4">
-                    Expert-led video tutorials covering complex aviation concepts 
+                    Expert-led video tutorials covering complex aviation concepts
                     with visual demonstrations and examples.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -539,7 +548,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">🃏</div>
                   <h3 className="text-xl font-semibold mb-3">Digital Flashcards</h3>
                   <p className="text-muted-foreground mb-4">
-                    Spaced repetition flashcards for memorizing key facts, 
+                    Spaced repetition flashcards for memorizing key facts,
                     procedures, and regulations efficiently.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -557,7 +566,7 @@ export default async function Index(props: IIndexProps) {
                   <div className="text-4xl mb-4">💬</div>
                   <h3 className="text-xl font-semibold mb-3">Community Forum</h3>
                   <p className="text-muted-foreground mb-4">
-                    Connect with fellow aviators, ask questions, and share 
+                    Connect with fellow aviators, ask questions, and share
                     knowledge in our active community forum.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
@@ -591,7 +600,7 @@ export default async function Index(props: IIndexProps) {
           <h2 className="text-5xl font-bold text-center mb-12 text-foreground">
             Table of Contents
           </h2>
-          
+
           <div className="bg-background rounded-lg border p-8">
             <Accordion type="single" collapsible className="w-full space-y-0">
               <AccordionItem value="introduction" className="border-b border-border">
@@ -764,12 +773,12 @@ export default async function Index(props: IIndexProps) {
             </p>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-muted-foreground">
-            Choose an affordable plan that's packed with the best features for mastering aviation knowledge, 
+            Choose an affordable plan that's packed with the best features for mastering aviation knowledge,
             passing your exams, and advancing your career.
           </p>
-          
+
           <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            
+
             {/* Free Tier */}
             <div className="flex flex-col justify-between rounded-3xl bg-background p-8 ring-1 ring-border xl:p-10 lg:mt-8">
               <div>
@@ -927,7 +936,7 @@ export default async function Index(props: IIndexProps) {
             <div className="p-8 sm:p-10 lg:flex-auto">
               <h3 className="text-3xl font-semibold tracking-tight text-foreground">Lifetime membership</h3>
               <p className="mt-6 text-base/7 text-muted-foreground">
-                Invest in your aviation career with lifetime access to all CFIPros content, features, and future updates. 
+                Invest in your aviation career with lifetime access to all CFIPros content, features, and future updates.
                 Perfect for serious pilots and instructors who want comprehensive training resources forever.
               </p>
               <div className="mt-10 flex items-center gap-x-4">
@@ -1000,14 +1009,14 @@ export default async function Index(props: IIndexProps) {
                 Frequently asked questions
               </p>
               <p className="mt-6 text-lg font-medium text-muted-foreground">
-                Everything you need to know about CFIPros. Can't find the answer you're looking for? 
+                Everything you need to know about CFIPros. Can't find the answer you're looking for?
                 <Link href="/contact" className="text-primary hover:underline ml-1">
                   Chat with our team
                 </Link>
                 .
               </p>
             </div>
-            
+
             <div className="bg-background rounded-2xl border p-8 lg:p-10">
               <Accordion type="single" collapsible className="w-full space-y-0">
                 <AccordionItem value="what-is-acs" className="border-b border-border">
@@ -1021,8 +1030,8 @@ export default async function Index(props: IIndexProps) {
                   <AccordionContent className="px-4 pb-6 text-muted-foreground">
                     <div className="prose prose-sm max-w-none">
                       <p>
-                        The Airman Certification Standards (ACS) are the official FAA standards 
-                        that define what pilots must know and be able to do during practical tests. 
+                        The Airman Certification Standards (ACS) are the official FAA standards
+                        that define what pilots must know and be able to do during practical tests.
                         CFIPros helps you understand and master these requirements by:
                       </p>
                       <ul className="mt-3 space-y-1">
@@ -1034,7 +1043,7 @@ export default async function Index(props: IIndexProps) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                
+
                 <AccordionItem value="free-vs-paid" className="border-b border-border">
                   <AccordionTrigger className="hover:no-underline py-6 px-4 text-left cursor-pointer group data-[state=open]:pb-2">
                     <div className="flex items-center justify-between w-full">
@@ -1046,7 +1055,7 @@ export default async function Index(props: IIndexProps) {
                   <AccordionContent className="px-4 pb-6 text-muted-foreground">
                     <div className="prose prose-sm max-w-none">
                       <p>
-                        The free tier gives you a taste of what CFIPros offers, while Pro unlocks 
+                        The free tier gives you a taste of what CFIPros offers, while Pro unlocks
                         the full learning experience:
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 mt-4">
@@ -1073,7 +1082,7 @@ export default async function Index(props: IIndexProps) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                
+
                 <AccordionItem value="payment-options" className="border-b border-border">
                   <AccordionTrigger className="hover:no-underline py-6 px-4 text-left cursor-pointer group data-[state=open]:pb-2">
                     <div className="flex items-center justify-between w-full">
@@ -1091,7 +1100,10 @@ export default async function Index(props: IIndexProps) {
                           <span className="font-semibold">$19.99/month</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
-                          <span>Annual Pro <span className="text-sm text-primary">(Save 17%)</span></span>
+                          <span>
+                            Annual Pro
+                            <span className="text-sm text-primary">(Save 17%)</span>
+                          </span>
                           <span className="font-semibold">$199/year</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
@@ -1104,13 +1116,13 @@ export default async function Index(props: IIndexProps) {
                         </div>
                       </div>
                       <p className="mt-4">
-                        All paid plans include a 14-day free trial and can be canceled anytime. 
+                        All paid plans include a 14-day free trial and can be canceled anytime.
                         We accept all major credit cards and offer invoicing for institutional customers.
                       </p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                
+
                 <AccordionItem value="mobile-access" className="border-b border-border">
                   <AccordionTrigger className="hover:no-underline py-6 px-4 text-left cursor-pointer group data-[state=open]:pb-2">
                     <div className="flex items-center justify-between w-full">
@@ -1125,14 +1137,39 @@ export default async function Index(props: IIndexProps) {
                         Yes! Pro subscribers get full mobile access with offline capabilities:
                       </p>
                       <ul className="mt-3 space-y-2">
-                        <li>• <strong>Mobile app</strong> - Available for iOS and Android</li>
-                        <li>• <strong>Offline reading</strong> - Download lessons for studying anywhere</li>
-                        <li>• <strong>Sync across devices</strong> - Progress tracked across all platforms</li>
-                        <li>• <strong>Touch-optimized</strong> - Designed for easy mobile navigation</li>
-                        <li>• <strong>Fast loading</strong> - Optimized for cellular connections</li>
+                        <li>
+                          •
+                          <strong>Mobile app</strong>
+                          {' '}
+                          - Available for iOS and Android
+                        </li>
+                        <li>
+                          •
+                          <strong>Offline reading</strong>
+                          {' '}
+                          - Download lessons for studying anywhere
+                        </li>
+                        <li>
+                          •
+                          <strong>Sync across devices</strong>
+                          {' '}
+                          - Progress tracked across all platforms
+                        </li>
+                        <li>
+                          •
+                          <strong>Touch-optimized</strong>
+                          {' '}
+                          - Designed for easy mobile navigation
+                        </li>
+                        <li>
+                          •
+                          <strong>Fast loading</strong>
+                          {' '}
+                          - Optimized for cellular connections
+                        </li>
                       </ul>
                       <p className="mt-4">
-                        Perfect for studying during flight training, commuting, or anywhere you have 
+                        Perfect for studying during flight training, commuting, or anywhere you have
                         a few minutes to advance your aviation knowledge.
                       </p>
                     </div>
@@ -1150,22 +1187,54 @@ export default async function Index(props: IIndexProps) {
                   <AccordionContent className="px-4 pb-6 text-muted-foreground">
                     <div className="prose prose-sm max-w-none">
                       <p>
-                        Absolutely! Our institutional licenses are designed specifically for flight 
+                        Absolutely! Our institutional licenses are designed specifically for flight
                         schools and training organizations:
                       </p>
                       <ul className="mt-3 space-y-2">
-                        <li>• <strong>White-label branding</strong> - Customize with your school's logo and colors</li>
-                        <li>• <strong>Multi-instructor accounts</strong> - Manage multiple CFI accounts</li>
-                        <li>• <strong>Student progress tracking</strong> - Monitor all student advancement</li>
-                        <li>• <strong>Custom content uploads</strong> - Add your own training materials</li>
-                        <li>• <strong>API access</strong> - Integrate with your existing systems</li>
-                        <li>• <strong>Dedicated support</strong> - Priority assistance and account management</li>
+                        <li>
+                          •
+                          <strong>White-label branding</strong>
+                          {' '}
+                          - Customize with your school's logo and colors
+                        </li>
+                        <li>
+                          •
+                          <strong>Multi-instructor accounts</strong>
+                          {' '}
+                          - Manage multiple CFI accounts
+                        </li>
+                        <li>
+                          •
+                          <strong>Student progress tracking</strong>
+                          {' '}
+                          - Monitor all student advancement
+                        </li>
+                        <li>
+                          •
+                          <strong>Custom content uploads</strong>
+                          {' '}
+                          - Add your own training materials
+                        </li>
+                        <li>
+                          •
+                          <strong>API access</strong>
+                          {' '}
+                          - Integrate with your existing systems
+                        </li>
+                        <li>
+                          •
+                          <strong>Dedicated support</strong>
+                          {' '}
+                          - Priority assistance and account management
+                        </li>
                       </ul>
                       <p className="mt-4">
-                        Pricing starts at $299/month ($249/month annually) and scales with your organization size. 
+                        Pricing starts at $299/month ($249/month annually) and scales with your organization size.
                         <Link href="/contact" className="text-primary hover:underline ml-1">
                           Contact our team
-                        </Link> for a custom quote and demo.
+                        </Link>
+                        {' '}
+                        for a custom quote and demo.
                       </p>
                     </div>
                   </AccordionContent>
@@ -1183,21 +1252,46 @@ export default async function Index(props: IIndexProps) {
                     <div className="prose prose-sm max-w-none">
                       <p>Getting started is easy and takes less than 2 minutes:</p>
                       <ol className="mt-3 space-y-2">
-                        <li>1. <strong>Sign up</strong> - Create your free account with email or Google</li>
-                        <li>2. <strong>Choose your focus</strong> - Select your current rating and goals</li>
-                        <li>3. <strong>Upload test results</strong> - (Optional) Upload knowledge test results for ACS analysis</li>
-                        <li>4. <strong>Start learning</strong> - Explore handbook content and interactive features</li>
-                        <li>5. <strong>Upgrade when ready</strong> - Unlock full features with our 14-day free trial</li>
+                        <li>
+                          1.
+                          <strong>Sign up</strong>
+                          {' '}
+                          - Create your free account with email or Google
+                        </li>
+                        <li>
+                          2.
+                          <strong>Choose your focus</strong>
+                          {' '}
+                          - Select your current rating and goals
+                        </li>
+                        <li>
+                          3.
+                          <strong>Upload test results</strong>
+                          {' '}
+                          - (Optional) Upload knowledge test results for ACS analysis
+                        </li>
+                        <li>
+                          4.
+                          <strong>Start learning</strong>
+                          {' '}
+                          - Explore handbook content and interactive features
+                        </li>
+                        <li>
+                          5.
+                          <strong>Upgrade when ready</strong>
+                          {' '}
+                          - Unlock full features with our 14-day free trial
+                        </li>
                       </ol>
                       <p className="mt-4">
-                        No credit card required to start, and you can upgrade or cancel anytime. 
+                        No credit card required to start, and you can upgrade or cancel anytime.
                         Our onboarding process is designed to get you studying in minutes, not hours.
                       </p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-              
+
               <div className="mt-12 pt-8 border-t border-border">
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span>Last updated: January 18, 2025</span>
@@ -1215,7 +1309,7 @@ export default async function Index(props: IIndexProps) {
       <footer className="py-16 border-t">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground mb-4">
-            Crafted with ♥ by Marcus Gollahon / 
+            Crafted with ♥ by Marcus Gollahon /
             <a href="https://x.com/marcusgoll" className="text-primary hover:underline ml-1">
               @marcusgoll
             </a>
