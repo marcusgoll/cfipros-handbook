@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { withSentryConfig } from '@sentry/nextjs';
 import createNextIntlPlugin from 'next-intl/plugin';
+import createMDX from '@next/mdx';
 import './src/libs/Env';
 
 // Define the base Next.js configuration
@@ -12,10 +13,16 @@ const baseConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
+// Initialize MDX support
+const withMDX = createMDX({
+  // Add markdown plugins here if needed
+});
+
 // Initialize the Next-Intl plugin
-let configWithPlugins = createNextIntlPlugin('./src/libs/I18n.ts')(baseConfig);
+let configWithPlugins = withMDX(createNextIntlPlugin('./src/libs/I18n.ts')(baseConfig));
 
 // Conditionally enable bundle analysis
 if (process.env.ANALYZE === 'true') {

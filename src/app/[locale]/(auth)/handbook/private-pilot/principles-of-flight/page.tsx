@@ -16,7 +16,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Understanding lift, weight, thrust, and drag',
       duration: '20 min',
       completed: false,
-      hasQuiz: true,
     },
     {
       id: 'airfoil-theory',
@@ -24,7 +23,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'How wing shape affects lift generation',
       duration: '25 min',
       completed: false,
-      hasQuiz: true,
     },
     {
       id: 'angle-of-attack',
@@ -32,7 +30,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Relationship between AOA and lift coefficient',
       duration: '15 min',
       completed: false,
-      hasQuiz: false,
     },
     {
       id: 'stall-characteristics',
@@ -40,7 +37,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Critical angle of attack and stall recovery',
       duration: '30 min',
       completed: false,
-      hasQuiz: true,
     },
     {
       id: 'wing-design',
@@ -48,7 +44,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Aspect ratio, wing loading, and planform effects',
       duration: '20 min',
       completed: false,
-      hasQuiz: false,
     },
     {
       id: 'control-surfaces',
@@ -56,7 +51,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Primary and secondary flight controls',
       duration: '25 min',
       completed: false,
-      hasQuiz: true,
     },
     {
       id: 'stability',
@@ -64,7 +58,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Static and dynamic stability concepts',
       duration: '20 min',
       completed: false,
-      hasQuiz: false,
     },
     {
       id: 'performance-factors',
@@ -72,7 +65,6 @@ export default async function PrinciplesOfFlightUnit(props: {
       description: 'Density altitude, weight, and configuration effects',
       duration: '25 min',
       completed: false,
-      hasQuiz: true,
     },
   ];
 
@@ -172,11 +164,11 @@ export default async function PrinciplesOfFlightUnit(props: {
               </div>
               <div>
                 <p className="text-sm font-medium">
-                  {lessons.filter(l => l.hasQuiz).length}
+                  {lessons.length}
                   {' '}
-                  Quizzes
+                  Activities
                 </p>
-                <p className="text-xs text-muted-foreground">Knowledge checks</p>
+                <p className="text-xs text-muted-foreground">Practical exercises</p>
               </div>
             </div>
           </div>
@@ -226,11 +218,6 @@ export default async function PrinciplesOfFlightUnit(props: {
                         <h3 className={`font-medium ${lesson.completed ? 'text-primary' : 'text-foreground'}`}>
                           {lesson.title}
                         </h3>
-                        {lesson.hasQuiz && (
-                          <span className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-full">
-                            Quiz
-                          </span>
-                        )}
                       </div>
                       <p className="text-sm text-muted-foreground">{lesson.description}</p>
                       <p className="text-xs text-muted-foreground mt-1">{lesson.duration}</p>
