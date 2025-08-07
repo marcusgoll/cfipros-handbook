@@ -199,7 +199,7 @@ function getClientIP(request: NextRequest): string | undefined {
   const realIP = request.headers.get('x-real-ip');
 
   if (forwarded) {
-    return forwarded.split(',')[0].trim();
+    return forwarded.split(',')[0]?.trim();
   }
 
   return realIP || undefined;
