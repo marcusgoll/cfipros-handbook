@@ -120,7 +120,7 @@ async function getResourceById(id: string) {
   return mockResources.find(r => r.id === id);
 }
 
-function getUserAccessLevel(userId: string): 'free' | 'premium' | 'lifetime' {
+function getUserAccessLevel(_userId: string): 'free' | 'premium' | 'lifetime' {
   // TODO: Implement actual user subscription check
   return 'premium'; // Mock implementation
 }
@@ -158,12 +158,12 @@ function checkResourceAccess(
   return { allowed: false, reason: 'Unknown access level' };
 }
 
-async function getUserMonthlyDownloads(userId: string): Promise<number> {
+async function getUserMonthlyDownloads(_userId: string): Promise<number> {
   // TODO: Implement actual database query for user's monthly downloads
   return 3; // Mock implementation
 }
 
-async function logResourceDownload(download: {
+async function logResourceDownload(_download: {
   resourceId: string;
   userId: string;
   userAgent?: string;
@@ -172,7 +172,7 @@ async function logResourceDownload(download: {
   // TODO: Implement actual database logging
 }
 
-async function incrementDownloadCount(resourceId: string) {
+async function incrementDownloadCount(_resourceId: string) {
   // TODO: Implement actual database update
 }
 

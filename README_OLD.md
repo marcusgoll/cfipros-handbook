@@ -29,24 +29,28 @@ CFIPros transforms aviation education by providing instant access to comprehensi
 ## ✈️ Key Features
 
 ### 📚 Comprehensive Knowledge Base
+
 - **10,000+ Aviation Topics** - Covering regulations, procedures, aircraft systems, and more
 - **MDX-Powered Content** - Rich, interactive content with embedded components
 - **Real-time Updates** - Always current with latest FAA regulations and procedures
 - **Cross-Referenced Materials** - Seamless navigation between related topics
 
 ### 🔍 Advanced Search & Discovery
+
 - **Instant Search** - Find any topic in milliseconds
 - **Regulation-Specific Filters** - Search by FAR parts, AIM sections, or advisory circulars
 - **Smart Suggestions** - AI-powered content recommendations
 - **Mobile-Optimized** - Full functionality on all devices
 
 ### 🔐 Professional Access Control
+
 - **Subscription-Based Access** - Tiered access for different user levels
 - **Clerk Authentication** - Secure, passwordless login with MFA support
 - **Progress Tracking** - Monitor learning progress and completion
 - **Offline Access** - Download content for offline study
 
 ### 🚀 Performance & Scalability
+
 - **Sub-second Page Loads** - Optimized static generation
 - **CDN-Powered Delivery** - Global content distribution
 - **Mobile-First Design** - Responsive across all devices
@@ -279,7 +283,7 @@ Then, you can run the project locally in development mode with live reload by ex
 npm run dev
 ```
 
-Open http://localhost:3000 with your favorite browser to see your project. For your information, the project is already pre-configured with a local database using PGlite. No extra setup is required to run the project locally.
+Open <http://localhost:3000> with your favorite browser to see your project. For your information, the project is already pre-configured with a local database using PGlite. No extra setup is required to run the project locally.
 
 ### Set up authentication
 
@@ -400,18 +404,18 @@ During the build process, database migrations are automatically executed, so the
 Then, you can generate a production build with:
 
 ```shell
-$ npm run build
+npm run build
 ```
 
 It generates an optimized production build of the boilerplate. To test the generated build, run:
 
 ```shell
-$ npm run start
+npm run start
 ```
 
 You also need to defined the environment variables `CLERK_SECRET_KEY` using your own key.
 
-This command starts a local server using the production build. You can now open http://localhost:3000 in your preferred browser to see the result.
+This command starts a local server using the production build. You can now open <http://localhost:3000> in your preferred browser to see the result.
 
 ### Deploy to Sevalla
 
@@ -488,7 +492,7 @@ The project is already configured with Drizzle Studio to explore the database. Y
 npm run db:studio
 ```
 
-Then, you can open https://local.drizzle.studio with your favorite browser to explore your database.
+Then, you can open <https://local.drizzle.studio> with your favorite browser to explore your database.
 
 ### VSCode information (optional)
 
@@ -643,6 +647,6 @@ See [LICENSE](LICENSE) for more information.
 
 Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Ixartz)](https://twitter.com/ixartz)
 
-Looking for a custom boilerplate to kick off your project? I'd be glad to discuss how I can help you build one. Feel free to reach out anytime at contact@creativedesignsguru.com!
+Looking for a custom boilerplate to kick off your project? I'd be glad to discuss how I can help you build one. Feel free to reach out anytime at <contact@creativedesignsguru.com>!
 
 [![Sponsor Next JS Boilerplate](https://cdn.buymeacoffee.com/buttons/default-red.png)](https://github.com/sponsors/ixartz)

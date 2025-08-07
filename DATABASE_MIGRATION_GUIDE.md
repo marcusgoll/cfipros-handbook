@@ -5,6 +5,7 @@ This guide covers the complete database migration system for the CFI Handbook ap
 ## Overview
 
 The migration system provides:
+
 - ✅ Idempotent migrations with proper hash validation
 - 🔄 Transaction-based migrations with rollback support
 - 🔍 Schema validation and integrity checks
@@ -183,21 +184,25 @@ npm run rollback:monitor
 #### Manual Rollback
 
 1. Identify problematic migration:
+
    ```bash
    npm run db:monitor:migrations
    ```
 
 2. Create restoration point:
+
    ```bash
    npm run db:backup:full --name pre-rollback
    ```
 
 3. Execute rollback:
+
    ```bash
    npm run db:migrate:rollback <migration-id>
    ```
 
 4. Validate rollback:
+
    ```bash
    npm run db:validate
    ```
@@ -257,6 +262,7 @@ All operations generate detailed reports saved to `/reports/`:
 ### Common Issues
 
 #### Migration Hash Mismatch
+
 ```bash
 # Re-validate migration files
 npm run db:migrate:validate
@@ -266,6 +272,7 @@ npm run db:validate:schema
 ```
 
 #### Connection Pool Exhaustion
+
 ```bash
 # Monitor connection usage
 npm run db:monitor:health
@@ -275,6 +282,7 @@ npm run db:validate:performance
 ```
 
 #### Data Integrity Violations
+
 ```bash
 # Full data validation
 npm run db:validate:data
@@ -286,12 +294,14 @@ npm run db:monitor --performance
 ### Emergency Procedures
 
 #### Database Corruption
+
 1. Stop application traffic
 2. Create emergency backup: `npm run db:backup:full --name emergency`
 3. Assess damage: `npm run db:validate`
 4. Restore from last known good backup if necessary
 
 #### Migration Failure
+
 1. Check migration logs in Railway console
 2. Validate current database state: `npm run db:validate`
 3. If safe, retry migration: `npm run db:migrate:prod`
@@ -302,6 +312,7 @@ npm run db:monitor --performance
 ### Query Optimization
 
 The system monitors and reports on:
+
 - Sequential scans vs index usage
 - Missing indexes on foreign keys
 - Long-running queries
@@ -349,16 +360,19 @@ CREATE INDEX idx_question_analysis_file_id ON question_analysis(file_id);
 ## Maintenance Schedule
 
 ### Daily
+
 - Health monitoring reports
 - Error log review
 - Performance metrics collection
 
 ### Weekly
+
 - Backup verification tests
 - Migration test suite execution
 - Performance baseline updates
 
 ### Monthly
+
 - Backup cleanup and rotation
 - Performance optimization review
 - Security audit of database access
@@ -375,6 +389,7 @@ CREATE INDEX idx_question_analysis_file_id ON question_analysis(file_id);
 ### Reporting Issues
 
 When reporting database issues, include:
+
 - Output from `npm run db:validate`
 - Recent health report from `npm run db:monitor`
 - Railway deployment logs
@@ -383,6 +398,7 @@ When reporting database issues, include:
 ### Contributing
 
 When adding new migrations:
+
 1. Follow naming conventions: `NNNN_descriptive_name.sql`
 2. Test with `npm run test:migration`
 3. Validate with `npm run db:validate`

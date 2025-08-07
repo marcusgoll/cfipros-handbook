@@ -27,6 +27,12 @@ export default antfu(
     // Ignored paths
     ignores: [
       'migrations/**/*',
+      '.claude/**/*',
+      '.bmad-core/**/*',
+      '.gemini/**/*',
+      'docs/**/*',
+      '*.min.js',
+      '*.min.ts',
     ],
   },
   // --- Next.js Specific Rules ---

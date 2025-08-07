@@ -142,52 +142,62 @@ User Action → React Component → IndexedDB Check
 ## Technology Stack Decisions
 
 ### Core Framework: Next.js 15+
+
 - **Why**: Full-stack React framework with excellent PWA support and latest performance improvements
 - **Benefits**: Turbopack dev server, React 19 support, enhanced caching, improved App Router performance
 - **New Features**: Partial Prerendering (PPR), enhanced `next/form`, improved TypeScript support
 - **Trade-offs**: Bleeding edge features → Mitigated by stable API compatibility
 
 ### Content: MDX
+
 - **Why**: Markdown + React components = perfect for interactive content
 - **Benefits**: Version control friendly, component embedding, easy authoring
 - **Trade-offs**: Build time processing → Mitigated by incremental builds
 
 ### Database: PostgreSQL + Prisma
+
 - **Why**: Robust relational database with excellent TypeScript support
 - **Benefits**: ACID compliance, complex queries, proven reliability
 - **Trade-offs**: Operational overhead → Mitigated by managed services
 
 ### Authentication: NextAuth.js
+
 - **Why**: Native Next.js integration, extensive provider support
 - **Benefits**: Session management, JWT/Database sessions, social logins
 - **Trade-offs**: Limited customization → Extended with custom handlers
 
 ### Payments: Stripe
+
 - **Why**: Industry standard, excellent developer experience
 - **Benefits**: PCI compliance, subscription support, webhook reliability
 - **Trade-offs**: Transaction fees → Offset by reduced development cost
 
 ### Interactive Graphics: D3.js + Three.js
+
 - **Why**: D3 for 2D data viz, Three.js for 3D experiences
 - **Benefits**: Powerful, flexible, large ecosystem
 - **Trade-offs**: Bundle size → Mitigated by code splitting
 
 ### Styling: Tailwind CSS
+
 - **Why**: Utility-first, excellent DX, consistent design
 - **Benefits**: Small production bundle, responsive utilities
 - **Trade-offs**: Learning curve → Offset by component library
 
 ### State Management: Zustand + React Context
+
 - **Why**: Lightweight, TypeScript-first, simple API
 - **Benefits**: No boilerplate, devtools support, persistence
 - **Trade-offs**: Less ecosystem than Redux → Simpler is better here
 
 ### Offline Storage: IndexedDB + Service Workers
+
 - **Why**: Large storage capacity, background sync
 - **Benefits**: True offline capability, automatic updates
 - **Trade-offs**: Browser compatibility → Progressive enhancement
 
 ### Deployment: Vercel
+
 - **Why**: Native Next.js support, global CDN, preview deployments
 - **Benefits**: Zero-config deployment, excellent performance
 - **Trade-offs**: Vendor lock-in → Mitigated by containerization option
@@ -195,6 +205,7 @@ User Action → React Component → IndexedDB Check
 ## Security Architecture
 
 ### Authentication Flow
+
 ```
 1. User Login → NextAuth → JWT/Session Creation
 2. JWT includes: userId, purchasedModules[], roles[]
@@ -203,6 +214,7 @@ User Action → React Component → IndexedDB Check
 ```
 
 ### Content Protection
+
 ```
 1. Server-side rendering for paid content
 2. API routes verify purchase before serving
@@ -211,6 +223,7 @@ User Action → React Component → IndexedDB Check
 ```
 
 ### Payment Security
+
 ```
 1. Stripe Checkout → Never handle card details
 2. Webhook validation with signing secret
@@ -221,12 +234,14 @@ User Action → React Component → IndexedDB Check
 ## Performance Architecture
 
 ### Optimization Strategy
+
 1. **Static Generation**: Landing pages, marketing content
 2. **ISR**: Lesson content with 24-hour revalidation
 3. **Dynamic**: User-specific data, progress tracking
 4. **Edge Caching**: API responses, static assets
 
 ### Bundle Optimization
+
 ```javascript
 // next.config.js
 module.exports = {
@@ -242,6 +257,7 @@ module.exports = {
 ```
 
 ### Critical Performance Targets
+
 - First Contentful Paint: <1.5s
 - Time to Interactive: <3s
 - Lighthouse Score: >90
@@ -250,12 +266,14 @@ module.exports = {
 ## Scalability Considerations
 
 ### Horizontal Scaling
+
 - Stateless API routes
 - Database connection pooling
 - Redis for session management
 - CDN for static assets
 
 ### Vertical Scaling
+
 - Database read replicas
 - Dedicated media server
 - Background job processing
@@ -264,12 +282,14 @@ module.exports = {
 ## Monitoring & Observability
 
 ### Application Monitoring
+
 - Vercel Analytics for performance
 - Sentry for error tracking
 - Custom metrics for business KPIs
 - Real User Monitoring (RUM)
 
 ### Infrastructure Monitoring
+
 - Database query performance
 - API response times
 - Cache hit rates
@@ -278,6 +298,7 @@ module.exports = {
 ---
 
 This architecture provides a solid foundation that:
+
 - Supports offline-first requirements
 - Enables rich interactive content
 - Scales with user growth

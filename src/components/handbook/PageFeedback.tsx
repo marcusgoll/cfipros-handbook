@@ -66,7 +66,7 @@ export function PageFeedback({
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmittingDetailed, setIsSubmittingDetailed] = useState(false);
   const [comment, setComment] = useState('');
-  const [difficulty, setDifficulty] = useState<'too-easy' | 'just-right' | 'too-hard' | null>(null);
+  const [difficulty, setDifficulty] = useState<'too-easy' | 'just-right' | 'too-hard' | undefined>(undefined);
   const [pageLoadTime] = useState<number>(Date.now());
 
   useEffect(() => {
@@ -123,6 +123,14 @@ export function PageFeedback({
 
     return newFeedbackData;
   }, [feedbackData, pageId, pageLoadTime]);
+
+  const clearFeedback = () => {
+    setFeedbackData(null);
+    setState('idle');
+    setComment('');
+    setDifficulty(undefined);
+    localStorage.removeItem(`page-feedback-${pageId}`);
+  };
 
   const handleQuickFeedback = async (type: 'positive' | 'negative') => {
     if (feedbackData?.type === type) {
@@ -187,7 +195,7 @@ export function PageFeedback({
       });
       setState('thanking');
       setComment('');
-      setDifficulty(null);
+      setDifficulty(undefined);
 
       setTimeout(() => {
         setState('idle');
@@ -200,14 +208,6 @@ export function PageFeedback({
     }
   };
 
-  const clearFeedback = () => {
-    setFeedbackData(null);
-    setState('idle');
-    setComment('');
-    setDifficulty(null);
-    localStorage.removeItem(`page-feedback-${pageId}`);
-  };
-
   const getProgressSuggestion = () => {
     if (!feedbackData || !showProgressSuggestions) {
       return null;
@@ -218,10 +218,12 @@ export function PageFeedback({
     if (isPositive) {
       return (
         <div className="flex gap-2 mt-4 justify-center">
-          <Button variant="default" size="sm" leftIcon={<ArrowRight />}>
+          <Button variant="default" size="sm">
+            <ArrowRight className="w-4 h-4 mr-1" />
             Continue Learning
           </Button>
-          <Button variant="success" size="sm" leftIcon={<Target />}>
+          <Button variant="secondary" size="sm">
+            <Target className="w-4 h-4 mr-1" />
             Practice Quiz
           </Button>
         </div>
@@ -229,10 +231,12 @@ export function PageFeedback({
     } else {
       return (
         <div className="flex gap-2 mt-4">
-          <Button variant="secondary" size="sm" leftIcon={<Navigation />}>
+          <Button variant="secondary" size="sm">
+            <Navigation className="w-4 h-4 mr-1" />
             Review Basics
           </Button>
-          <Button variant="warning" size="sm" leftIcon={<MessageSquare />}>
+          <Button variant="outline" size="sm">
+            <MessageSquare className="w-4 h-4 mr-1" />
             Get Help
           </Button>
         </div>
@@ -421,10 +425,9 @@ export function PageFeedback({
                 <Button
                   onClick={handleDetailedSubmit}
                   disabled={isSubmittingDetailed}
-                  leftIcon={isSubmittingDetailed ? undefined : <Target />}
-                  loading={isSubmittingDetailed}
                 >
-                  Submit Feedback
+                  {!isSubmittingDetailed && <Target className="w-4 h-4 mr-1" />}
+                  {isSubmittingDetailed ? 'Submitting...' : 'Submit Feedback'}
                 </Button>
                 <Button
                   variant="outline"
@@ -465,10 +468,10 @@ export function PageFeedback({
                 <Button
                   variant="ghost"
                   onClick={() => setState('detailed')}
-                  rightIcon={<ChevronRight />}
                   className="text-sm"
                 >
                   Give detailed feedback
+                  <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
             </div>
@@ -573,10 +576,10 @@ export function PageFeedback({
                   variant="ghost"
                   size="sm"
                   onClick={() => setState('detailed')}
-                  rightIcon={<MessageSquare />}
                   className="text-xs"
                 >
                   Detailed feedback
+                  <MessageSquare className="w-4 h-4 ml-1" />
                 </Button>
               </div>
             )}

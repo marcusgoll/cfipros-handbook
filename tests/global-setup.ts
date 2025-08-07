@@ -1,6 +1,6 @@
 import type { FullConfig } from '@playwright/test';
 
-async function globalSetup(config: FullConfig) {
+async function globalSetup(_config: FullConfig) {
   // Clean up any hanging processes from previous test runs
   if (process.platform === 'win32') {
     try {

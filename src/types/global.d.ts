@@ -1,9 +1,9 @@
 declare global {
-  interface Window {
+  type Window = {
     posthog?: {
-      capture(event: string, properties?: Record<string, any>): void;
+      capture: (event: string, properties?: Record<string, any>) => void;
     };
-  }
+  };
 }
 
 export {};

@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     let metadata;
     try {
       metadata = JSON.parse(metadataJson);
-    } catch (error) {
+    } catch (_error) {
       throw ErrorHandler.createError(
         'INVALID_INPUT',
         'Invalid metadata JSON',

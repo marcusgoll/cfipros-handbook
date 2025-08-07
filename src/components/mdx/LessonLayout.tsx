@@ -31,7 +31,7 @@ export function LessonLayout({
   locale,
   categoryTitle,
   unitId,
-  lessonId,
+  lessonId: _,
   nextLesson,
   previousLesson,
 }: LessonLayoutProps) {

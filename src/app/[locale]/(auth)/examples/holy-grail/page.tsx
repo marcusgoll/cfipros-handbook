@@ -5,29 +5,29 @@ const LeftSidebar = () => (
   <div>
     <h3 className="text-lg font-semibold mb-4 text-foreground">Navigation</h3>
     <nav className="space-y-2">
-      <a href="#" className="block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
+      <button type="button" className="w-full text-left block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
         Section 1
-      </a>
-      <a href="#" className="block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
+      </button>
+      <button type="button" className="w-full text-left block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
         Section 2
-      </a>
-      <a href="#" className="block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
+      </button>
+      <button type="button" className="w-full text-left block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent">
         Section 3
-      </a>
+      </button>
     </nav>
 
     <div className="mt-8">
       <h4 className="text-sm font-medium mb-3 text-foreground">Quick Links</h4>
       <div className="space-y-1">
-        <a href="#" className="block text-xs text-muted-foreground hover:text-foreground">
+        <button type="button" className="w-full text-left block text-xs text-muted-foreground hover:text-foreground">
           Resources
-        </a>
-        <a href="#" className="block text-xs text-muted-foreground hover:text-foreground">
+        </button>
+        <button type="button" className="w-full text-left block text-xs text-muted-foreground hover:text-foreground">
           Documentation
-        </a>
-        <a href="#" className="block text-xs text-muted-foreground hover:text-foreground">
+        </button>
+        <button type="button" className="w-full text-left block text-xs text-muted-foreground hover:text-foreground">
           Support
-        </a>
+        </button>
       </div>
     </div>
   </div>

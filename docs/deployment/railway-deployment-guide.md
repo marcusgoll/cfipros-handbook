@@ -5,6 +5,7 @@ Complete guide for deploying the CFI Handbook application to Railway with zero-d
 ## 🚀 Pre-Deployment Checklist
 
 ### 1. Prerequisites
+
 - [ ] Railway account created and CLI installed
 - [ ] GitHub repository connected to Railway
 - [ ] Domain configured (optional but recommended)
@@ -12,6 +13,7 @@ Complete guide for deploying the CFI Handbook application to Railway with zero-d
 - [ ] Database backup created (if migrating existing data)
 
 ### 2. Required Services
+
 - [ ] **Main Application**: Next.js application service
 - [ ] **PostgreSQL Database**: Railway PostgreSQL service
 - [ ] **Custom Domain** (optional): CNAME record configured
@@ -21,6 +23,7 @@ Complete guide for deploying the CFI Handbook application to Railway with zero-d
 ### Step 1: Project Setup in Railway
 
 1. **Create New Project**
+
    ```bash
    # Login to Railway CLI
    railway login
@@ -42,6 +45,7 @@ Complete guide for deploying the CFI Handbook application to Railway with zero-d
 Set up all required environment variables in Railway dashboard:
 
 #### Required Variables
+
 ```bash
 # Authentication (Clerk) - SENSITIVE
 CLERK_SECRET_KEY=sk_live_your_secret_key_here
@@ -58,6 +62,7 @@ NEXT_PUBLIC_APP_URL=${{RAILWAY_STATIC_URL}}
 ```
 
 #### Optional but Recommended
+
 ```bash
 # Analytics
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
@@ -82,6 +87,7 @@ Ensure these files are properly configured:
 ### Step 4: Database Migration Setup
 
 1. **Database Migration Script**
+
    ```bash
    # The migration will run automatically during build
    npm run db:migrate:prod
@@ -95,6 +101,7 @@ Ensure these files are properly configured:
 ### Step 5: Deploy to Railway
 
 1. **Initial Deployment**
+
    ```bash
    # Deploy from local directory
    railway up
@@ -105,6 +112,7 @@ Ensure these files are properly configured:
    ```
 
 2. **Monitor Deployment**
+
    ```bash
    # Watch deployment logs
    railway logs -f
@@ -135,6 +143,7 @@ curl https://your-app.railway.app/api/health/live
    - Configure DNS records as instructed
 
 2. **Update Environment Variables**
+
    ```bash
    NEXT_PUBLIC_APP_URL=https://cfipros.com
    ```
@@ -148,6 +157,7 @@ curl https://your-app.railway.app/api/health/live
 ### Railway Configuration Files
 
 #### railway.json
+
 ```json
 {
   "$schema": "https://railway.app/railway.schema.json",
@@ -199,16 +209,19 @@ Railway configuration enables zero-downtime deployments through:
 ## 🛡️ Security Configuration
 
 ### SSL/TLS Configuration
+
 - Railway automatically provides SSL certificates
 - HTTPS is enforced for production domains
 - Security headers configured in application
 
 ### Environment Variable Security
+
 - Sensitive variables marked as hidden in Railway dashboard
 - No secrets committed to git repository
 - Environment-specific configurations separated
 
 ### Database Security
+
 - PostgreSQL SSL connections enforced
 - Connection pooling with proper timeouts
 - Database credentials managed by Railway
@@ -216,16 +229,19 @@ Railway configuration enables zero-downtime deployments through:
 ## 📊 Monitoring and Observability
 
 ### Health Monitoring
+
 - **Health checks**: Automated monitoring of application health
 - **Uptime monitoring**: Railway provides uptime statistics
 - **Resource monitoring**: CPU and memory usage tracking
 
 ### Error Tracking
+
 - **Sentry integration**: Real-time error tracking and performance monitoring
 - **Railway logs**: Structured logging with log aggregation
 - **Custom metrics**: Application-specific metrics and alerts
 
 ### Performance Monitoring
+
 - **Response time tracking**: API and page load time monitoring
 - **Database performance**: Query performance and connection pool metrics
 - **Resource utilization**: Memory and CPU usage tracking
@@ -235,6 +251,7 @@ Railway configuration enables zero-downtime deployments through:
 ### Development to Production Flow
 
 1. **Local Development**
+
    ```bash
    npm run dev          # Local development server
    npm run test        # Run unit tests
@@ -247,6 +264,7 @@ Railway configuration enables zero-downtime deployments through:
    - Run full test suite against staging
 
 3. **Production Deployment**
+
    ```bash
    git push origin main    # Triggers automatic deployment
    npm run test:railway   # Verify deployment
@@ -256,6 +274,7 @@ Railway configuration enables zero-downtime deployments through:
 ### Rollback Procedures
 
 1. **Automatic Rollback**
+
    ```bash
    npm run rollback:auto    # Automated rollback on health check failures
    ```
@@ -271,6 +290,7 @@ Railway configuration enables zero-downtime deployments through:
 ## 🧪 Testing Strategy
 
 ### Pre-Deployment Testing
+
 ```bash
 # Comprehensive test suite
 npm run test           # Unit tests
@@ -280,6 +300,7 @@ npm run test:validate # Configuration validation
 ```
 
 ### Post-Deployment Testing
+
 ```bash
 # Deployment verification
 npm run test:railway        # Railway-specific tests
@@ -288,6 +309,7 @@ npm run health:check       # Health check validation
 ```
 
 ### Monitoring Tests
+
 ```bash
 # Continuous monitoring
 npm run rollback:monitor   # Monitor deployment health
@@ -299,29 +321,37 @@ railway logs -f           # Monitor application logs
 ### Common Issues
 
 #### 1. Build Failures
+
 **Symptoms**: Deployment fails during build phase
 **Solutions**:
+
 - Check build logs: `railway logs --deployment <deployment-id>`
 - Verify Node.js version compatibility
 - Ensure all dependencies installed correctly
 
 #### 2. Health Check Failures
+
 **Symptoms**: Application deploys but health checks fail
 **Solutions**:
+
 - Check health endpoint: `curl https://your-app.railway.app/api/health`
 - Verify database connectivity
 - Check environment variables configuration
 
 #### 3. Database Connection Issues
+
 **Symptoms**: Application can't connect to PostgreSQL
 **Solutions**:
+
 - Verify `DATABASE_URL` environment variable
 - Check database service is running
 - Verify SSL configuration for production
 
 #### 4. Authentication Problems
+
 **Symptoms**: Clerk authentication not working
 **Solutions**:
+
 - Verify Clerk keys are for correct environment
 - Check domain configuration in Clerk dashboard
 - Ensure CORS settings are correct
@@ -350,12 +380,14 @@ curl -I https://your-app.railway.app/dashboard
 ### Performance Issues
 
 #### Slow Response Times
+
 1. Check database query performance
 2. Review resource allocation (CPU/Memory)
 3. Analyze application logs for bottlenecks
 4. Consider CDN for static assets
 
 #### High Memory Usage
+
 1. Monitor memory usage in Railway dashboard
 2. Check for memory leaks in application code
 3. Optimize database connection pooling
@@ -405,16 +437,19 @@ curl -I https://your-app.railway.app/dashboard
 ## 📞 Support and Escalation
 
 ### Internal Support
+
 - Check application logs first
 - Review this documentation
 - Test locally to isolate issues
 
 ### External Support
+
 - **Railway Support**: Railway dashboard → Help
 - **Clerk Support**: Clerk dashboard → Support
 - **Sentry Support**: Sentry dashboard → Support
 
 ### Emergency Procedures
+
 1. **Application Down**: Immediate rollback to previous version
 2. **Database Issues**: Switch to read-only mode, restore from backup
 3. **Security Incident**: Rotate all secrets, investigate logs, patch vulnerabilities

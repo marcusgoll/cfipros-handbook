@@ -84,7 +84,7 @@ export class ACSAnalyzer {
   static analyzeQuestions(
     questions: QuestionData[],
     sessionId: string,
-    userId: string,
+    _userId: string,
   ): AnalysisResult {
     const performance = this.calculatePerformance(questions);
     const categoryBreakdown = this.analyzeCategoryPerformance(questions);

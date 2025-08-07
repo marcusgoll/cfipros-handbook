@@ -66,7 +66,7 @@ The epic numbering starts at 1 and increments for each epic found.
 
 ## Example
 
-### Before (PRD):
+### Before (PRD)
 
 ```markdown
 # Product Requirements Document
@@ -92,7 +92,7 @@ Epic content...
 Content here...
 ```
 
-### After (PRD):
+### After (PRD)
 
 ```markdown
 # Product Requirements Document
@@ -115,7 +115,7 @@ Epic content...
 Content here...
 ```
 
-### Before (Non-PRD):
+### Before (Non-PRD)
 
 ```markdown
 # Architecture Document
@@ -127,7 +127,7 @@ Content...
 Content...
 ```
 
-### After (Non-PRD):
+### After (Non-PRD)
 
 ```markdown
 # Architecture Document

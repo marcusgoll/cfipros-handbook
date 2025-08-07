@@ -69,7 +69,7 @@ The monitoring system uses these packages (already included in package.json):
 
 ### 1. Sentry Project Setup
 
-1. Create a new Sentry project at https://sentry.io
+1. Create a new Sentry project at <https://sentry.io>
 2. Choose "Next.js" as your platform
 3. Copy the DSN and add it to your environment variables
 4. Configure performance monitoring in your Sentry project settings:
@@ -118,6 +118,7 @@ Update your `railway.json` to include health check configuration:
 Create the following API endpoints for health monitoring:
 
 **`/api/health/route.ts`**:
+
 ```typescript
 import { NextResponse } from 'next/server';
 import { railwayMonitor } from '@/lib/monitoring';
@@ -318,6 +319,7 @@ Performance budgets are enforced in CI/CD:
 ### CI/CD Performance Tests
 
 The GitHub Actions workflow runs performance tests on:
+
 - Every push to main/master
 - Every pull request
 - Daily scheduled runs
@@ -388,6 +390,7 @@ LOG_LEVEL=debug
 ### Health Check Failures
 
 Check these common causes:
+
 - Database connection issues
 - External API dependencies
 - Memory/CPU resource limits
@@ -444,7 +447,7 @@ Check these common causes:
 
 ### Getting Help
 
-1. Check Sentry documentation: https://docs.sentry.io/
+1. Check Sentry documentation: <https://docs.sentry.io/>
 2. Review GitHub Actions logs for CI/CD issues
 3. Check Railway logs for deployment issues
 4. Contact the development team for custom monitoring features

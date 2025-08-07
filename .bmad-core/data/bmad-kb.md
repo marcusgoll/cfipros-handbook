@@ -25,6 +25,7 @@ BMAD-METHOD (Breakthrough Method of Agile AI-driven Development) is a framework 
 ### Quick Start Options
 
 #### Option 1: Web UI
+
 **Best for**: ChatGPT, Claude, Gemini users who want to start immediately
 
 1. Navigate to `dist/teams/`
@@ -34,6 +35,7 @@ BMAD-METHOD (Breakthrough Method of Agile AI-driven Development) is a framework 
 5. Type `/help` to see available commands
 
 #### Option 2: IDE Integration
+
 **Best for**: Cursor, Claude Code, Windsurf, VS Code users
 
 ```bash
@@ -42,10 +44,12 @@ npx bmad-method install
 ```
 
 **Installation Steps**:
+
 - Choose "Complete installation"
 - Select your IDE (Cursor, Claude Code, Windsurf, or Roo Code)
 
 **Verify Installation**:
+
 - `.bmad-core/` folder created with all agents
 - IDE-specific integration files created
 - All agent commands/rules/modes available
@@ -53,12 +57,14 @@ npx bmad-method install
 ### Environment Selection Guide
 
 **Use Web UI for**:
+
 - Initial planning and documentation (PRD, architecture)
 - Cost-effective document creation (especially with Gemini)
 - Brainstorming and analysis phases
 - Multi-agent consultation and planning
 
 **Use IDE for**:
+
 - Active development and coding
 - File operations and project integration
 - Document sharding and story management
@@ -82,17 +88,20 @@ This configuration file acts as a map for BMAD agents, telling them exactly wher
 ### Key Configuration Areas
 
 #### PRD Configuration
+
 - **prdVersion**: Tells agents if PRD follows v3 or v4 conventions
 - **prdSharded**: Whether epics are embedded (false) or in separate files (true)
 - **prdShardedLocation**: Where to find sharded epic files
 - **epicFilePattern**: Pattern for epic filenames (e.g., `epic-{n}*.md`)
 
 #### Architecture Configuration
+
 - **architectureVersion**: v3 (monolithic) or v4 (sharded)
 - **architectureSharded**: Whether architecture is split into components
 - **architectureShardedLocation**: Where sharded architecture files live
 
 #### Developer Files
+
 - **devLoadAlwaysFiles**: List of files the dev agent loads for every task
 - **devDebugLog**: Where dev agent logs repeated failures
 - **agentCoreDump**: Export location for chat conversations
@@ -107,6 +116,7 @@ This configuration file acts as a map for BMAD agents, telling them exactly wher
 ### Common Configurations
 
 **Legacy V3 Project**:
+
 ```yaml
 prdVersion: v3
 prdSharded: false
@@ -115,6 +125,7 @@ architectureSharded: false
 ```
 
 **V4 Optimized Project**:
+
 ```yaml
 prdVersion: v4
 prdSharded: true
@@ -180,16 +191,19 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 #### IDE-Specific Syntax
 
 **Agent Loading by IDE**:
+
 - **Claude Code**: `/agent-name` (e.g., `/bmad-master`)
 - **Cursor**: `@agent-name` (e.g., `@bmad-master`)
 - **Windsurf**: `@agent-name` (e.g., `@bmad-master`)
 - **Roo Code**: Select mode from mode selector (e.g., `bmad-bmad-master`)
 
 **Chat Management Guidelines**:
+
 - **Claude Code, Cursor, Windsurf**: Start new chats when switching agents
 - **Roo Code**: Switch modes within the same conversation
 
 **Common Task Commands**:
+
 - `*help` - Show available commands
 - `*status` - Show current context/progress
 - `*exit` - Exit the agent mode
@@ -198,6 +212,7 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 - `*create` - Run create-next-story task (SM agent)
 
 **In Web UI**:
+
 ```text
 /pm create-doc prd
 /architect review system design
@@ -211,16 +226,19 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 ### Pre-Built Teams
 
 #### Team All
+
 - **Includes**: All 10 agents + orchestrator
 - **Use Case**: Complete projects requiring all roles
 - **Bundle**: `team-all.txt`
 
 #### Team Fullstack
+
 - **Includes**: PM, Architect, Developer, QA, UX Expert
 - **Use Case**: End-to-end web/mobile development
 - **Bundle**: `team-fullstack.txt`
 
 #### Team No-UI
+
 - **Includes**: PM, Architect, Developer, QA (no UX Expert)
 - **Use Case**: Backend services, APIs, system development
 - **Bundle**: `team-no-ui.txt`
@@ -234,22 +252,26 @@ The BMAD-Method is built around a modular architecture centered on the `bmad-cor
 ### Key Architectural Components
 
 #### 1. Agents (`bmad-core/agents/`)
+
 - **Purpose**: Each markdown file defines a specialized AI agent for a specific Agile role (PM, Dev, Architect, etc.)
 - **Structure**: Contains YAML headers specifying the agent's persona, capabilities, and dependencies
 - **Dependencies**: Lists of tasks, templates, checklists, and data files the agent can use
 - **Startup Instructions**: Can load project-specific documentation for immediate context
 
 #### 2. Agent Teams (`bmad-core/agent-teams/`)
+
 - **Purpose**: Define collections of agents bundled together for specific purposes
 - **Examples**: `team-all.yml` (comprehensive bundle), `team-fullstack.yml` (full-stack development)
 - **Usage**: Creates pre-packaged contexts for web UI environments
 
 #### 3. Workflows (`bmad-core/workflows/`)
+
 - **Purpose**: YAML files defining prescribed sequences of steps for specific project types
 - **Types**: Greenfield (new projects) and Brownfield (existing projects) for UI, service, and fullstack development
 - **Structure**: Defines agent interactions, artifacts created, and transition conditions
 
 #### 4. Reusable Resources
+
 - **Templates** (`bmad-core/templates/`): Markdown templates for PRDs, architecture specs, user stories
 - **Tasks** (`bmad-core/tasks/`): Instructions for specific repeatable actions like "shard-doc" or "create-next-story"
 - **Checklists** (`bmad-core/checklists/`): Quality assurance checklists for validation and review
@@ -289,6 +311,7 @@ BMAD employs a sophisticated template system with three key components:
 ### Technical Preferences Integration
 
 The `technical-preferences.md` file serves as a persistent technical profile that:
+
 - Ensures consistency across all agents and projects
 - Eliminates repetitive technology specification
 - Provides personalized recommendations aligned with user preferences
@@ -297,6 +320,7 @@ The `technical-preferences.md` file serves as a persistent technical profile tha
 ### Build and Delivery Process
 
 The `web-builder.js` tool creates web-ready bundles by:
+
 1. Reading agent or team definition files
 2. Recursively resolving all dependencies
 3. Concatenating content into single text files with clear separators
@@ -320,12 +344,14 @@ This architecture enables seamless operation across environments while maintaini
 #### Example Planning Prompts
 
 **For PRD Creation**:
+
 ```text
 "I want to build a [type] application that [core purpose].
 Help me brainstorm features and create a comprehensive PRD."
 ```
 
 **For Architecture Design**:
+
 ```text
 "Based on this PRD, design a scalable technical architecture
 that can handle [specific requirements]."
@@ -354,6 +380,7 @@ that can handle [specific requirements]."
    - Sharded docs for SM agent story creation
 
 **Resulting Folder Structure**:
+
 - `docs/prd/` - Broken down PRD sections
 - `docs/architecture/` - Broken down architecture sections
 - `docs/stories/` - Generated user stories
@@ -379,6 +406,7 @@ that can handle [specific requirements]."
 ### Status Tracking Workflow
 
 Stories progress through defined statuses:
+
 - **Draft** → **Approved** → **InProgress** → **Done**
 
 Each status change requires user verification and approval before proceeding.
@@ -386,6 +414,7 @@ Each status change requires user verification and approval before proceeding.
 ### Workflow Types
 
 #### Greenfield Development
+
 - Business analysis and market research
 - Product requirements and feature definition
 - System architecture and design
@@ -393,6 +422,7 @@ Each status change requires user verification and approval before proceeding.
 - Testing and deployment
 
 #### Brownfield Enhancement
+
 - Current system analysis
 - Enhancement planning
 - Impact assessment
@@ -407,6 +437,7 @@ Each status change requires user verification and approval before proceeding.
 - `docs/architecture.md` - System Architecture Document
 
 **Why These Names Matter**:
+
 - Agents automatically reference these files during development
 - Sharding tasks expect these specific filenames
 - Workflow automation depends on standard naming
@@ -425,6 +456,7 @@ Each status change requires user verification and approval before proceeding.
 Templates with Level 2 headings (`##`) can be automatically sharded:
 
 **Original PRD**:
+
 ```markdown
 ## Goals and Background Context
 ## Requirements
@@ -433,6 +465,7 @@ Templates with Level 2 headings (`##`) can be automatically sharded:
 ```
 
 **After Sharding**:
+
 - `docs/prd/goals-and-background-context.md`
 - `docs/prd/requirements.md`
 - `docs/prd/user-interface-design-goals.md`
@@ -445,12 +478,14 @@ Use the `shard-doc` task or `@kayvan/markdown-tree-parser` tool for automatic sh
 ### Environment-Specific Usage
 
 **Web UI Best For**:
+
 - Initial planning and documentation phases
 - Cost-effective large document creation
 - Agent consultation and brainstorming
 - Multi-agent workflows with orchestrator
 
 **IDE Best For**:
+
 - Active development and implementation
 - File operations and project integration
 - Story management and development cycles

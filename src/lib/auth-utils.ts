@@ -59,7 +59,7 @@ export async function requireAdmin(): Promise<AuthenticatedUser> {
 export async function optionalAuth(): Promise<AuthenticatedUser | null> {
   try {
     return await requireAuth();
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
@@ -67,7 +67,7 @@ export async function optionalAuth(): Promise<AuthenticatedUser | null> {
 /**
  * Rate limiting check (placeholder for future implementation)
  */
-export async function checkRateLimit(userId: string, action: string): Promise<void> {
+export async function checkRateLimit(_userId: string, _action: string): Promise<void> {
   // TODO: Implement rate limiting logic
   // For now, this is a placeholder
 }

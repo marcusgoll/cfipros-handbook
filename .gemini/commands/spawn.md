@@ -5,28 +5,33 @@
 Spawn specialized sub-agent→handle specific task in $ARGUMENTS.
 
 Thinking flags (optional):
+
 - --think→multi-agent coordination planning
 - --think-hard→complex agent workflow design
 - --ultrathink→enterprise-scale agent orchestration
 
 Examples:
+
 - `/user:spawn --task "optimize database queries" --think` - Spawn data agent w/ coordination analysis
 - `/user:spawn --task "implement auth system" --think-hard` - Complex security impl w/ planning
 - `/user:spawn --task "migrate to microservices" --ultrathink` - Enterprise arch w/ full orchestration
 
 --task flag:
+
 - Define clear, focused assignment | Provide necessary context & constraints
 - Set specific success criteria | Establish integration points
 
 Agent specializations:
 
 Frontend Agent:
+
 - UI/UX impl | Component dev
 - State management
 - Performance optimization
 - Accessibility compliance
 
 Backend Agent:
+
 - API development
 - Database operations
 - Business logic implementation
@@ -34,6 +39,7 @@ Backend Agent:
 - Performance tuning
 
 DevOps Agent:
+
 - CI/CD pipeline setup
 - Infrastructure automation
 - Deployment strategies
@@ -41,6 +47,7 @@ DevOps Agent:
 - Security hardening
 
 Data Agent:
+
 - Data analysis and transformation
 - Database optimization
 - ETL pipeline development
@@ -74,6 +81,7 @@ Best practices for spawning agents:
    - Manage communication
 
 Integration workflow:
+
 1. Spawn agent with clear task definition
 2. Agent works independently on task
 3. Agent provides progress updates
@@ -83,6 +91,7 @@ Integration workflow:
 ## Benefits & Integration
 
 Benefits:
+
 - Parallel task execution
 - Specialized expertise
 - Focused context
@@ -90,6 +99,7 @@ Benefits:
 - Faster completion
 
 Research requirements for agent spawning:
+
 - Task specialization → Research domain-specific best practices and patterns
 - Agent coordination → WebSearch for multi-agent workflow patterns
 - Integration strategies → C7 documentation for framework-specific integration methods
@@ -98,6 +108,7 @@ Research requirements for agent spawning:
 - All agent instructions must cite sources: // Source: [coordination guide reference]
 
 Report Output:
+
 - Agent coordination logs: `.claudedocs/reports/agent-spawn-<timestamp>.md`
 - Task completion summaries: `.claudedocs/summaries/agent-results-<timestamp>.md`
 - Ensure directory exists: `mkdir -p .claudedocs/reports/ .claudedocs/summaries/`

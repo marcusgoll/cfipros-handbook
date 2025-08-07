@@ -9,6 +9,7 @@ Multi-dimensional analysis on code, arch, or problem in $ARGUMENTS.
 @see shared/mcp-flags.yml ∀ MCP controls
 
 Examples:
+
 - `/user:analyze --code --think` - Code review w/ context
 - `/user:analyze --arch --think-hard` - Deep arch analysis
 - `/user:analyze --security --ultrathink` - Comprehensive security audit

@@ -5,6 +5,7 @@ This document provides a comprehensive guide for configuring environment variabl
 ## 🔧 Required Environment Variables
 
 ### Authentication (Clerk)
+
 ```bash
 # Required - Clerk public key for client-side authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_your_publishable_key_here
@@ -14,6 +15,7 @@ CLERK_SECRET_KEY=sk_live_your_secret_key_here
 ```
 
 ### Database Configuration
+
 ```bash
 # Required - PostgreSQL connection string provided by Railway
 DATABASE_URL=${{Postgres.DATABASE_URL}}
@@ -29,6 +31,7 @@ DATABASE_MAX_LIFETIME=3600000
 ```
 
 ### Sentry Monitoring (Production)
+
 ```bash
 # Required for error tracking and performance monitoring
 NEXT_PUBLIC_SENTRY_DSN=https://your-dsn@o4507.ingest.us.sentry.io/1234567
@@ -59,6 +62,7 @@ RAILWAY_ENVIRONMENT=${{RAILWAY_ENVIRONMENT}}  # Environment name
 ## 🚀 Application Configuration
 
 ### Next.js and Node.js
+
 ```bash
 # Environment mode
 NODE_ENV=production
@@ -75,6 +79,7 @@ ESLINT_NO_DEV_ERRORS=true
 ```
 
 ### Application URLs
+
 ```bash
 # Primary application URL (automatically set by Railway)
 NEXT_PUBLIC_APP_URL=${{RAILWAY_STATIC_URL}}
@@ -86,6 +91,7 @@ ALLOWED_ORIGINS=https://cfipros.com,https://www.cfipros.com
 ## 📊 Optional Analytics & Monitoring
 
 ### PostHog Analytics
+
 ```bash
 # Optional - PostHog project key
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key_here
@@ -93,12 +99,14 @@ NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 ```
 
 ### Better Stack Logging
+
 ```bash
 # Optional - Better Stack source token for centralized logging
 BETTER_STACK_SOURCE_TOKEN=your_better_stack_token
 ```
 
 ### Arcjet Security
+
 ```bash
 # Optional - Arcjet API key for security monitoring
 ARCJET_KEY=ajkey_your_secret_key_here
@@ -107,6 +115,7 @@ ARCJET_KEY=ajkey_your_secret_key_here
 ## 🔒 Security Configuration
 
 ### Application Security
+
 ```bash
 # Deployment environment indicator
 DEPLOYMENT_ENVIRONMENT=production
@@ -122,6 +131,7 @@ GRACEFUL_SHUTDOWN_TIMEOUT=30000
 ```
 
 ### Logging and Monitoring
+
 ```bash
 # Application logging level
 LOG_LEVEL=info
@@ -133,27 +143,33 @@ RAILWAY_SERVICE_NAME=cfi-handbook
 ## 📋 Railway Dashboard Configuration Steps
 
 ### 1. Database Setup
+
 1. Navigate to your Railway project dashboard
 2. Add a PostgreSQL service
 3. The `DATABASE_URL` will be automatically available as `${{Postgres.DATABASE_URL}}`
 
 ### 2. Environment Variables Setup
+
 Navigate to your service → Variables tab and add:
 
 **Required Variables:**
+
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
 - `CLERK_SECRET_KEY`
 - `NEXT_PUBLIC_SENTRY_DSN`
 
 **Database Variables (if not using Railway Postgres):**
+
 - `DATABASE_URL`
 
 **Optional Variables:**
+
 - `NEXT_PUBLIC_POSTHOG_KEY`
 - `ARCJET_KEY`
 - `BETTER_STACK_SOURCE_TOKEN`
 
 ### 3. Domain Configuration
+
 1. In Railway dashboard → Settings → Domains
 2. Add your custom domain (e.g., `cfipros.com`)
 3. Update `NEXT_PUBLIC_APP_URL` if using custom domain
@@ -161,6 +177,7 @@ Navigate to your service → Variables tab and add:
 ## 🚀 Deployment Commands
 
 ### Railway CLI Configuration
+
 ```bash
 # Login to Railway
 railway login
@@ -178,6 +195,7 @@ railway up
 ```
 
 ### Environment-Specific Variables
+
 ```bash
 # Production environment
 railway environment use production
@@ -220,26 +238,31 @@ npm run test:sentry
 ### Common Issues
 
 **Database Connection Fails:**
+
 - Verify `DATABASE_URL` is correctly set
 - Check `DATABASE_SSL=true` for production
 - Ensure PostgreSQL service is running
 
 **Authentication Not Working:**
+
 - Verify Clerk keys are correct
 - Check domain configuration in Clerk dashboard
 - Ensure `NEXT_PUBLIC_APP_URL` matches your domain
 
 **Build Failures:**
+
 - Check `NODE_OPTIONS` for memory limits
 - Verify `BUILD_TIMEOUT` is sufficient
 - Review build logs for specific errors
 
 **Health Checks Failing:**
+
 - Verify health check endpoints are accessible
 - Check `HEALTH_CHECK_TIMEOUT` settings
 - Review application startup logs
 
 ### Debug Commands
+
 ```bash
 # Check environment variables
 railway run env

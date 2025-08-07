@@ -129,7 +129,7 @@ export function FileUploadZone({
 
       // Call the upload handler with original File objects
       onFileUpload(filesToUpload);
-    } catch (error) {
+    } catch (_error) {
       setUploadFiles(prev => prev.map(file => ({
         ...file,
         status: 'error' as const,

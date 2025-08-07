@@ -74,17 +74,20 @@ const CSP_DIRECTIVES = {
 ### Environment-Specific Settings
 
 #### Production
+
 - **HSTS**: Enabled with 1-year max-age, includeSubDomains, and preload
 - **CSP**: Enforcing mode
 - **Frame Options**: DENY
 - **Content Type Options**: nosniff
 
 #### Staging
+
 - **HSTS**: Disabled
 - **CSP**: Report-only mode
 - **Other headers**: Enabled for testing
 
 #### Development
+
 - **HSTS**: Disabled
 - **CSP**: Report-only mode with localhost exceptions
 - **All headers**: Enabled but permissive
@@ -126,6 +129,7 @@ export const GET = withSecurityHeaders(async (request) => {
 ### Clerk Authentication
 
 CSP configuration includes Clerk domains:
+
 - `clerk.cfipros.com`
 - `*.clerk.accounts.dev`
 - `api.clerk.com`
@@ -133,6 +137,7 @@ CSP configuration includes Clerk domains:
 ### Sentry Monitoring
 
 CSP allows Sentry for error tracking:
+
 - `js.sentry-io`
 - `browser.sentry-io`
 - `o4506965584756736.ingest.us.sentry.io`
@@ -140,6 +145,7 @@ CSP allows Sentry for error tracking:
 ### PostHog Analytics
 
 CSP includes PostHog domains:
+
 - `us.i.posthog.com`
 - `app.posthog.com`
 
@@ -166,6 +172,7 @@ curl https://your-domain.com/api/health/security
 ```
 
 Response includes:
+
 - Security headers validation
 - CSP configuration status
 - HSTS status
@@ -260,16 +267,19 @@ Configure CSP reporting for violation monitoring:
 ### Common Issues
 
 #### CSP Violations
+
 - Check browser console for CSP violations
 - Use report-only mode to test new directives
 - Gradually tighten CSP based on violations
 
 #### HSTS Issues
+
 - HSTS is only applied in production
 - Preload list inclusion requires manual submission
 - Clear HSTS cache during development: `chrome://net-internals/#hsts`
 
 #### Railway Deployment Issues
+
 - Verify environment variables are set
 - Check Railway logs for security header application
 - Test with Railway preview URLs before production

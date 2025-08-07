@@ -7,12 +7,14 @@ This guide ensures Clerk authentication works seamlessly in Railway production e
 ### 1. Clerk Dashboard Configuration
 
 #### Domain Setup
+
 1. **Navigate to Clerk Dashboard** → Your Application → Domains
 2. **Add production domain**:
    - Primary: Your Railway static URL (e.g., `https://your-app.railway.app`)
    - Custom domain (if configured): `https://cfipros.com`
 
 3. **Configure allowed origins**:
+
    ```
    https://your-app.railway.app
    https://cfipros.com
@@ -20,8 +22,10 @@ This guide ensures Clerk authentication works seamlessly in Railway production e
    ```
 
 #### JWT Template Configuration
+
 1. Go to **JWT Templates** in Clerk dashboard
 2. Create/edit template for Railway production:
+
    ```json
    {
      "aud": "{{ app.id }}",
@@ -38,6 +42,7 @@ This guide ensures Clerk authentication works seamlessly in Railway production e
 ### 2. Railway Environment Variables
 
 #### Required Clerk Variables
+
 ```bash
 # Clerk Public Key (can be seen in Railway dashboard)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_your_key_here
@@ -47,6 +52,7 @@ CLERK_SECRET_KEY=sk_live_your_secret_key_here
 ```
 
 #### Clerk Configuration Variables
+
 ```bash
 # Primary application URL
 NEXT_PUBLIC_APP_URL=${{RAILWAY_STATIC_URL}}
@@ -147,6 +153,7 @@ If using custom domain:
 2. Add custom domain: `cfipros.com`
 3. Configure DNS records as instructed by Railway
 4. Update environment variables:
+
    ```bash
    NEXT_PUBLIC_APP_URL=https://cfipros.com
    ```
@@ -165,6 +172,7 @@ Set up webhooks for user management:
    - `session.ended`
 
 4. Add webhook secret to Railway:
+
    ```bash
    CLERK_WEBHOOK_SECRET=whsec_your_webhook_secret
    ```
@@ -172,6 +180,7 @@ Set up webhooks for user management:
 ## 🔧 Development vs Production Configuration
 
 ### Development (.env.local)
+
 ```bash
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
@@ -179,6 +188,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ### Production (Railway Variables)
+
 ```bash
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_...
 CLERK_SECRET_KEY=sk_live_...  # HIDDEN
@@ -188,6 +198,7 @@ NEXT_PUBLIC_APP_URL=${{RAILWAY_STATIC_URL}}
 ## 🧪 Testing Authentication Flow
 
 ### 1. Local Testing
+
 ```bash
 # Test sign-in flow
 curl -X GET http://localhost:3000/api/auth/me
@@ -198,6 +209,7 @@ curl -X GET http://localhost:3000/api/user/profile \
 ```
 
 ### 2. Production Testing
+
 ```bash
 # Test Railway deployment
 curl -X GET https://your-app.railway.app/api/health/ready
@@ -247,26 +259,34 @@ testAuthFlow().catch(console.error);
 ### Common Issues
 
 #### 1. "Invalid JWT" Errors
+
 **Cause**: Mismatch between development and production keys
 **Solution**:
+
 - Verify `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` matches environment
 - Ensure `CLERK_SECRET_KEY` is for correct environment (test vs live)
 
 #### 2. CORS Errors
+
 **Cause**: Domain not configured in Clerk dashboard
 **Solution**:
+
 - Add Railway URL to Clerk allowed origins
 - Update middleware configuration
 
 #### 3. Infinite Redirect Loops
+
 **Cause**: Middleware configuration issues
 **Solution**:
+
 - Check `publicRoutes` and `protectedRoutes` arrays
 - Verify API routes are excluded from auth middleware
 
 #### 4. Webhook Delivery Failures
+
 **Cause**: Incorrect webhook URL or network issues
 **Solution**:
+
 - Verify webhook URL in Clerk dashboard
 - Check Railway logs for webhook processing errors
 - Test webhook endpoint manually

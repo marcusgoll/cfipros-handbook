@@ -120,15 +120,15 @@ Common patterns to consider:
 
 <<REPEAT: pattern>>
 
-- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}
+- **{{pattern_name}}:** {{pattern_description}} - *Rationale:* {{rationale}}
 
 <</REPEAT>>
 
 @{example: patterns}
 
-- **Serverless Architecture:** Using AWS Lambda for compute - _Rationale:_ Aligns with PRD requirement for cost optimization and automatic scaling
-- **Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility
-- **Event-Driven Communication:** Using SNS/SQS for service decoupling - _Rationale:_ Supports async processing and system resilience
+- **Serverless Architecture:** Using AWS Lambda for compute - *Rationale:* Aligns with PRD requirement for cost optimization and automatic scaling
+- **Repository Pattern:** Abstract data access logic - *Rationale:* Enables testing and future database migration flexibility
+- **Event-Driven Communication:** Using SNS/SQS for service decoupling - *Rationale:* Supports async processing and system resilience
 
 @{/example}
 
@@ -299,7 +299,7 @@ If no external APIs are needed, state this explicitly and skip to next section.]
 ### Stripe API
 
 - **Purpose:** Payment processing and subscription management
-- **Documentation:** https://stripe.com/docs/api
+- **Documentation:** <https://stripe.com/docs/api>
 - **Base URL(s):** `https://api.stripe.com/v1`
 - **Authentication:** Bearer token with secret key
 - **Rate Limits:** 100 requests per second

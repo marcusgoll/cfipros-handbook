@@ -12,9 +12,9 @@ const baseConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // TEMPORARY: Allow production builds to complete even with type errors for Railway deployment
-    // TODO: Fix all TypeScript strict null check issues and remove this
-    ignoreBuildErrors: process.env.NODE_ENV === 'production',
+    // Only ignore TypeScript errors for Railway deployment (with DISABLE_TYPE_CHECKING=true)
+    // Regular production builds must pass TypeScript checks
+    ignoreBuildErrors: process.env.DISABLE_TYPE_CHECKING === 'true',
   },
   poweredByHeader: false,
   reactStrictMode: true,

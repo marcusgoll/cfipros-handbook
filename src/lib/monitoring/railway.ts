@@ -121,7 +121,7 @@ export class RailwayMonitor {
     disk_usage?: number;
   }) {
     const info = this.environmentInfo;
-    const tags = {
+    const _tags = {
       environment: info.environment || 'unknown',
       service: info.service || 'unknown',
       replica: info.replicaId || 'unknown',
@@ -399,7 +399,7 @@ if (typeof process !== 'undefined' && process.env.RAILWAY_ENVIRONMENT) {
     });
   });
 
-  process.on('unhandledRejection', (reason, promise) => {
+  process.on('unhandledRejection', (reason, _promise) => {
     const error = reason instanceof Error ? reason : new Error(String(reason));
     RailwayMonitor.reportDeploymentFailure(error, 'promise_rejection');
   });

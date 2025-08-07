@@ -159,10 +159,9 @@ export function QuickActions({ locale }: QuickActionsProps) {
 
                   <Button
                     asChild
-                    variant={action.featured ? 'premium' : action.variant}
+                    variant={action.featured ? 'default' : action.variant}
                     className="w-full interactive-lift"
                     size="default"
-                    ripple
                   >
                     <Link href={action.href} className="group">
                       <span className="flex items-center gap-2">
@@ -310,18 +309,16 @@ export function QuickActions({ locale }: QuickActionsProps) {
             </div>
             <div className="flex justify-center gap-4">
               <Button
-                variant="glass"
+                variant="ghost"
                 size="default"
                 className="interactive-lift"
-                ripple
               >
                 Help Center
               </Button>
               <Button
-                variant="premium"
+                variant="default"
                 size="default"
                 className="interactive-lift"
-                ripple
               >
                 Contact Support
               </Button>

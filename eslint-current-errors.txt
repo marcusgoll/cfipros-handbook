@@ -1,0 +1,363 @@
+(node:99796) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\dashboard\acs-extractor\loading.tsx
+  30:29  warning  Do not use item index in the array as its key  react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\dashboard\page.tsx
+   58:32  warning  Do not use item index in the array as its key  react/no-array-index-key
+  179:13  error    A form label must have accessible text         jsx-a11y/label-has-associated-control
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\examples\full-width\page.tsx
+  169:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  172:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\examples\holy-grail\page.tsx
+   8:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  11:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  14:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  22:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  25:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  28:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\examples\left-sidebar\page.tsx
+   8:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  11:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  14:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  17:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  20:7  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  36:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  42:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  48:9  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\handbook\private-pilot\page.tsx
+   96:9   error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  102:9   error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  108:9   error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  205:23  error  Do not nest component definitions inside other components or props. Move it to the top level                                                                                                                                                                                                                                                                       react/no-nested-component-definitions
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(auth)\handbook\search\page.tsx
+  102:5   warning  Do not call the 'set' function 'setQuery' of 'useState' directly in 'useEffect'                                   react-hooks-extra/no-direct-set-state-in-use-effect
+  103:5   warning  Do not call the 'set' function 'setFilters' of 'useState' directly in 'useEffect'                                 react-hooks-extra/no-direct-set-state-in-use-effect
+  111:7   error    'performSearch' was used before it was defined                                                                    ts/no-use-before-define
+  117:6   warning  React Hook useEffect has a missing dependency: 'performSearch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  156:7   warning  Do not call the 'set' function 'setResults' of 'useState' directly in 'useEffect'                                 react-hooks-extra/no-direct-set-state-in-use-effect
+  157:7   warning  Do not call the 'set' function 'setIsLoading' of 'useState' directly in 'useEffect'                               react-hooks-extra/no-direct-set-state-in-use-effect
+  221:18  warning  Using 'dangerouslySetInnerHTML' may have security implications                                                    react-dom/no-dangerously-set-innerhtml
+  278:21  error    A form label must be associated with a control                                                                    jsx-a11y/label-has-associated-control
+  294:21  error    A form label must be associated with a control                                                                    jsx-a11y/label-has-associated-control
+  310:21  error    A form label must be associated with a control                                                                    jsx-a11y/label-has-associated-control
+  391:39  warning  Do not use item index in the array as its key                                                                     react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(marketing)\counter\page.tsx
+  75:13  error  Do not use an `<a>` element to navigate to `/handbook/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  75:13  error  Do not use an `<a>` element to navigate to `/handbook/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  75:13  error  Do not use an `<a>` element to navigate to `/handbook/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  75:13  error  Do not use an `<a>` element to navigate to `/handbook/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  76:13  error  Do not use an `<a>` element to navigate to `/search/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages    @next/next/no-html-link-for-pages
+  76:13  error  Do not use an `<a>` element to navigate to `/search/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages    @next/next/no-html-link-for-pages
+  76:13  error  Do not use an `<a>` element to navigate to `/search/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages    @next/next/no-html-link-for-pages
+  76:13  error  Do not use an `<a>` element to navigate to `/search/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages    @next/next/no-html-link-for-pages
+  77:13  error  Do not use an `<a>` element to navigate to `/about/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  77:13  error  Do not use an `<a>` element to navigate to `/about/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  77:13  error  Do not use an `<a>` element to navigate to `/about/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  77:13  error  Do not use an `<a>` element to navigate to `/about/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\[locale]\(marketing)\page.tsx
+  162:27  warning  Add missing 'type' attribute on 'button' component                                                        react-dom/no-missing-button-type
+  165:27  warning  Add missing 'type' attribute on 'button' component                                                        react-dom/no-missing-button-type
+  168:27  warning  Add missing 'type' attribute on 'button' component                                                        react-dom/no-missing-button-type
+  171:27  warning  Add missing 'type' attribute on 'button' component                                                        react-dom/no-missing-button-type
+  795:17  error    The element ul has an implicit role of list. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+  838:17  error    The element ul has an implicit role of list. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+  890:17  error    The element ul has an implicit role of list. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+  946:15  error    The element ul has an implicit role of list. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\api\admin\resources\route.ts
+  72:14  error  'error' is defined but never used  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\app\api\monitoring\route.ts
+  109:9  error  Unexpected lexical declaration in case block  no-case-declarations
+  369:9  error  Unexpected lexical declaration in case block  no-case-declarations
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\SentryExample.tsx
+   24:9  error    'performSearch' was used before it was defined      ts/no-use-before-define
+  116:9  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  124:9  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\acs-extractor\ACSExtractorPage.tsx
+  130:14  error  'err' is defined but never used  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\acs-extractor\AnalyticsDashboard.tsx
+  113:25  warning  Do not use item index in the array as its key  react/no-array-index-key
+  147:27  warning  Do not use item index in the array as its key  react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\acs-extractor\FileUploadZone.tsx
+   87:7   error    'handleUpload' was used before it was defined                                                                                                                                                                                                                                            ts/no-use-before-define
+   89:6   warning  React Hook useCallback has a missing dependency: 'handleUpload'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
+  132:14  error    'error' is defined but never used                                                                                                                                                                                                                                                        unused-imports/no-unused-vars
+  284:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\acs-extractor\README.md
+  73:26  error  Parsing error: Expression expected
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\acs-extractor\ResultsDisplay.tsx
+  223:10  error    Expected newline between test and consequent of ternary expression       style/multiline-ternary
+  223:39  error    Expected newline between consequent and alternate of ternary expression  style/multiline-ternary
+  245:24  warning  Do not use item index in the array as its key                            react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\dashboard\FeatureShowcase.tsx
+  109:26  error    Do not nest component definitions inside other components or props. Move it to the top level  react/no-nested-component-definitions
+  168:24  warning  Do not use item index in the array as its key                                                 react/no-array-index-key
+  206:32  warning  Do not use item index in the array as its key                                                 react/no-array-index-key
+  242:24  warning  Do not use item index in the array as its key                                                 react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\dashboard\QuickActions.tsx
+  115:20  warning  Do not use item index in the array as its key       react/no-array-index-key
+  196:20  warning  Do not use item index in the array as its key       react/no-array-index-key
+  222:23  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  263:20  warning  Do not use item index in the array as its key       react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\BookmarkButton.tsx
+  27:23  error    'getBookmarks' was used before it was defined                                           ts/no-use-before-define
+  28:5   warning  Do not call the 'set' function 'setIsBookmarked' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+  29:5   warning  Do not call the 'set' function 'setIsLoading' of 'useState' directly in 'useEffect'     react-hooks-extra/no-direct-set-state-in-use-effect
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\HandbookLayout.tsx
+   86:27  warning  Do not use item index in the array as its key  react/no-array-index-key
+  103:30  warning  Do not use item index in the array as its key  react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\HandbookTableOfContents.tsx
+   17:73  warning  To prevent re-computation, consider using lazy initial state for useState calls that involve function calls. Ex: 'useState(() => getValue())'                                                      react-hooks-extra/prefer-use-state-lazy-initialization
+   18:81  warning  To prevent re-computation, consider using lazy initial state for useState calls that involve function calls. Ex: 'useState(() => getValue())'                                                      react-hooks-extra/prefer-use-state-lazy-initialization
+  230:11  error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                                                                                                     jsx-a11y/click-events-have-key-events
+  230:11  error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+  327:11  warning  Add missing 'type' attribute on 'button' component                                                                                                                                                 react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\JumpToSection.tsx
+  34:5  warning  Do not call the 'set' function 'setSections' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+  81:9  warning  Add missing 'type' attribute on 'button' component                                  react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\PageFeedback.tsx
+   78:9   warning  Do not call the 'set' function 'setFeedbackData' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+   80:11  warning  Do not call the 'set' function 'setState' of 'useState' directly in 'useEffect'         react-hooks-extra/no-direct-set-state-in-use-effect
+   86:5   warning  Do not call the 'set' function 'setIsLoading' of 'useState' directly in 'useEffect'     react-hooks-extra/no-direct-set-state-in-use-effect
+  130:7   error    'clearFeedback' was used before it was defined                                          ts/no-use-before-define
+  343:12  error    Expected newline between test and consequent of ternary expression                      style/multiline-ternary
+  343:51  error    Expected newline between consequent and alternate of ternary expression                 style/multiline-ternary
+  375:15  error    Expected newline between test and consequent of ternary expression                      style/multiline-ternary
+  375:38  error    Expected newline between consequent and alternate of ternary expression                 style/multiline-ternary
+  488:10  error    Expected newline between test and consequent of ternary expression                      style/multiline-ternary
+  488:49  error    Expected newline between consequent and alternate of ternary expression                 style/multiline-ternary
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\SearchBar.tsx
+  125:7   warning  Do not call the 'set' function 'setSuggestions' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+  129:5   warning  Do not call the 'set' function 'setIsLoading' of 'useState' directly in 'useEffect'    react-hooks-extra/no-direct-set-state-in-use-effect
+  257:21  warning  Add missing 'type' attribute on 'button' component                                     react-dom/no-missing-button-type
+  283:41  warning  Do not use item index in the array as its key                                          react/no-array-index-key
+  323:21  warning  Add missing 'type' attribute on 'button' component                                     react-dom/no-missing-button-type
+  330:21  warning  Add missing 'type' attribute on 'button' component                                     react-dom/no-missing-button-type
+  337:21  warning  Add missing 'type' attribute on 'button' component                                     react-dom/no-missing-button-type
+  355:23  warning  Add missing 'type' attribute on 'button' component                                     react-dom/no-missing-button-type
+  356:30  warning  Do not use item index in the array as its key                                          react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\handbook\SearchResults.tsx
+   67:7   warning  A 'setTimeout' must be assigned to a variable for proper cleanup  react-web-api/no-leaked-timeout
+  133:27  warning  Do not use item index in the array as its key                     react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\layout\Header.tsx
+   23:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+   31:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+   39:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+   47:11  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  129:15  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  138:15  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  147:15  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+  156:15  warning  Add missing 'type' attribute on 'button' component  react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\monitoring\PerformanceDashboard.tsx
+   63:56  warning  To prevent re-computation, consider using lazy initial state for useState calls that involve function calls. Ex: 'useState(() => getValue())'  react-hooks-extra/prefer-use-state-lazy-initialization
+   72:10  error    'coreMetrics' is assigned a value but never used. Allowed unused vars must match /^_/u                                                         unused-imports/no-unused-vars
+   72:23  error    'setCoreMetrics' is assigned a value but never used. Allowed unused vars must match /^_/u                                                      unused-imports/no-unused-vars
+   79:23  error    'setAutoRefresh' is assigned a value but never used. Allowed unused vars must match /^_/u                                                      unused-imports/no-unused-vars
+   80:27  error    'setRefreshInterval' is assigned a value but never used. Allowed unused vars must match /^_/u                                                  unused-imports/no-unused-vars
+  101:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  110:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  119:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  128:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  141:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  150:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  158:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  167:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  180:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  189:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  198:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  211:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  220:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  228:20  error    'generateMockHistory' was used before it was defined                                                                                           ts/no-use-before-define
+  246:7   error    'updateSystemHealth' was used before it was defined                                                                                            ts/no-use-before-define
+  254:6   warning  React Hook useCallback has a missing dependency: 'updateSystemHealth'. Either include it or remove the dependency array                        react-hooks/exhaustive-deps
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\monitoring\PerformanceMonitor.tsx
+   41:9   warning  A 'setTimeout' must be assigned to a variable for proper cleanup                                                                   react-web-api/no-leaked-timeout
+   89:7   warning  An 'addEventListener' in 'useEffect' should have a corresponding 'removeEventListener' in its cleanup function                     react-web-api/no-leaked-event-listener
+   89:39  warning  A/an 'addEventListener' should not have an inline listener function                                                                react-web-api/no-leaked-event-listener
+  196:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components     react-refresh/only-export-components
+  196:17  warning  If your function doesn't call any Hooks, avoid the 'use' prefix. Instead, write it as a regular function without the 'use' prefix  react-hooks-extra/no-unnecessary-use-prefix
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\navigation\SubNavigation.tsx
+  103:9   warning  Do not call the 'set' function 'setShowRightArrow' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+  170:13  warning  Add missing 'type' attribute on 'button' component                                        react-dom/no-missing-button-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\resources\ResourceFilterSidebar.tsx
+  98:25  error  Do not nest component definitions inside other components or props. Move it to the top level  react/no-nested-component-definitions
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\resources\ResourceLibraryPage.tsx
+   93:23  warning  Do not use item index in the array as its key                                                                                                                                                      react/no-array-index-key
+  222:11  error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                                                                                                     jsx-a11y/click-events-have-key-events
+  222:11  error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\alert.tsx
+  34:3  error  Headings must have content and the content must be accessible by a screen reader  jsx-a11y/heading-has-content
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\badge.tsx
+  47:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\button.tsx
+  71:18  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\footer.tsx
+  12:13  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  15:13  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  18:13  error  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\input.tsx
+  189:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\sidebar.tsx
+   15:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                               react-refresh/only-export-components
+   36:28  warning  A/an 'object expression' passed as the value prop to the context provider should not be constructed. It will change on every render. Consider wrapping it in a useMemo hook  react/no-unstable-context-value
+  143:16  warning  Do not use item index in the array as its key                                                                                                                                react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\components\ui\theme-switcher.tsx
+  12:5  warning  Do not call the 'set' function 'setMounted' of 'useState' directly in 'useEffect'  react-hooks-extra/no-direct-set-state-in-use-effect
+  15:5  warning  Do not call the 'set' function 'setIsDark' of 'useState' directly in 'useEffect'   react-hooks-extra/no-direct-set-state-in-use-effect
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\acs-analysis.ts
+   87:5  error  'userId' is defined but never used. Allowed unused args must match /^_/u             unused-imports/no-unused-vars
+  234:5  error  'categoryBreakdown' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\auth-utils.ts
+  62:12  error  'error' is defined but never used                                         unused-imports/no-unused-vars
+  70:38  error  'userId' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+  70:54  error  'action' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\database\connection-pool.ts
+   54:12  error  Expected newline between test and consequent of ternary expression                 style/multiline-ternary
+   54:50  error  Expected newline between consequent and alternate of ternary expression            style/multiline-ternary
+   66:11  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   72:11  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   86:7   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  146:7   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  286:5   error  Expected an error object to be thrown                                              no-throw-literal
+  290:5   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  302:9   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  342:5   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  348:5   error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\error-handling.ts
+  287:24  error  Promise executor functions should not be async  no-async-promise-executor
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\alerting-system.ts
+  605:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  613:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  621:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\api-performance.ts
+  157:31  error  'T' is defined but never used. Allowed unused vars must match /^_/u                                                      unused-imports/no-unused-vars
+  575:55  error  The `Function` type accepts any function-like value.
+Prefer explicitly defining any function parameters and return type  ts/no-unsafe-function-type
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\aviation-metrics.ts
+   88:66  error  'userId' is defined but never used. Allowed unused args must match /^_/u    unused-imports/no-unused-vars
+  104:80  error  'userId' is defined but never used. Allowed unused args must match /^_/u    unused-imports/no-unused-vars
+  125:64  error  'userId' is defined but never used. Allowed unused args must match /^_/u    unused-imports/no-unused-vars
+  221:5   error  'userId' is defined but never used. Allowed unused args must match /^_/u    unused-imports/no-unused-vars
+  355:39  error  'lessonId' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\database-performance.ts
+  131:31  error  'metric' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\index.ts
+  146:7  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  150:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  155:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  160:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  165:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  170:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  175:9  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  179:7  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  249:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  251:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  262:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  264:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  302:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  312:5  error  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\railway.ts
+  124:11  error  'tags' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  402:45  error  'promise' is defined but never used. Allowed unused args must match /^_/u        unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\real-user-monitoring.ts
+  627:14  error  'e' is defined but never used                                                           unused-imports/no-unused-vars
+  680:11  error  'sessionData' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  700:65  error  'key' is defined but never used. Allowed unused args must match /^_/u                   unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\monitoring\web-vitals.ts
+  209:58  error  'transitionTime' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\security\api-headers.ts
+  111:39  error  'request' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\security\headers.ts
+  225:13  error  'request' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\security\test-headers.ts
+   37:11  error  'mockResponse' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  122:11  error  'mockResponse' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  190:11  error  'mockResponse' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  244:11  error  'mockResponse' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\lib\text-extraction.ts
+   41:11  error  'arrayBuffer' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  196:33  error  A `require()` style import is forbidden                                                 ts/no-require-imports
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\AirfoilExplainer.tsx
+  18:5   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  18:5   error    img elements must have an alt prop, either with meaningful text, or an empty string for decorative images                                                                                                                                                                                jsx-a11y/alt-text
+  34:28  warning  Do not use item index in the array as its key                                                                                                                                                                                                                                            react/no-array-index-key
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\MyComposition.tsx
+  5:29  error  'fps' is assigned a value but never used. Allowed unused vars must match /^_/u     unused-imports/no-unused-vars
+  5:34  error  'width' is assigned a value but never used. Allowed unused vars must match /^_/u   unused-imports/no-unused-vars
+  5:41  error  'height' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\index.tsx
+  4:7  warning  Fast refresh only works when a file has exports. Move your component(s) to a separate file  react-refresh/only-export-components
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\scenes\Scene1.tsx
+  13:9  error  'frame' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\scenes\Scene2.tsx
+  25:9   error  'frame' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+  26:11  error  'fps' is assigned a value but never used. Allowed unused vars must match /^_/u    unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\remotion\scenes\Scene3.tsx
+  15:11  error  'fps' is assigned a value but never used. Allowed unused vars must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\Marcus Gollahon\OneDrive\Documents\Coding\cfi-interactive\cfi-handbook\src\types\global.d.ts
+  2:13  error  Use a `type` instead of an `interface`                                    ts/consistent-type-definitions
+  4:7   error  Shorthand method signature is forbidden. Use a function property instead  ts/method-signature-style
+
+✖ 233 problems (152 errors, 81 warnings)
+

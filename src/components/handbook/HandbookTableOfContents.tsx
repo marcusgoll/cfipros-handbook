@@ -151,6 +151,9 @@ export function HandbookTableOfContents({ locale, handbookType }: HandbookTableO
         const tocWithLocale = { ...fallbackToc };
         Object.keys(tocWithLocale).forEach((handbookKey) => {
           const handbook = tocWithLocale[handbookKey];
+          if (!handbook) {
+            return;
+          }
           handbook.items.forEach((item) => {
             item.href = `/${locale}${item.href}`;
             item.items?.forEach((subItem) => {

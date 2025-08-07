@@ -56,6 +56,7 @@ export function requireAuth(handler) {
 ```
 
 **Simple permission check**:
+
 ```javascript
 // Just check if user has purchased the module
 async function hasPurchased(userId, moduleId) {
@@ -86,6 +87,7 @@ Start with just what you need:
 ## Simple Route Examples
 
 ### Module Content API
+
 ```javascript
 // pages/api/modules/[id].js
 import { hasPurchased, requireAuth } from '../../../lib/auth';
@@ -114,6 +116,7 @@ export default requireAuth(async (req, res) => {
 ```
 
 ### Simple Progress Tracking
+
 ```javascript
 // pages/api/lessons/[id].js
 import { requireAuth } from '../../../lib/auth';

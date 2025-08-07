@@ -45,7 +45,7 @@ type ACSExtractorPageProps = {
   locale: string;
 };
 
-export function ACSExtractorPage({ locale }: ACSExtractorPageProps) {
+export function ACSExtractorPage({ locale: _ }: ACSExtractorPageProps) {
   const [processingState, setProcessingState] = useState<ProcessingState>('idle');
   const [currentResult, setCurrentResult] = useState<ExtractedResult | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -53,6 +53,17 @@ export function ACSExtractorPage({ locale }: ACSExtractorPageProps) {
   const [activeTab, setActiveTab] = useState('upload');
 
   const handleFileUpload = async (files: File[]) => {
+    if (!files || files.length === 0) {
+      setError('No files selected');
+      return;
+    }
+
+    const file = files[0];
+    if (!file) {
+      setError('Invalid file');
+      return;
+    }
+
     setProcessingState('uploading');
     setError(null);
     setUploadProgress(0);
@@ -72,7 +83,7 @@ export function ACSExtractorPage({ locale }: ACSExtractorPageProps) {
       // Mock result data
       const mockResult: ExtractedResult = {
         id: Date.now().toString(),
-        fileName: files[0].name,
+        fileName: file.name,
         extractedCodes: [
           {
             code: 'PA.I.A.K1',
@@ -116,7 +127,7 @@ export function ACSExtractorPage({ locale }: ACSExtractorPageProps) {
       setCurrentResult(mockResult);
       setProcessingState('complete');
       setActiveTab('results');
-    } catch (err) {
+    } catch (_err) {
       setError('Failed to process file. Please try again.');
       setProcessingState('error');
     }

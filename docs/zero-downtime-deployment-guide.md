@@ -5,6 +5,7 @@ This comprehensive guide covers deploying the CFI Handbook application to Railwa
 ## 📋 Prerequisites
 
 ### Required Tools
+
 - Railway CLI: `npm install -g @railway/cli`
 - Node.js 20+
 - Git repository access
@@ -12,6 +13,7 @@ This comprehensive guide covers deploying the CFI Handbook application to Railwa
 - Clerk account (for authentication)
 
 ### Required Credentials
+
 - Railway account with billing enabled
 - Sentry DSN and authentication token
 - Clerk publishable and secret keys
@@ -46,6 +48,7 @@ railway run --service postgresql psql
 ### 3. Environment Configuration
 
 #### Set Public Variables
+
 These are configured automatically via `railway.json`, but can be overridden:
 
 ```bash
@@ -63,6 +66,7 @@ railway variables set ESLINT_NO_DEV_ERRORS=true
 ```
 
 #### Set Secret Variables
+
 Configure sensitive environment variables through Railway dashboard or CLI:
 
 ```bash
@@ -236,6 +240,7 @@ npm run health:check
 **Symptoms**: Health checks failing with database errors
 
 **Solutions**:
+
 ```bash
 # Check database service status
 railway status --service postgresql
@@ -255,6 +260,7 @@ curl https://your-app.railway.app/api/health | jq '.checks.database.pool'
 **Symptoms**: Deployment fails during build phase
 
 **Solutions**:
+
 ```bash
 # Check build logs
 railway logs --deployment <deployment-id>
@@ -274,6 +280,7 @@ npm run check:types
 **Symptoms**: Deployment hangs on health checks
 
 **Solutions**:
+
 ```bash
 # Increase health check timeout
 railway variables set HEALTH_CHECK_TIMEOUT=60000
@@ -290,6 +297,7 @@ curl -v https://your-app.railway.app/api/health
 **Symptoms**: Application crashes or health checks fail with memory errors
 
 **Solutions**:
+
 ```bash
 # Check memory usage
 curl https://your-app.railway.app/api/health | jq '.checks.memory'
@@ -366,6 +374,7 @@ railway status
 ### Alerts Configuration
 
 Set up alerts for:
+
 - Health check failures (3+ consecutive)
 - High response times (> 5 seconds)
 - High memory usage (> 90%)

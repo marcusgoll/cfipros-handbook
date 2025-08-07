@@ -5,11 +5,13 @@
 Troubleshoot & resolve issues in code or system in $ARGUMENTS.
 
 Thinking flags (optional):
+
 - --think→multi-component debugging w/ context
 - --think-hard→complex system issues & race conditions
 - --ultrathink→critical prod issues or elusive bugs
 
 Examples:
+
 - `/user:troubleshoot --investigate --think` - Debug w/ full context
 - `/user:troubleshoot --five-whys --think-hard` - Deep root cause analysis
 - `/user:troubleshoot --prod --ultrathink` - Critical prod debugging
@@ -17,21 +19,25 @@ Examples:
 Mode selection:
 
 --investigate flag:
+
 - Focus→understanding & analyzing issue | Use debugging tools & techniques→gather info
 - Document findings w/o necessarily impl fixes | Useful→complex problems requiring deep analysis
 
 --fix flag:
+
 - Complete full bug-fixing workflow | Create tests, impl solution & verify resolution
 - Document the fix and prevention measures
 - Default mode if no flag specified
 
 When --five-whys flag is present:
+
 - Apply root cause analysis methodology
 - Ask "why" iteratively to uncover underlying causes
 - Document each level of analysis
 - Propose systemic improvements to prevent recurrence
 
 When --prod flag is present:
+
 - Focus on production-specific issues
 - Analyze logs, monitoring data, and metrics
 - Consider performance and scaling factors
@@ -73,6 +79,7 @@ Comprehensive troubleshooting workflow:
    - Document lessons learned
 
 Investigation techniques:
+
 - Strategic logging and breakpoints
 - Performance profiling for bottlenecks
 - Memory analysis for leaks
@@ -80,6 +87,7 @@ Investigation techniques:
 - Database query analysis
 
 For production issues:
+
 - Correlate with deployment timeline
 - Check for traffic patterns
 - Review configuration changes

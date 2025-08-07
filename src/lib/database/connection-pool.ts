@@ -80,7 +80,15 @@ class DatabaseConnectionPool {
       const databaseUrl = process.env.DATABASE_URL;
 
       if (!databaseUrl) {
-        throw new Error('DATABASE_URL environment variable is not set');
+        console.warn('⚠️  DATABASE_URL environment variable is not set - database features will be disabled');
+        return;
+      }
+
+      const isLocalhost = databaseUrl.includes('127.0.0.1') || databaseUrl.includes('localhost');
+      if (isLocalhost && process.env.NODE_ENV === 'production') {
+        console.warn('⚠️  DATABASE_URL points to localhost in production - database features will be disabled');
+        console.warn('💡 Please update DATABASE_URL to point to your Supabase database');
+        return;
       }
 
       console.log('Initializing database connection pool...', {
@@ -159,22 +167,39 @@ class DatabaseConnectionPool {
   }
 
   private startHealthCheck() {
+    // Skip health checks if database URL suggests localhost (development/misconfiguration)
+    const databaseUrl = process.env.DATABASE_URL || '';
+    const isLocalhost = databaseUrl.includes('127.0.0.1') || databaseUrl.includes('localhost');
+    
+    if (isLocalhost && process.env.NODE_ENV === 'production') {
+      console.warn('⚠️  Database health checks disabled: DATABASE_URL points to localhost in production');
+      console.warn('💡 Please update DATABASE_URL to point to your Supabase database');
+      return;
+    }
+
     // Perform periodic health checks on the connection pool
     this.healthCheckInterval = setInterval(async () => {
       try {
         await this.performHealthCheck();
       } catch (error) {
-        console.error('Database pool health check failed:', error);
+        // Only log error once per minute to avoid spam
+        const now = Date.now();
+        if (!this.lastHealthCheckError || now - this.lastHealthCheckError > 60000) {
+          console.error('Database pool health check failed:', error);
+          this.lastHealthCheckError = now;
 
-        Sentry.captureException(error, {
-          tags: {
-            component: 'database-pool',
-            operation: 'health-check',
-          },
-        });
+          Sentry.captureException(error, {
+            tags: {
+              component: 'database-pool',
+              operation: 'health-check',
+            },
+          });
+        }
       }
     }, 30000); // Check every 30 seconds
   }
+
+  private lastHealthCheckError = 0;
 
   private async performHealthCheck() {
     if (!this.pool || !this.db) {
@@ -203,9 +228,13 @@ class DatabaseConnectionPool {
 
   getDatabase() {
     if (!this.db) {
-      throw new Error('Database not initialized. Call getInstance() first.');
+      throw new Error('Database not available. Check DATABASE_URL configuration.');
     }
     return this.db;
+  }
+
+  isDatabaseAvailable(): boolean {
+    return this.db !== null;
   }
 
   getPool() {

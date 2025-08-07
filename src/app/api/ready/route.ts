@@ -118,7 +118,7 @@ async function checkDatabaseMigrations(readinessStatus: any) {
       idle_timeout: 5,
     });
 
-    const _db = drizzle(client);
+    drizzle(client);
 
     // Check if essential tables exist
     const result = await client`

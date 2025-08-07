@@ -1,4 +1,5 @@
 ## Legend
+
 | Symbol | Meaning | | Abbrev | Meaning |
 |--------|---------|---|--------|---------|
 | → | leads to | | repo | repository |
@@ -12,6 +13,7 @@ Manage git workflows for repo in $ARGUMENTS.
 @see shared/thinking-modes.yml ∀ thinking flags
 
 Examples:
+
 - `/user:git --status` - Comprehensive repo status
 - `/user:git --commit "Add feature"` - Create commit
 - `/user:git --branch feature/ui` - Create & switch→branch

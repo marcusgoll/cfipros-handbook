@@ -105,7 +105,7 @@ export async function GET(request: NextRequest) {
         };
         break;
 
-      case 'alerts':
+      case 'alerts': {
         const alerts = alertingSystem.getAllAlerts();
         responseData = {
           active: alerts.filter(alert => !alert.resolved),
@@ -115,6 +115,7 @@ export async function GET(request: NextRequest) {
           timestamp: new Date().toISOString(),
         };
         break;
+      }
 
       case 'railway':
         responseData = {
@@ -359,7 +360,7 @@ export async function PUT(request: NextRequest) {
     let responseData: any = {};
 
     switch (operation) {
-      case 'bulk_resolve_alerts':
+      case 'bulk_resolve_alerts': {
         if (!data.alertIds || !Array.isArray(data.alertIds)) {
           return NextResponse.json(
             { error: 'Missing or invalid alertIds array' },
@@ -381,6 +382,7 @@ export async function PUT(request: NextRequest) {
           resolvedCount,
         };
         break;
+      }
 
       case 'reset_monitoring':
         // Clear metrics and restart monitoring

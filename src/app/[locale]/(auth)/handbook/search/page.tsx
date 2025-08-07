@@ -92,30 +92,6 @@ function SearchContent({ locale }: { locale: string }) {
   const [sortBy, setSortBy] = useState<'relevance' | 'title' | 'recent'>('relevance');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Initialize from URL params
-  useEffect(() => {
-    const urlQuery = searchParams.get('q') || '';
-    const urlHandbook = searchParams.get('handbook') || '';
-    const urlCategory = searchParams.get('category') || '';
-    const urlType = searchParams.get('type') as SearchResult['type'] || undefined;
-
-    setQuery(urlQuery);
-    setFilters({
-      handbook: urlHandbook || undefined,
-      category: urlCategory || undefined,
-      type: urlType,
-    });
-
-    // Perform search if query exists
-    if (urlQuery) {
-      performSearch(urlQuery, {
-        handbook: urlHandbook || undefined,
-        category: urlCategory || undefined,
-        type: urlType,
-      });
-    }
-  }, [searchParams]);
-
   const performSearch = useCallback(async (searchQuery: string, searchFilters: SearchFilters = {}) => {
     if (!searchQuery.trim()) {
       return;
@@ -157,6 +133,30 @@ function SearchContent({ locale }: { locale: string }) {
       setIsLoading(false);
     }, 300);
   }, [sortBy]);
+
+  // Initialize from URL params
+  useEffect(() => {
+    const urlQuery = searchParams.get('q') || '';
+    const urlHandbook = searchParams.get('handbook') || '';
+    const urlCategory = searchParams.get('category') || '';
+    const urlType = searchParams.get('type') as SearchResult['type'] || undefined;
+
+    setQuery(urlQuery);
+    setFilters({
+      handbook: urlHandbook || undefined,
+      category: urlCategory || undefined,
+      type: urlType,
+    });
+
+    // Perform search if query exists
+    if (urlQuery) {
+      performSearch(urlQuery, {
+        handbook: urlHandbook || undefined,
+        category: urlCategory || undefined,
+        type: urlType,
+      });
+    }
+  }, [searchParams, performSearch]);
 
   const updateURL = useCallback((newQuery: string, newFilters: SearchFilters) => {
     const params = new URLSearchParams();
@@ -507,7 +507,7 @@ export default function SearchPage({ params }: SearchPageProps) {
   const { locale } = resolvedParams;
 
   return (
-    <Suspense fallback={
+    <Suspense fallback={(
       <HandbookLayout locale={locale}>
         <div className="space-y-6">
           <div className="space-y-4">
@@ -518,7 +518,8 @@ export default function SearchPage({ params }: SearchPageProps) {
           </div>
         </div>
       </HandbookLayout>
-    }>
+    )}
+    >
       <SearchContent locale={locale} />
     </Suspense>
   );

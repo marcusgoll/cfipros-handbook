@@ -154,6 +154,7 @@ related: [four-forces, performance]
 ### 3. TOC Placement Examples
 
 #### Example 1: Lesson in Existing Section
+
 ```yaml
 # File: content/handbook/private-pilot/principles-of-flight/lift-generation.mdx
 ---
@@ -162,9 +163,11 @@ category: principles-of-flight
 order: 2
 ---
 ```
+
 **Result**: Appears in Private Pilot → Principles of Flight → How Wings Generate Lift
 
 #### Example 2: New Section
+
 ```yaml
 # File: content/handbook/private-pilot/navigation/dead-reckoning.mdx
 ---
@@ -173,9 +176,11 @@ section: navigation
 order: 1
 ---
 ```
+
 **Result**: Creates new section "Navigation" under Private Pilot
 
 #### Example 3: Subsection Organization
+
 ```yaml
 # File: content/handbook/aircraft-systems/powerplant/carburetor-systems.mdx
 ---
@@ -185,6 +190,7 @@ subsection: powerplant
 order: 2
 ---
 ```
+
 **Result**: Aircraft Systems → Powerplant → Carburetor Systems
 
 ## Creating New Handbook Sections
@@ -287,6 +293,7 @@ order: 2
 ```
 
 **Result**:
+
 ```
 Instrument
 └── Navigation
@@ -334,6 +341,7 @@ Directory names are automatically formatted:
 **Causes & Solutions**:
 
 1. **File has `status: "draft"`**
+
    ```yaml
    # Change this:
    status: "draft"
@@ -342,6 +350,7 @@ Directory names are automatically formatted:
    ```
 
 2. **Missing required frontmatter**
+
    ```yaml
    # Must have at minimum:
    ---
@@ -353,6 +362,7 @@ Directory names are automatically formatted:
    - Ensure file ends with `.mdx`, not `.md`
 
 4. **Malformed YAML frontmatter**
+
    ```yaml
    # Wrong - missing quotes around title with special characters
    title: Aircraft Systems: Engine Operations
@@ -368,6 +378,7 @@ Directory names are automatically formatted:
 **Solutions**:
 
 1. **Add explicit order numbers**
+
    ```yaml
    ---
    title: Lesson Title
@@ -380,6 +391,7 @@ Directory names are automatically formatted:
    - Use increments of 5 or 10 to allow insertions
 
 3. **Order field must be number, not string**
+
    ```yaml
    # Wrong
    order: "1"
@@ -395,6 +407,7 @@ Directory names are automatically formatted:
 **Solutions**:
 
 1. **Check directory structure vs. metadata**
+
    ```yaml
    # File: content/handbook/private-pilot/wrong-section/lesson.mdx
    # Override with metadata:
@@ -415,11 +428,13 @@ Directory names are automatically formatted:
 **Cause**: The automatic formatting should handle this, but check:
 
 1. **Use hyphens for word separation**
+
    ```yaml
    section: aircraft-systems # Becomes "Aircraft Systems"
    ```
 
 2. **Avoid underscores or spaces**
+
    ```yaml
    # Don't use:
    section: "aircraft_systems"
@@ -455,6 +470,7 @@ Directory names are automatically formatted:
 ### Content Organization
 
 1. **Use consistent naming conventions**
+
    ```
    // Good
    principles-of-flight/
@@ -473,6 +489,7 @@ Directory names are automatically formatted:
    - Group related topics together
 
 3. **Use meaningful order increments**
+
    ```yaml
    # Good - allows insertions
    order: 10
@@ -488,6 +505,7 @@ Directory names are automatically formatted:
 ### Frontmatter Standards
 
 1. **Always include core metadata**
+
    ```yaml
    ---
    title: 'Clear, Descriptive Title'
@@ -498,6 +516,7 @@ Directory names are automatically formatted:
    ```
 
 2. **Use consistent categorization**
+
    ```yaml
    # Establish category standards across team
    category: principles-of-flight # Not "flight-principles"
@@ -505,6 +524,7 @@ Directory names are automatically formatted:
    ```
 
 3. **Keep related arrays manageable**
+
    ```yaml
    # Good
    related: ["four-forces", "airfoil-theory"]
@@ -516,6 +536,7 @@ Directory names are automatically formatted:
 ### Development Workflow
 
 1. **Create draft first**
+
    ```yaml
    ---
    title: New Lesson
@@ -529,6 +550,7 @@ Directory names are automatically formatted:
    - Check `/api/handbook/toc` endpoint directly
 
 3. **Use version control effectively**
+
    ```bash
    # Create feature branch for new content
    git checkout -b feature/weather-lessons
@@ -547,6 +569,7 @@ Directory names are automatically formatted:
 **Response**: JSON object with handbook structure
 
 **Response Format**:
+
 ```json
 {
   "private-pilot": {

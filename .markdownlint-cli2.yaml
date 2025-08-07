@@ -1,0 +1,115 @@
+# markdownlint-cli2 configuration optimized for aviation technical documentation
+
+# CFI Interactive Handbook - Markdown Linting Rules
+
+# Global configuration
+
+config:
+
+  # Line length optimized for technical aviation content  
+
+  MD013:
+    line_length: 150
+    heading_line_length: 200  
+    code_block_line_length: 200
+    tables: false
+    headings: false
+    strict: false
+    stern: false
+
+  # Heading styles for aviation handbook structure
+
+  MD003:
+    style: atx
+
+  # Unordered list style consistency
+
+  MD004:
+    style: dash
+
+  # List indent for complex aviation procedures
+
+  MD007:
+    indent: 2
+    start_indented: false
+
+  # Ordered list item prefix
+
+  MD029:
+    style: ordered
+
+  # Fenced code blocks for aviation code examples
+
+  MD046:
+    style: fenced
+
+  # Emphasis style consistency
+
+  MD049:
+    style: asterisk
+
+  MD050:
+    style: asterisk
+
+# Files to process
+
+globs:
+
+  - '**/*.md'
+  - '**/*.mdx'
+
+# Files and directories to ignore
+
+ignores:
+
+  - node_modules/
+  - .next/
+  - build/
+  - dist/
+  - out/
+  - .claude/
+  - .git/
+  - coverage/
+  - docs/api/
+  - '*.min.md'
+  - .bmad-core/
+  - .gemini/
+  - .docs/
+  - docs/
+  - README_OLD.md
+  - '*-report.md'
+  - monitoring-setup.md
+
+  # Rules to disable for aviation technical content
+  
+  # Allow HTML in markdown (needed for aviation diagrams and interactive elements)
+  MD033: false
+
+  # Allow duplicate headings (common in aviation procedures with repeated sections) 
+  MD024: false
+
+  # Allow multiple H1 headings (common in MDX lesson structure)
+  MD025: false
+
+  # Allow bare URLs (common in aviation references)
+  MD034: false
+
+  # Allow emphasis used instead of headings (aviation callouts and warnings)
+  MD036: false
+
+  # Allow code blocks without language (common in aviation examples)
+  MD040: false
+
+# Custom fixes for aviation content
+
+fix: true
+
+# Output formatting
+
+outputFormatters:
+
+  - [markdownlint-cli2-formatter-default]
+
+# Severity levels
+
+severity: error

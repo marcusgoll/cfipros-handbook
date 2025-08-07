@@ -9,15 +9,15 @@ export function Footer() {
             © 2025 CFIPros. All rights reserved.
           </div>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">
+            <button type="button" className="hover:text-foreground transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
+            </button>
+            <button type="button" className="hover:text-foreground transition-colors">
               Terms of Service
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
+            </button>
+            <button type="button" className="hover:text-foreground transition-colors">
               Contact
-            </a>
+            </button>
           </div>
         </div>
       </div>

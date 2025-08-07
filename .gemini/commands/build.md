@@ -8,6 +8,7 @@ Build project/feature based on req in $ARGUMENTS.
 @see shared/mcp-flags.yml ∀ MCP controls
 
 Examples:
+
 - `/user:build --react --magic` - React app w/ UI gen
 - `/user:build --api --c7` - API w/ docs
 - `/user:build --react --magic --pup` - Build & test UI
@@ -20,6 +21,7 @@ Build modes:
 **--tdd:** Write failing tests→minimal code→pass tests→refactor
 
 Templates:
+
 - **React:** Vite|TS|Router|state mgmt|testing
 - **API:** Express|TS|auth|validation|OpenAPI
 - **Fullstack:** React+Node.js+Docker

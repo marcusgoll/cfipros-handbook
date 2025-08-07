@@ -29,24 +29,28 @@ CFIPros transforms aviation education by providing instant access to comprehensi
 ## ✈️ Key Features
 
 ### 📚 Comprehensive Knowledge Base
+
 - **10,000+ Aviation Topics** - Covering regulations, procedures, aircraft systems, and more
 - **MDX-Powered Content** - Rich, interactive content with embedded components
 - **Real-time Updates** - Always current with latest FAA regulations and procedures
 - **Cross-Referenced Materials** - Seamless navigation between related topics
 
 ### 🔍 Advanced Search & Discovery
+
 - **Instant Search** - Find any topic in milliseconds
 - **Regulation-Specific Filters** - Search by FAR parts, AIM sections, or advisory circulars
 - **Smart Suggestions** - AI-powered content recommendations
 - **Mobile-Optimized** - Full functionality on all devices
 
 ### 🔐 Professional Access Control
+
 - **Subscription-Based Access** - Tiered access for different user levels
 - **Clerk Authentication** - Secure, passwordless login with MFA support
 - **Progress Tracking** - Monitor learning progress and completion
 - **Offline Access** - Download content for offline study
 
 ### 🚀 Performance & Scalability
+
 - **Sub-second Page Loads** - Optimized static generation
 - **CDN-Powered Delivery** - Global content distribution
 - **Mobile-First Design** - Responsive across all devices
@@ -55,24 +59,28 @@ CFIPros transforms aviation education by providing instant access to comprehensi
 ## 🛠️ Technical Stack
 
 ### Frontend
+
 - **Next.js 15** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
 - **MDX** - Markdown with React components
 
 ### Backend & Database
+
 - **PostgreSQL** - Robust relational database
 - **DrizzleORM** - Type-safe database queries
 - **Railway** - Cloud deployment platform
 - **Clerk** - Authentication and user management
 
 ### Development Tools
+
 - **ESLint & Prettier** - Code quality and formatting
 - **Vitest** - Unit testing framework
 - **Playwright** - End-to-end testing
 - **Storybook** - Component development
 
 ### Monitoring & Analytics
+
 - **Sentry** - Error tracking and monitoring
 - **PostHog** - User analytics and insights
 - **Arcjet** - Security and bot protection
@@ -81,6 +89,7 @@ CFIPros transforms aviation education by providing instant access to comprehensi
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 20+ and npm
 - PostgreSQL database
 - Clerk account for authentication
@@ -88,34 +97,40 @@ CFIPros transforms aviation education by providing instant access to comprehensi
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/marcusgoll/cfipros-handbook.git
    cd cfipros-handbook
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    # Edit .env.local with your configuration
    ```
 
 4. **Run database migrations**
+
    ```bash
    npm run db:generate
    npm run db:migrate
    ```
 
 5. **Start development server**
+
    ```bash
    npm run dev
    ```
 
 6. **Open in browser**
+
    ```
    http://localhost:3000
    ```
@@ -148,6 +163,7 @@ BETTER_STACK_SOURCE_TOKEN="..."
 ## 📖 Content Management
 
 ### Content Structure
+
 ```
 content/
 ├── handbook/
@@ -170,6 +186,7 @@ content/
 ```
 
 ### Content Scripts
+
 ```bash
 # Validate content
 npm run content:validate
@@ -186,17 +203,20 @@ npm run search:index
 ### Railway Deployment
 
 1. **Connect to Railway**
+
    ```bash
    railway login
    railway link
    ```
 
 2. **Add PostgreSQL service**
+
    ```bash
    railway add postgresql
    ```
 
 3. **Set environment variables**
+
    ```bash
    railway variables set NODE_ENV=production
    railway variables set DATABASE_URL=${{Postgres.DATABASE_URL}}
@@ -204,6 +224,7 @@ npm run search:index
    ```
 
 4. **Deploy**
+
    ```bash
    railway up
    ```
@@ -229,16 +250,19 @@ npm run search:index
 ## 🧪 Testing
 
 ### Unit Tests
+
 ```bash
 npm run test
 ```
 
 ### End-to-End Tests
+
 ```bash
 npm run test:e2e
 ```
 
 ### Performance Tests
+
 ```bash
 npm run test:lighthouse
 ```

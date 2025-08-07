@@ -19,7 +19,7 @@ type HandbookLayoutProps = {
 
 export function HandbookLayout({ children, locale }: HandbookLayoutProps) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen] = useState(true);
 
   // Private Pilot Handbook structure
   const handbookStructure = {

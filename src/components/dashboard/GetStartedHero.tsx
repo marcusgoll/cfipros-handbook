@@ -60,7 +60,7 @@ export function GetStartedHero({ locale, userName }: GetStartedHeroProps) {
 
         {/* Primary CTA */}
         <div className="space-y-4">
-          <Button asChild size="xl" variant="cockpit">
+          <Button asChild size="lg" variant="default">
             <Link href={`/${locale}/handbook/private-pilot`} className="flex items-center gap-3">
               <Rocket className="h-5 w-5" />
               Start Learning Now

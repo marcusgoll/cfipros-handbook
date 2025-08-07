@@ -5,27 +5,6 @@ import { useState } from 'react';
 export function SentryExample() {
   const [loading, setLoading] = useState(false);
 
-  const handleSearchClick = () => {
-    // Create a span to measure search performance
-    Sentry.startSpan(
-      {
-        op: 'ui.click',
-        name: 'Aviation Handbook Search',
-      },
-      (span) => {
-        const searchTerm = 'FAR Part 61';
-        const userRole = 'cfi'; // Could come from user context
-
-        // Add relevant attributes to the span
-        span.setAttribute('search.term', searchTerm);
-        span.setAttribute('user.role', userRole);
-        span.setAttribute('section', 'regulations');
-
-        performSearch(searchTerm);
-      },
-    );
-  };
-
   const performSearch = async (searchTerm: string) => {
     setLoading(true);
 
@@ -106,6 +85,27 @@ export function SentryExample() {
         },
       });
     }
+  };
+
+  const handleSearchClick = () => {
+    // Create a span to measure search performance
+    Sentry.startSpan(
+      {
+        op: 'ui.click',
+        name: 'Aviation Handbook Search',
+      },
+      (span) => {
+        const searchTerm = 'FAR Part 61';
+        const userRole = 'cfi'; // Could come from user context
+
+        // Add relevant attributes to the span
+        span.setAttribute('search.term', searchTerm);
+        span.setAttribute('user.role', userRole);
+        span.setAttribute('section', 'regulations');
+
+        performSearch(searchTerm);
+      },
+    );
   };
 
   return (

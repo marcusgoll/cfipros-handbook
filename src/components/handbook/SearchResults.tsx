@@ -71,7 +71,7 @@ export function SearchResults({ query, handbookFilter }: SearchResultsProps) {
           filteredResults = mockResults.filter(result =>
             result.title.toLowerCase().includes(query.toLowerCase())
             || result.excerpt.toLowerCase().includes(query.toLowerCase())
-            || result.matchedTerms.some(term =>
+            || result.matchedTerms?.some(term =>
               term.toLowerCase().includes(query.toLowerCase()),
             ),
           );
@@ -203,28 +203,28 @@ export function SearchResults({ query, handbookFilter }: SearchResultsProps) {
         <span className="text-muted-foreground">Filter by:</span>
         <Button
           variant={!filters.type ? 'default' : 'outline'}
-          size="xs"
+          size="sm"
           onClick={() => setFilters(prev => ({ ...prev, type: undefined }))}
         >
           All Types
         </Button>
         <Button
           variant={filters.type === 'lesson' ? 'default' : 'outline'}
-          size="xs"
+          size="sm"
           onClick={() => setFilters(prev => ({ ...prev, type: 'lesson' }))}
         >
           Lessons
         </Button>
         <Button
           variant={filters.type === 'topic' ? 'default' : 'outline'}
-          size="xs"
+          size="sm"
           onClick={() => setFilters(prev => ({ ...prev, type: 'topic' }))}
         >
           Topics
         </Button>
         <Button
           variant={filters.type === 'acs-code' ? 'default' : 'outline'}
-          size="xs"
+          size="sm"
           onClick={() => setFilters(prev => ({ ...prev, type: 'acs-code' }))}
         >
           ACS Codes
@@ -291,7 +291,7 @@ export function SearchResults({ query, handbookFilter }: SearchResultsProps) {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-semibold text-lg">
-                            {highlightMatchedTerms(result.title, result.matchedTerms)}
+                            {highlightMatchedTerms(result.title, result.matchedTerms || [])}
                           </h3>
                           <span className="text-xs px-2 py-1 bg-muted rounded-full capitalize">
                             {result.type.replace('-', ' ')}
@@ -304,7 +304,7 @@ export function SearchResults({ query, handbookFilter }: SearchResultsProps) {
                           {result.handbook.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         </div>
                         <p className="text-sm leading-relaxed">
-                          {highlightMatchedTerms(result.excerpt, result.matchedTerms)}
+                          {highlightMatchedTerms(result.excerpt, result.matchedTerms || [])}
                         </p>
                         {result.relevance && (
                           <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">

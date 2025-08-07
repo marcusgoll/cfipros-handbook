@@ -3,21 +3,26 @@
 @include shared/constants.yml#Process_Symbols
 
 ## Command Usage
+
 All commands use `/user:` prefix. Examples:
+
 - `/user:build --init` | `/user:analyze --code` | `/user:deploy --env prod`
 
 ## Universal Flags (All Commands)
 
 **Planning & Thinking:**
+
 - `--plan` - Show execution plan before running
 - `--think` - Standard analysis mode (multi-file context, ~4K tokens)
 - `--think-hard` - Deep analysis mode (architecture level, ~10K tokens)
 - `--ultrathink` - Critical analysis mode (system-wide, ~32K tokens)
 
 **Documentation Control:**
+
 - `--ultracompressed` / `--uc` - ~70% token reduction mode w/ telegram-style formatting
 
 **MCP Server Control:**
+
 - `--c7` / `--no-c7` - Enable/disable Context7 docs lookup
 - `--seq` / `--no-seq` - Enable/disable Sequential thinking analysis
 - `--magic` / `--no-magic` - Enable/disable Magic UI component builder
@@ -26,6 +31,7 @@ All commands use `/user:` prefix. Examples:
 - `--no-mcp` - Disable all MCP servers (native tools only)
 
 ## Development Commands (3)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:build | Universal project builder | --init --feature --react --api --tdd |
@@ -33,6 +39,7 @@ All commands use `/user:` prefix. Examples:
 | /user:test | Testing framework | --coverage --watch --e2e |
 
 ## Analysis & Improvement Commands (4)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:analyze | Multi-dimensional analysis | --code --architecture --profile --security |
@@ -41,6 +48,7 @@ All commands use `/user:` prefix. Examples:
 | /user:explain | Deep explanations | --depth --visual --examples |
 
 ## Operations Commands (6)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:deploy | Application deployment | --env --rollback |
@@ -51,17 +59,20 @@ All commands use `/user:` prefix. Examples:
 | /user:git | Git workflow management | --status --commit --branch --sync --merge --stash --history --checkpoint --rollback |
 
 ## Design & Architecture Commands (1)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:design | System design | --api --ddd --prd --openapi --graphql --bounded-context |
 
 ## Workflow Commands (2)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:spawn | Spawn focused agent | --task |
 | /user:document | Documentation creation | --api --user |
 
 ## System Commands (1)
+
 | Command | Purpose | Key Flags |
 |---------|---------|-----------|
 | /user:load | Load project context | --depth |
@@ -69,6 +80,7 @@ All commands use `/user:` prefix. Examples:
 ## Quick Reference & Workflow Examples
 
 ### Common Development Flows
+
 ```yaml
 Project Setup:
   New Project: load → dev-setup --install → build --init → test --coverage
@@ -91,6 +103,7 @@ Maintenance:
 ```
 
 ### Advanced Flag Combinations
+
 ```yaml
 Power User Patterns:
   Deep Analysis: analyze --architecture --seq --think-hard
@@ -110,6 +123,7 @@ Token Optimization:
 ```
 
 ### Safety & Best Practices
+
 ```yaml
 Pre-Deployment Safety:
   Full Gate: test --coverage → scan --security → scan --validate → deploy
@@ -128,6 +142,7 @@ Planning for Complex Operations:
 ```
 
 ## Shared Resources (37 files)
+
 - `ambiguity-check.yml`: Ambiguity detection & resolution
 - `audit.yml`: Audit configurations & logging
 - `checkpoint.yml`: Checkpoint management & rollback

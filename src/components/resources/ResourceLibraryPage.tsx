@@ -16,7 +16,7 @@ type ResourceLibraryPageProps = {
   locale: string;
 };
 
-export function ResourceLibraryPage({ locale }: ResourceLibraryPageProps) {
+export function ResourceLibraryPage({ locale: _ }: ResourceLibraryPageProps) {
   const [searchResult, setSearchResult] = useState<ResourceSearchResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

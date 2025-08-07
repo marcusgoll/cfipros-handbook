@@ -22,13 +22,6 @@ export function BookmarkButton({ lessonId, title, className }: BookmarkButtonPro
   const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Check if this lesson is already bookmarked
-    const bookmarks = getBookmarks();
-    setIsBookmarked(bookmarks.some(bookmark => bookmark.id === lessonId));
-    setIsLoading(false);
-  }, [lessonId]);
-
   const getBookmarks = (): BookmarkData[] => {
     try {
       const stored = localStorage.getItem('handbook-bookmarks');
@@ -37,6 +30,13 @@ export function BookmarkButton({ lessonId, title, className }: BookmarkButtonPro
       return [];
     }
   };
+
+  useEffect(() => {
+    // Check if this lesson is already bookmarked
+    const bookmarks = getBookmarks();
+    setIsBookmarked(bookmarks.some(bookmark => bookmark.id === lessonId));
+    setIsLoading(false);
+  }, [lessonId]);
 
   const saveBookmarks = (bookmarks: BookmarkData[]) => {
     try {

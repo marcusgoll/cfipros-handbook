@@ -274,6 +274,7 @@ After presenting this section, apply `tasks#advanced-elicitation` protocol]]
 - **Monospace:** {{mono_font}}
 
 **Type Scale:**
+
 | Element | Size | Weight | Line Height |
 |:--------|:-----|:-------|:------------|
 | H1 | {{h1_size}} | {{h1_weight}} | {{h1_line}} |

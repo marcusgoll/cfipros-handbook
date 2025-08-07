@@ -143,11 +143,11 @@ Be pragmatic - perfect documentation doesn't exist. Focus on whether a competent
 
 | Category                             | Status | Issues |
 | ------------------------------------ | ------ | ------ |
-| 1. Goal & Context Clarity            | _TBD_  |        |
-| 2. Technical Implementation Guidance | _TBD_  |        |
-| 3. Reference Effectiveness           | _TBD_  |        |
-| 4. Self-Containment Assessment       | _TBD_  |        |
-| 5. Testing Guidance                  | _TBD_  |        |
+| 1. Goal & Context Clarity            | *TBD*  |        |
+| 2. Technical Implementation Guidance | *TBD*  |        |
+| 3. Reference Effectiveness           | *TBD*  |        |
+| 4. Self-Containment Assessment       | *TBD*  |        |
+| 5. Testing Guidance                  | *TBD*  |        |
 
 **Final Assessment:**
 

@@ -166,10 +166,10 @@ const MainContent = () => (
           Start using the full width layout for your next project and make the most of your screen space.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button className="px-6 py-3 bg-chart-4 text-white rounded-lg hover:opacity-90 transition-opacity">
+          <button type="button" className="px-6 py-3 bg-chart-4 text-white rounded-lg hover:opacity-90 transition-opacity">
             View Documentation
           </button>
-          <button className="px-6 py-3 border border-chart-5 text-chart-5 rounded-lg hover:bg-chart-5 hover:text-white transition-colors">
+          <button type="button" className="px-6 py-3 border border-chart-5 text-chart-5 rounded-lg hover:bg-chart-5 hover:text-white transition-colors">
             See More Examples
           </button>
         </div>

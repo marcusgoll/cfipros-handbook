@@ -1,18 +1,52 @@
+# Enhanced pre-commit hooks for CFI Interactive Handbook
+# Performance-optimized with parallel processing and staged file filtering
+
 # Validate commit messages
 commit-msg:
   commands:
     commitlint:
       run: npx --no -- commitlint --edit {1}
 
-# Validate content before committing
+# Validate content before committing - optimized for performance
 pre-commit:
+  parallel: true
   commands:
-    lint:
-      glob: '*'
-      run: npx --no -- eslint --fix --no-warn-ignored
+    # Priority 1: Fast linting with staged files only
+    lint-staged:
+      glob: '*.{js,jsx,ts,tsx,json,yaml,yml}'
+      run: npx --no -- eslint --fix --no-warn-ignored {staged_files}
       stage_fixed: true
       priority: 1
-    check-types:
+
+    # Priority 1: Markdown linting (parallel with ESLint) - staged files only
+    markdown-lint:
+      glob: '*.{md,mdx}'
+      run: 'if [ -n "{staged_files}" ]; then npx --no -- markdownlint-cli2 --fix {staged_files}; fi'
+      stage_fixed: true
+      priority: 1
+
+    # Priority 2: TypeScript type checking (after linting fixes)
+    type-check:
       glob: '*.{ts,tsx}'
       run: npm run check:types
+      priority: 2
+
+    # Priority 3: Format check (final validation)
+    format-check:
+      glob: '*.{js,jsx,ts,tsx,json,md,mdx,yaml,yml}'
+      run: npx --no -- prettier --check {staged_files}
+      priority: 3
+
+# Pre-push validation for CI/CD pipeline
+pre-push:
+  parallel: true
+  commands:
+    # Full project validation before push
+    build-check:
+      run: npm run build
+      priority: 1
+
+    # Security audit
+    security-audit:
+      run: npm audit --audit-level=moderate
       priority: 2

@@ -3,9 +3,11 @@
 @see shared/task-system.yml
 
 ## Purpose
+
 Manage complex features & requirements across sessions with automatic breakdown, context preservation & recovery.
 
 ## Syntax
+
 ```bash
 /task:create <title> [--type feature|bugfix|refactor|docs|test] [--priority high|medium|low]
 /task:list [--status pending|in-progress|completed] [--priority high|medium|low]
@@ -19,6 +21,7 @@ Manage complex features & requirements across sessions with automatic breakdown,
 ```
 
 ## Workflow
+
 ```yaml
 Creation:
   1. Analyze requirement complexity
@@ -44,6 +47,7 @@ Completion:
 ```
 
 ## Auto-Detection
+
 ```yaml
 Triggers:
   - "build feature X"
@@ -58,6 +62,7 @@ Response:
 ```
 
 ## Session Recovery
+
 ```yaml
 Startup:
   1. Scan .tasks/in-progress/
@@ -73,6 +78,7 @@ Context:
 ```
 
 ## Examples
+
 ```bash
 # Create new feature task
 /task:create "User authentication system" --type feature --priority high
@@ -94,6 +100,7 @@ Context:
 ```
 
 ## Integration
+
 - **Git**: Automatic branching & checkpoints
 - **TodoWrite**: Sync with current todo system
 - **Personas**: Task-specific persona activation
@@ -101,6 +108,7 @@ Context:
 - **Commands**: Chain with other /user: commands
 
 ## File Structure
+
 ```
 ./claudedocs/tasks/
 ├── pending/feature-20250623-143052-user-auth.md

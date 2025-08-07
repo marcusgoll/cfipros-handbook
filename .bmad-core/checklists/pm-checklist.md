@@ -351,15 +351,15 @@ After presenting the report, ask if the user wants:
 
 | Category                         | Status | Critical Issues |
 | -------------------------------- | ------ | --------------- |
-| 1. Problem Definition & Context  | _TBD_  |                 |
-| 2. MVP Scope Definition          | _TBD_  |                 |
-| 3. User Experience Requirements  | _TBD_  |                 |
-| 4. Functional Requirements       | _TBD_  |                 |
-| 5. Non-Functional Requirements   | _TBD_  |                 |
-| 6. Epic & Story Structure        | _TBD_  |                 |
-| 7. Technical Guidance            | _TBD_  |                 |
-| 8. Cross-Functional Requirements | _TBD_  |                 |
-| 9. Clarity & Communication       | _TBD_  |                 |
+| 1. Problem Definition & Context  | *TBD*  |                 |
+| 2. MVP Scope Definition          | *TBD*  |                 |
+| 3. User Experience Requirements  | *TBD*  |                 |
+| 4. Functional Requirements       | *TBD*  |                 |
+| 5. Non-Functional Requirements   | *TBD*  |                 |
+| 6. Epic & Story Structure        | *TBD*  |                 |
+| 7. Technical Guidance            | *TBD*  |                 |
+| 8. Cross-Functional Requirements | *TBD*  |                 |
+| 9. Clarity & Communication       | *TBD*  |                 |
 
 ### Critical Deficiencies
 

@@ -128,15 +128,15 @@ For each pattern, provide recommendation and rationale.]]
 
 <<REPEAT: pattern>>
 
-- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}
+- **{{pattern_name}}:** {{pattern_description}} - *Rationale:* {{rationale}}
   <</REPEAT>>
 
 @{example: patterns}
 
-- **Jamstack Architecture:** Static site generation with serverless APIs - _Rationale:_ Optimal performance and scalability for content-heavy applications
-- **Component-Based UI:** Reusable React components with TypeScript - _Rationale:_ Maintainability and type safety across large codebases
-- **Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility
-- **API Gateway Pattern:** Single entry point for all API calls - _Rationale:_ Centralized auth, rate limiting, and monitoring
+- **Jamstack Architecture:** Static site generation with serverless APIs - *Rationale:* Optimal performance and scalability for content-heavy applications
+- **Component-Based UI:** Reusable React components with TypeScript - *Rationale:* Maintainability and type safety across large codebases
+- **Repository Pattern:** Abstract data access logic - *Rationale:* Enables testing and future database migration flexibility
+- **API Gateway Pattern:** Single entry point for all API calls - *Rationale:* Centralized auth, rate limiting, and monitoring
   @{/example}
 
 ## Tech Stack
@@ -412,7 +412,7 @@ If no external APIs are needed, state this explicitly and skip to next section.]
 ### Stripe API
 
 - **Purpose:** Payment processing and subscription management
-- **Documentation:** https://stripe.com/docs/api
+- **Documentation:** <https://stripe.com/docs/api>
 - **Base URL(s):** `https://api.stripe.com/v1`
 - **Authentication:** Bearer token with secret key
 - **Rate Limits:** 100 requests per second
