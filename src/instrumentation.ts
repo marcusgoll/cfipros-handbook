@@ -1,53 +1,27 @@
+// This file configures Sentry for different runtimes
+// The actual configurations are in separate config files
 import * as Sentry from '@sentry/nextjs';
 
 export async function register() {
+  // Skip instrumentation if disabled
+  if (process.env.NEXT_PUBLIC_SENTRY_DISABLED === 'true') {
+    return;
+  }
+
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    // Server-side Sentry configuration
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-
-      // Add optional integrations for additional features
-      integrations: [
-        // send console.log, console.error, and console.warn calls as logs to Sentry
-        Sentry.consoleLoggingIntegration({ levels: ['log', 'error', 'warn'] }),
-      ],
-
-      // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-      tracesSampleRate: 1,
-
-      // Enable logging
-      _experiments: {
-        enableLogs: true,
-      },
-
-      // Setting this option to true will print useful information to the console while you're setting up Sentry.
-      debug: false,
-    });
+    // Import server-side Sentry configuration
+    await import('../sentry.server.config');
   }
 
   if (process.env.NEXT_RUNTIME === 'edge') {
-    // Edge runtime Sentry configuration
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-
-      // Add optional integrations for additional features
-      integrations: [
-        // send console.log, console.error, and console.warn calls as logs to Sentry
-        Sentry.consoleLoggingIntegration({ levels: ['log', 'error', 'warn'] }),
-      ],
-
-      // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-      tracesSampleRate: 1,
-
-      // Enable logging
-      _experiments: {
-        enableLogs: true,
-      },
-
-      // Setting this option to true will print useful information to the console while you're setting up Sentry.
-      debug: false,
-    });
+    // Import edge runtime Sentry configuration
+    await import('../sentry.edge.config');
   }
 }
 
+// Export required hooks for Sentry
 export const onRequestError = Sentry.captureRequestError;
+
+export * from '../sentry.edge.config';
+// Re-export utility functions
+export * from '../sentry.server.config';
