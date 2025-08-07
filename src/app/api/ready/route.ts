@@ -7,7 +7,7 @@ import { acsCodesSchema, counterSchema } from '@/models/Schema';
 
 // Readiness check endpoint for Railway deployments
 // This endpoint performs deeper checks to ensure the application is ready to serve traffic
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const startTime = Date.now();
 
   const readinessStatus = {
@@ -118,7 +118,7 @@ async function checkDatabaseMigrations(readinessStatus: any) {
       idle_timeout: 5,
     });
 
-    const db = drizzle(client);
+    const _db = drizzle(client);
 
     // Check if essential tables exist
     const result = await client`

@@ -10,7 +10,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { HandbookLayout } from '@/components/handbook/HandbookLayout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -81,10 +81,7 @@ type SearchPageProps = {
   params: Promise<{ locale: string }>;
 };
 
-export default function SearchPage({ params }: SearchPageProps) {
-  const resolvedParams = React.use(params);
-  const { locale } = resolvedParams;
-
+function SearchContent({ locale }: { locale: string }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -502,5 +499,27 @@ export default function SearchPage({ params }: SearchPageProps) {
         </div>
       </div>
     </HandbookLayout>
+  );
+}
+
+export default function SearchPage({ params }: SearchPageProps) {
+  const resolvedParams = React.use(params);
+  const { locale } = resolvedParams;
+
+  return (
+    <Suspense fallback={
+      <HandbookLayout locale={locale}>
+        <div className="space-y-6">
+          <div className="space-y-4">
+            <div>
+              <h1 className="text-2xl font-bold text-foreground">Search Handbook</h1>
+              <p className="text-muted-foreground">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </HandbookLayout>
+    }>
+      <SearchContent locale={locale} />
+    </Suspense>
   );
 }

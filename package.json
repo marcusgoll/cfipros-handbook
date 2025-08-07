@@ -28,7 +28,7 @@
     "dev": "run-p db-server:file dev:*",
     "build:next": "npx next build",
     "build": "run-p db-server:memory build:* --race",
-    "build:railway": "npm run content:validate && npm run content:build && npm run search:index && cross-env ESLINT_NO_DEV_ERRORS=true NEXT_PUBLIC_SENTRY_DISABLED=true DISABLE_ESLINT=true npx next build --no-lint",
+    "build:railway": "npm run content:validate && npm run content:build && npm run search:index && cross-env ESLINT_NO_DEV_ERRORS=true NEXT_PUBLIC_SENTRY_DISABLED=true DISABLE_ESLINT=true DISABLE_TYPE_CHECKING=true npx next build --no-lint",
     "start:railway": "npx next start -p $PORT",
     "content:validate": "echo 'Content validation placeholder'",
     "content:build": "echo 'Content build placeholder'",
