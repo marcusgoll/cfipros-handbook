@@ -1,0 +1,340 @@
+{
+  "name": "CFI Handbook Monitoring Configuration",
+  "description": "Railway monitoring and alerting configuration for the CFI Handbook application",
+  "version": "1.0.0",
+  "monitoring": {
+    "healthchecks": {
+      "liveness": {
+        "path": "/api/health/live",
+        "interval": "30s",
+        "timeout": "5s",
+        "retries": 3,
+        "description": "Basic liveness check - ensures the application process is running"
+      },
+      "readiness": {
+        "path": "/api/health/ready",
+        "interval": "60s",
+        "timeout": "10s",
+        "retries": 2,
+        "description": "Readiness check - ensures application can serve traffic"
+      },
+      "detailed": {
+        "path": "/api/health",
+        "interval": "300s",
+        "timeout": "15s",
+        "retries": 1,
+        "description": "Comprehensive health check including database and memory status"
+      }
+    },
+    "metrics": {
+      "endpoint": "/api/metrics",
+      "interval": "60s",
+      "retention": "7d",
+      "custom_metrics": [
+        {
+          "name": "handbook_lesson_loads",
+          "type": "counter",
+          "description": "Number of handbook lessons loaded"
+        },
+        {
+          "name": "user_session_duration",
+          "type": "histogram",
+          "description": "Duration of user sessions in seconds"
+        },
+        {
+          "name": "database_query_duration",
+          "type": "histogram",
+          "description": "Database query execution time in milliseconds"
+        },
+        {
+          "name": "search_response_time",
+          "type": "histogram",
+          "description": "Search operation response time in milliseconds"
+        }
+      ]
+    },
+    "logs": {
+      "level": "info",
+      "structured": true,
+      "retention": "30d",
+      "sampling": {
+        "error": 1.0,
+        "warn": 1.0,
+        "info": 0.1,
+        "debug": 0.01
+      }
+    }
+  },
+  "alerts": {
+    "channels": {
+      "sentry": {
+        "type": "webhook",
+        "url": "https://sentry.io/api/hooks/railway/",
+        "description": "Send alerts to Sentry for error tracking"
+      },
+      "email": {
+        "type": "email",
+        "recipients": ["alerts@cfipros.com"],
+        "description": "Email notifications for critical alerts"
+      }
+    },
+    "rules": [
+      {
+        "name": "Application Down",
+        "condition": "health_check_failed",
+        "threshold": {
+          "consecutive_failures": 3,
+          "duration": "5m"
+        },
+        "severity": "critical",
+        "channels": ["sentry", "email"],
+        "description": "Application is not responding to health checks"
+      },
+      {
+        "name": "High Error Rate",
+        "condition": "error_rate > 0.05",
+        "threshold": {
+          "duration": "5m",
+          "evaluation_window": "10m"
+        },
+        "severity": "high",
+        "channels": ["sentry"],
+        "description": "Error rate exceeds 5% over 10 minutes"
+      },
+      {
+        "name": "High Response Time",
+        "condition": "avg_response_time > 2000",
+        "threshold": {
+          "duration": "10m",
+          "evaluation_window": "15m"
+        },
+        "severity": "medium",
+        "channels": ["sentry"],
+        "description": "Average response time exceeds 2 seconds"
+      },
+      {
+        "name": "High Memory Usage",
+        "condition": "memory_usage > 0.90",
+        "threshold": {
+          "duration": "15m",
+          "evaluation_window": "20m"
+        },
+        "severity": "medium",
+        "channels": ["sentry"],
+        "description": "Memory usage exceeds 90% for extended period"
+      },
+      {
+        "name": "Database Connection Issues",
+        "condition": "db_connection_errors > 5",
+        "threshold": {
+          "duration": "5m",
+          "evaluation_window": "10m"
+        },
+        "severity": "high",
+        "channels": ["sentry", "email"],
+        "description": "Multiple database connection failures detected"
+      },
+      {
+        "name": "Slow Database Queries",
+        "condition": "db_slow_queries > 10",
+        "threshold": {
+          "duration": "10m",
+          "evaluation_window": "15m"
+        },
+        "severity": "medium",
+        "channels": ["sentry"],
+        "description": "High number of slow database queries"
+      },
+      {
+        "name": "User Authentication Failures",
+        "condition": "auth_failure_rate > 0.10",
+        "threshold": {
+          "duration": "5m",
+          "evaluation_window": "10m"
+        },
+        "severity": "medium",
+        "channels": ["sentry"],
+        "description": "Authentication failure rate exceeds 10%"
+      },
+      {
+        "name": "Search Performance Degradation",
+        "condition": "search_avg_time > 1000",
+        "threshold": {
+          "duration": "10m",
+          "evaluation_window": "15m"
+        },
+        "severity": "low",
+        "channels": ["sentry"],
+        "description": "Search operations taking longer than 1 second"
+      },
+      {
+        "name": "Low Disk Space",
+        "condition": "disk_usage > 0.85",
+        "threshold": {
+          "duration": "30m",
+          "evaluation_window": "60m"
+        },
+        "severity": "medium",
+        "channels": ["sentry", "email"],
+        "description": "Disk usage exceeds 85%"
+      },
+      {
+        "name": "High 4xx Error Rate",
+        "condition": "http_4xx_rate > 0.20",
+        "threshold": {
+          "duration": "10m",
+          "evaluation_window": "15m"
+        },
+        "severity": "low",
+        "channels": ["sentry"],
+        "description": "High rate of 4xx HTTP errors (client errors)"
+      }
+    ]
+  },
+  "dashboards": {
+    "application_overview": {
+      "name": "CFI Handbook - Application Overview",
+      "widgets": [
+        {
+          "type": "metric",
+          "title": "Request Rate",
+          "metric": "http_requests_per_second",
+          "timeframe": "1h"
+        },
+        {
+          "type": "metric",
+          "title": "Error Rate",
+          "metric": "error_rate",
+          "timeframe": "1h"
+        },
+        {
+          "type": "metric",
+          "title": "Response Time P95",
+          "metric": "response_time_p95",
+          "timeframe": "1h"
+        },
+        {
+          "type": "metric",
+          "title": "Active Users",
+          "metric": "active_user_sessions",
+          "timeframe": "1h"
+        }
+      ]
+    },
+    "infrastructure": {
+      "name": "CFI Handbook - Infrastructure",
+      "widgets": [
+        {
+          "type": "metric",
+          "title": "CPU Usage",
+          "metric": "cpu_usage_percent",
+          "timeframe": "6h"
+        },
+        {
+          "type": "metric",
+          "title": "Memory Usage",
+          "metric": "memory_usage_percent",
+          "timeframe": "6h"
+        },
+        {
+          "type": "metric",
+          "title": "Database Connections",
+          "metric": "db_active_connections",
+          "timeframe": "6h"
+        },
+        {
+          "type": "metric",
+          "title": "Network I/O",
+          "metric": "network_bytes_per_second",
+          "timeframe": "6h"
+        }
+      ]
+    },
+    "user_experience": {
+      "name": "CFI Handbook - User Experience",
+      "widgets": [
+        {
+          "type": "metric",
+          "title": "Core Web Vitals - LCP",
+          "metric": "web_vitals_lcp_p75",
+          "timeframe": "24h"
+        },
+        {
+          "type": "metric",
+          "title": "Core Web Vitals - CLS",
+          "metric": "web_vitals_cls_p75",
+          "timeframe": "24h"
+        },
+        {
+          "type": "metric",
+          "title": "Core Web Vitals - INP",
+          "metric": "web_vitals_inp_p75",
+          "timeframe": "24h"
+        },
+        {
+          "type": "metric",
+          "title": "Lesson Load Time",
+          "metric": "lesson_load_time_p95",
+          "timeframe": "24h"
+        }
+      ]
+    },
+    "business_metrics": {
+      "name": "CFI Handbook - Business Metrics",
+      "widgets": [
+        {
+          "type": "metric",
+          "title": "Daily Active Users",
+          "metric": "daily_active_users",
+          "timeframe": "7d"
+        },
+        {
+          "type": "metric",
+          "title": "Lesson Completions",
+          "metric": "lesson_completions_per_day",
+          "timeframe": "7d"
+        },
+        {
+          "type": "metric",
+          "title": "Search Queries",
+          "metric": "search_queries_per_day",
+          "timeframe": "7d"
+        },
+        {
+          "type": "metric",
+          "title": "User Feedback Score",
+          "metric": "avg_user_feedback_score",
+          "timeframe": "7d"
+        }
+      ]
+    }
+  },
+  "sla_targets": {
+    "availability": "99.9%",
+    "response_time_p95": "2000ms",
+    "error_rate": "< 1%",
+    "uptime_measurement_window": "30d"
+  },
+  "incident_response": {
+    "escalation_policy": {
+      "level_1": {
+        "duration": "15m",
+        "notify": ["on-call-engineer"]
+      },
+      "level_2": {
+        "duration": "30m",
+        "notify": ["engineering-lead", "product-manager"]
+      },
+      "level_3": {
+        "duration": "60m",
+        "notify": ["cto", "ceo"]
+      }
+    },
+    "runbooks": {
+      "application_down": "https://docs.cfipros.com/runbooks/application-down",
+      "database_issues": "https://docs.cfipros.com/runbooks/database-issues",
+      "high_error_rate": "https://docs.cfipros.com/runbooks/high-error-rate",
+      "performance_issues": "https://docs.cfipros.com/runbooks/performance-issues"
+    }
+  }
+}

@@ -1,8 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
+import { LeftSidebarLayout } from '@/components/layouts/LeftSidebarLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LeftSidebarLayout } from '@/components/layouts/LeftSidebarLayout';
 
 // Sidebar Component
 const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnits: any[] }) => (
@@ -13,7 +13,7 @@ const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnit
         Study units for your Private Pilot Certificate
       </p>
     </div>
-    
+
     <nav className="space-y-1">
       <Link
         href={`/${locale}/handbook/private-pilot`}
@@ -21,10 +21,10 @@ const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnit
       >
         📚 Overview
       </Link>
-      
+
       {studyUnits.map((unit, index) => {
         const isLocked = index > 0 && studyUnits[index - 1]?.completed === 0;
-        
+
         if (isLocked) {
           return (
             <div
@@ -43,7 +43,7 @@ const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnit
             </div>
           );
         }
-        
+
         return (
           <Link
             key={unit.id}
@@ -68,13 +68,16 @@ const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnit
         );
       })}
     </nav>
-    
+
     <div className="mt-8 p-4 bg-chart-1/10 border border-chart-1/20 rounded-lg">
       <h4 className="text-sm font-medium mb-2 text-chart-1">Study Progress</h4>
       <div className="space-y-2">
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Units Completed</span>
-          <span className="font-medium">0 / {studyUnits.length}</span>
+          <span className="font-medium">
+            0 /
+            {studyUnits.length}
+          </span>
         </div>
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Total Lessons</span>
@@ -86,7 +89,7 @@ const PrivatePilotSidebar = ({ locale, studyUnits }: { locale: string; studyUnit
         </div>
       </div>
     </div>
-    
+
     <div className="mt-6">
       <h4 className="text-sm font-medium mb-3 text-foreground">Quick Links</h4>
       <div className="space-y-2">

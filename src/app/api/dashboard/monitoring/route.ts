@@ -143,7 +143,7 @@ function getAlertMetrics() {
   };
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     return Sentry.startSpan({ op: 'dashboard.monitoring', name: 'Get Monitoring Dashboard' }, async () => {
       // Collect all metrics in parallel

@@ -62,19 +62,33 @@ export async function POST(request: NextRequest) {
       // Simulate async processing
       setTimeout(async () => {
         try {
-          processingSteps[0].status = 'completed';
-          processingSteps[1].status = 'processing';
+          if (processingSteps[0]) {
+            processingSteps[0].status = 'completed';
+          }
+          if (processingSteps[1]) {
+            processingSteps[1].status = 'processing';
+          }
 
           setTimeout(async () => {
-            processingSteps[1].status = 'completed';
-            processingSteps[2].status = 'processing';
+            if (processingSteps[1]) {
+              processingSteps[1].status = 'completed';
+            }
+            if (processingSteps[2]) {
+              processingSteps[2].status = 'processing';
+            }
 
             setTimeout(async () => {
-              processingSteps[2].status = 'completed';
-              processingSteps[3].status = 'processing';
+              if (processingSteps[2]) {
+                processingSteps[2].status = 'completed';
+              }
+              if (processingSteps[3]) {
+                processingSteps[3].status = 'processing';
+              }
 
               setTimeout(() => {
-                processingSteps[3].status = 'completed';
+                if (processingSteps[3]) {
+                  processingSteps[3].status = 'completed';
+                }
               }, 1000);
             }, 1500);
           }, 2000);

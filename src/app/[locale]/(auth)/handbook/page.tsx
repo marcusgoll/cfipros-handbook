@@ -1,9 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
+import { FullWidthLayout } from '@/components/layouts/FullWidthLayout';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { FullWidthLayout } from '@/components/layouts/FullWidthLayout';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
@@ -137,110 +137,116 @@ export default async function HandbookPage(props: {
   return (
     <FullWidthLayout locale={locale} maxWidth="7xl" padding="lg">
       <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Flight Training Handbooks</h1>
-        <p className="text-lg text-muted-foreground">
-          Comprehensive study materials for every stage of your aviation journey. 
-          From your first flight to airline transport pilot, we've got you covered.
-        </p>
-      </div>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold mb-4">Flight Training Handbooks</h1>
+          <p className="text-lg text-muted-foreground">
+            Comprehensive study materials for every stage of your aviation journey.
+            From your first flight to airline transport pilot, we've got you covered.
+          </p>
+        </div>
 
-      {/* Handbooks Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {handbooks.map((handbook) => (
-          <Card 
-            key={handbook.id} 
-            className={`relative overflow-hidden transition-all duration-300 ${
-              handbook.status === 'available' 
-                ? 'hover:shadow-xl cursor-pointer' 
-                : 'opacity-75'
-            }`}
-          >
-            <CardHeader>
-              <div className="flex items-start justify-between mb-2">
-                <div className={handbook.color}>{handbook.icon}</div>
-                {handbook.status === 'available' ? (
-                  <Badge variant="default">Available</Badge>
-                ) : (
-                  <Badge variant="secondary">Coming Soon</Badge>
-                )}
-              </div>
-              <CardTitle className="text-xl">{handbook.title}</CardTitle>
-              <CardDescription className="mt-2">
-                {handbook.description}
-              </CardDescription>
-            </CardHeader>
-            
-            <CardContent>
-              <div className="space-y-3">
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-2 text-sm">
-                  <div>
-                    <p className="text-muted-foreground">Units</p>
-                    <p className="font-semibold">{handbook.units}</p>
-                  </div>
-                  <div>
-                    <p className="text-muted-foreground">Lessons</p>
-                    <p className="font-semibold">{handbook.lessons}</p>
-                  </div>
-                  <div>
-                    <p className="text-muted-foreground">Duration</p>
-                    <p className="font-semibold">{handbook.estimatedTime}</p>
-                  </div>
+        {/* Handbooks Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {handbooks.map(handbook => (
+            <Card
+              key={handbook.id}
+              className={`relative overflow-hidden transition-all duration-300 ${
+                handbook.status === 'available'
+                  ? 'hover:shadow-xl cursor-pointer'
+                  : 'opacity-75'
+              }`}
+            >
+              <CardHeader>
+                <div className="flex items-start justify-between mb-2">
+                  <div className={handbook.color}>{handbook.icon}</div>
+                  {handbook.status === 'available'
+                    ? (
+                        <Badge variant="default">Available</Badge>
+                      )
+                    : (
+                        <Badge variant="secondary">Coming Soon</Badge>
+                      )}
                 </div>
+                <CardTitle className="text-xl">{handbook.title}</CardTitle>
+                <CardDescription className="mt-2">
+                  {handbook.description}
+                </CardDescription>
+              </CardHeader>
 
-                {/* Release Date for Coming Soon */}
-                {handbook.releaseDate && (
-                  <div className="pt-2 border-t">
-                    <p className="text-sm text-muted-foreground">
-                      Expected release: <span className="font-medium">{handbook.releaseDate}</span>
-                    </p>
+              <CardContent>
+                <div className="space-y-3">
+                  {/* Stats */}
+                  <div className="grid grid-cols-3 gap-2 text-sm">
+                    <div>
+                      <p className="text-muted-foreground">Units</p>
+                      <p className="font-semibold">{handbook.units}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground">Lessons</p>
+                      <p className="font-semibold">{handbook.lessons}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground">Duration</p>
+                      <p className="font-semibold">{handbook.estimatedTime}</p>
+                    </div>
                   </div>
-                )}
 
-                {/* Action Button */}
-                {handbook.status === 'available' ? (
-                  <Button asChild className="w-full">
-                    <Link href={handbook.href}>Start Learning</Link>
-                  </Button>
-                ) : (
-                  <Button disabled className="w-full">
-                    <svg
-                      className="mr-2 h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
-                    Coming Soon
-                  </Button>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                  {/* Release Date for Coming Soon */}
+                  {handbook.releaseDate && (
+                    <div className="pt-2 border-t">
+                      <p className="text-sm text-muted-foreground">
+                        Expected release:
+                        {' '}
+                        <span className="font-medium">{handbook.releaseDate}</span>
+                      </p>
+                    </div>
+                  )}
 
-      {/* Bottom CTA */}
-      <div className="text-center py-8 border-t">
-        <h2 className="text-2xl font-semibold mb-3">Ready to Start Your Aviation Journey?</h2>
-        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-          Begin with the Private Pilot handbook and work your way up through the ratings. 
-          Each handbook builds on the knowledge from the previous ones.
-        </p>
-        <Button asChild size="lg">
-          <Link href={`/${locale}/handbook/private-pilot`}>
-            Start with Private Pilot
-          </Link>
-        </Button>
-      </div>
+                  {/* Action Button */}
+                  {handbook.status === 'available'
+                    ? (
+                        <Button asChild className="w-full">
+                          <Link href={handbook.href}>Start Learning</Link>
+                        </Button>
+                      )
+                    : (
+                        <Button disabled className="w-full">
+                          <svg
+                            className="mr-2 h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            />
+                          </svg>
+                          Coming Soon
+                        </Button>
+                      )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center py-8 border-t">
+          <h2 className="text-2xl font-semibold mb-3">Ready to Start Your Aviation Journey?</h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Begin with the Private Pilot handbook and work your way up through the ratings.
+            Each handbook builds on the knowledge from the previous ones.
+          </p>
+          <Button asChild size="lg">
+            <Link href={`/${locale}/handbook/private-pilot`}>
+              Start with Private Pilot
+            </Link>
+          </Button>
+        </div>
       </div>
     </FullWidthLayout>
   );

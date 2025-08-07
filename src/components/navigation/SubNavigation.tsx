@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 type SubNavigationProps = {
@@ -106,12 +106,12 @@ export function SubNavigation({ locale }: SubNavigationProps) {
 
     checkOverflow();
     window.addEventListener('resize', checkOverflow);
-    
+
     // Also check on scroll
     const handleScroll = () => checkOverflow();
     const currentRef = navRef.current;
     currentRef?.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('resize', checkOverflow);
       currentRef?.removeEventListener('scroll', handleScroll);
@@ -133,12 +133,12 @@ export function SubNavigation({ locale }: SubNavigationProps) {
     <div className="z-40 w-full border-b bg-secondary border-border">
       <div className="w-full px-6">
         <div className="relative">
-          <nav 
+          <nav
             ref={navRef}
             className="flex items-center justify-center gap-4 py-2 overflow-x-auto scrollbar-hide scroll-smooth"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {handbookItems.map((item) => (
+            {handbookItems.map(item => (
               <Link
                 key={item.href}
                 href={item.disabled ? '#' : item.href}
@@ -147,10 +147,10 @@ export function SubNavigation({ locale }: SubNavigationProps) {
                   item.active
                     ? `bg-${item.chartColor}/10 text-${item.chartColor} border border-${item.chartColor}/20 shadow-sm ring-1 ring-opacity-20`
                     : item.disabled
-                    ? 'text-muted-foreground/50 cursor-not-allowed opacity-60'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                      ? 'text-muted-foreground/50 cursor-not-allowed opacity-60'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent/50',
                 )}
-                onClick={(e) => item.disabled && e.preventDefault()}
+                onClick={e => item.disabled && e.preventDefault()}
               >
                 {React.createElement(item.icon, { className: `text-${item.chartColor}` })}
                 <span>
@@ -164,18 +164,18 @@ export function SubNavigation({ locale }: SubNavigationProps) {
               </Link>
             ))}
           </nav>
-          
+
           {/* Right scroll indicator */}
           {showRightArrow && (
-            <button 
+            <button
               onClick={scrollRight}
               className="absolute right-0 top-0 h-full flex items-center bg-gradient-to-l from-background via-background to-transparent pl-8 pr-4"
               aria-label="Scroll right"
             >
-              <svg 
-                className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

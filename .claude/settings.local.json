@@ -118,7 +118,11 @@
       "Bash(npm run check:types:*)",
       "Bash(timeout 5 npm run dev:next)",
       "Bash(timeout 8 npm run dev:next)",
-      "Bash(Ctrl+C)"
+      "Bash(Ctrl+C)",
+      "Bash(timeout 60 npm run build:railway)",
+      "Bash($env:ESLINT_NO_DEV_ERRORS=\"true\")",
+      "Bash(cross-env NEXT_PUBLIC_SENTRY_DISABLED=true ESLINT_NO_DEV_ERRORS=true timeout 120 npx next build)",
+      "Bash(timeout:*)"
     ],
     "deny": []
   },
@@ -126,6 +130,7 @@
   "enabledMcpjsonServers": [
     "supabase",
     "context7",
-    "playwright"
+    "playwright",
+    "railway"
   ]
 }

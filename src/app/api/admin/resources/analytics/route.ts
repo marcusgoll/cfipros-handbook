@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url);
-    const period = searchParams.get('period') || '30d'; // 7d, 30d, 90d, 1y
+    // const period = searchParams.get('period') || '30d'; // 7d, 30d, 90d, 1y - TODO: Use for filtering
     const category = searchParams.get('category') || '';
 
     // TODO: Implement actual database queries for analytics

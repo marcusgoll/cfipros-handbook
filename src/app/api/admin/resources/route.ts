@@ -171,9 +171,9 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const page = Number.parseInt(searchParams.get('page') || '1');
     const pageSize = Number.parseInt(searchParams.get('pageSize') || '20');
-    const search = searchParams.get('search') || '';
-    const category = searchParams.get('category') || '';
-    const accessLevel = searchParams.get('accessLevel') || '';
+    // const search = searchParams.get('search') || ''; // TODO: Use for filtering
+    // const category = searchParams.get('category') || ''; // TODO: Use for filtering
+    // const accessLevel = searchParams.get('accessLevel') || ''; // TODO: Use for filtering
 
     // TODO: Implement database query for admin resource listing
     // This would include inactive resources and additional admin metadata

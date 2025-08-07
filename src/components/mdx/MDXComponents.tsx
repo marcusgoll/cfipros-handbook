@@ -46,9 +46,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => (
       <hr className="border-t border-border my-8" />
     ),
-    Card: Card,
-    CardContent: CardContent,
-    CardHeader: CardHeader,
-    CardTitle: CardTitle,
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
   };
 }

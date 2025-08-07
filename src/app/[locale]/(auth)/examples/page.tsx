@@ -1,16 +1,16 @@
-import { FullWidthLayout } from '@/components/layouts/FullWidthLayout';
 import Link from 'next/link';
+import { FullWidthLayout } from '@/components/layouts/FullWidthLayout';
 
 const ExamplesIndex = () => (
   <div>
     <div className="text-center mb-12">
       <h1 className="text-4xl font-bold mb-6 text-foreground">Layout Examples</h1>
       <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-        Explore our three main layout patterns: Holy Grail, Left Sidebar, and Full Width. 
+        Explore our three main layout patterns: Holy Grail, Left Sidebar, and Full Width.
         Each layout is designed for different use cases and content types.
       </p>
     </div>
-    
+
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
       {/* Holy Grail Layout */}
       <div className="group">
@@ -40,7 +40,7 @@ const ExamplesIndex = () => (
           </div>
         </Link>
       </div>
-      
+
       {/* Left Sidebar Layout */}
       <div className="group">
         <Link href="examples/left-sidebar">
@@ -68,7 +68,7 @@ const ExamplesIndex = () => (
           </div>
         </Link>
       </div>
-      
+
       {/* Full Width Layout */}
       <div className="group">
         <Link href="examples/full-width">
@@ -96,7 +96,7 @@ const ExamplesIndex = () => (
         </Link>
       </div>
     </div>
-    
+
     {/* Feature Comparison */}
     <section className="mb-16">
       <h2 className="text-2xl font-bold mb-8 text-center text-foreground">Layout Comparison</h2>
@@ -151,7 +151,7 @@ const ExamplesIndex = () => (
         </table>
       </div>
     </section>
-    
+
     {/* Getting Started */}
     <section className="text-center">
       <div className="p-8 bg-gradient-to-r from-muted to-muted/50 rounded-lg border border-border">
@@ -160,19 +160,19 @@ const ExamplesIndex = () => (
           Each layout component is designed to be flexible and easy to integrate into your existing application.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link 
+          <Link
             href="examples/holy-grail"
             className="px-6 py-3 bg-chart-1 text-white rounded-lg hover:opacity-90 transition-opacity"
           >
             Try Holy Grail
           </Link>
-          <Link 
+          <Link
             href="examples/left-sidebar"
             className="px-6 py-3 bg-chart-2 text-white rounded-lg hover:opacity-90 transition-opacity"
           >
             Try Left Sidebar
           </Link>
-          <Link 
+          <Link
             href="examples/full-width"
             className="px-6 py-3 bg-chart-3 text-white rounded-lg hover:opacity-90 transition-opacity"
           >
@@ -190,7 +190,7 @@ type PageProps = {
 
 export default async function ExamplesPage({ params }: PageProps) {
   const { locale } = await params;
-  
+
   return (
     <FullWidthLayout
       locale={locale}

@@ -1,4 +1,4 @@
-import { integer, pgTable, serial, timestamp } from 'drizzle-orm/pg-core';
+import { boolean, integer, jsonb, pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 
 // This file defines the structure of your database tables using the Drizzle ORM.
 
@@ -21,4 +21,30 @@ export const counterSchema = pgTable('counter', {
     .$onUpdate(() => new Date())
     .notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+});
+
+export const pageFeedbackSchema = pgTable('page_feedback', {
+  id: serial('id').primaryKey(),
+  pageUrl: varchar('page_url', { length: 255 }).notNull(),
+  feedbackType: varchar('feedback_type', { length: 50 }).notNull(),
+  message: text('message'),
+  userId: varchar('user_id', { length: 255 }),
+  sessionId: varchar('session_id', { length: 255 }),
+  metadata: jsonb('metadata'),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+});
+
+export const acsCodesSchema = pgTable('acs_codes', {
+  id: serial('id').primaryKey(),
+  code: varchar('code', { length: 50 }).notNull().unique(),
+  title: text('title').notNull(),
+  description: text('description'),
+  category: varchar('category', { length: 100 }),
+  isActive: boolean('is_active').default(true),
+  metadata: jsonb('metadata'),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { mode: 'date' })
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
 });

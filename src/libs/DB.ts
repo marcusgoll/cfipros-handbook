@@ -29,8 +29,16 @@ if (Env.NODE_ENV !== 'production') {
   globalForDb.drizzle = db;
 }
 
-await migrate(db, {
-  migrationsFolder: path.join(process.cwd(), 'migrations'),
-});
+// Migration function
+export async function ensureMigrated() {
+  await migrate(db, {
+    migrationsFolder: path.join(process.cwd(), 'migrations'),
+  });
+}
+
+// Run migration on module load in development
+if (Env.NODE_ENV !== 'production') {
+  ensureMigrated().catch(console.error);
+}
 
 export { db };

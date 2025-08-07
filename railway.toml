@@ -1,0 +1,130 @@
+# Railway Configuration for CFI Handbook
+# Production-ready zero-downtime deployment configuration
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm run build:railway"
+buildTimeout = 1200
+# Watch patterns for automatic rebuilds
+watchPatterns = [
+  "**/*.ts",
+  "**/*.tsx",
+  "**/*.js",
+  "**/*.jsx",
+  "package.json",
+  "**/*.mdx",
+  "content/**/*"
+]
+
+[deploy]
+startCommand = "npm run start:railway"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+gracefulShutdownTimeout = 30
+
+# Health check configuration for zero-downtime deployments
+healthcheckPath = "/api/health"
+healthcheckTimeout = 60
+healthcheckInterval = 30
+
+# Advanced health probes
+[deploy.readinessProbe]
+path = "/api/health/ready"
+timeout = 30
+interval = 10
+failureThreshold = 3
+
+[deploy.livenessProbe]
+path = "/api/health/live"
+timeout = 30
+interval = 60
+failureThreshold = 5
+
+# Environment variables for production
+[variables]
+NODE_ENV = "production"
+NEXT_TELEMETRY_DISABLED = "1"
+DATABASE_SSL = "true"
+DATABASE_CONNECTION_POOL_SIZE = "15"
+DATABASE_CONNECTION_TIMEOUT = "30000"
+DATABASE_IDLE_TIMEOUT = "600000"
+DATABASE_MAX_LIFETIME = "3600000"
+HEALTH_CHECK_TIMEOUT = "30000"
+READINESS_CHECK_TIMEOUT = "30000"
+DEPLOYMENT_ENVIRONMENT = "production"
+RAILWAY_ENVIRONMENT = "production"
+ZERO_DOWNTIME_ENABLED = "true"
+ESLINT_NO_DEV_ERRORS = "true"
+NEXT_PUBLIC_SENTRY_DISABLED = "false"
+SENTRY_ENVIRONMENT = "production"
+NODE_OPTIONS = "--max-old-space-size=2048 --optimize-for-size"
+NPM_CONFIG_CACHE = ".npm-cache"
+BUILD_TIMEOUT = "1200"
+LOG_LEVEL = "info"
+GRACEFUL_SHUTDOWN_TIMEOUT = "30000"
+
+# Optimized resource allocation for CFI Handbook
+[resources]
+memory = "2Gi"
+cpu = "1000m"
+disk = "10Gi"
+# Enable memory monitoring
+memoryLimit = "2Gi"
+swapLimit = "512Mi"
+
+# Networking configuration
+[networking]
+serviceName = "cfi-handbook-app"
+# Allow specific origins for security
+allowedOrigins = [
+  "https://*.railway.app",
+  "https://cfipros.com",
+  "https://www.cfipros.com"
+]
+
+# Zero-downtime deployment strategy
+[deployment]
+strategy = "rolling"
+replicas = 1
+maxUnavailable = 0
+maxSurge = 1
+# Ensure health checks pass before traffic routing
+healthCheckGracePeriod = 90
+
+# Service dependencies
+[[dependencies]]
+name = "postgres"
+type = "postgresql"
+
+# Database connection pooling
+[dependencies.config]
+connectionLimit = 20
+idleTimeout = "10m"
+maxLifetime = "1h"
+
+# Monitoring and observability
+[monitoring]
+healthChecks = true
+metrics = true
+
+[monitoring.logs]
+level = "info"
+structured = true
+retention = "7d"
+
+# Security configuration
+[security]
+
+# Content Security Policy
+[security.headers]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-XSS-Protection = "1; mode=block"
+
+# Performance optimization
+[performance]
+compression = true
+caching = true
+staticAssetsCaching = "1y"
+apiResponseCaching = "5m"

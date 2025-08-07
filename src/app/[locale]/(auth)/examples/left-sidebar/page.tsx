@@ -21,7 +21,7 @@ const Sidebar = () => (
         Module 5: Assessment
       </a>
     </nav>
-    
+
     <div className="mt-8 p-4 bg-chart-1/10 border border-chart-1/20 rounded-lg">
       <h4 className="text-sm font-medium mb-2 text-chart-1">Progress</h4>
       <div className="w-full bg-muted rounded-full h-2 mb-2">
@@ -29,7 +29,7 @@ const Sidebar = () => (
       </div>
       <p className="text-xs text-muted-foreground">3 of 5 modules completed</p>
     </div>
-    
+
     <div className="mt-6">
       <h4 className="text-sm font-medium mb-3 text-foreground">Resources</h4>
       <div className="space-y-2">
@@ -60,15 +60,15 @@ const Sidebar = () => (
 const MainContent = () => (
   <div className="prose prose-sm max-w-none">
     <h1 className="text-3xl font-bold mb-6 text-foreground">Left Sidebar Layout</h1>
-    
+
     <div className="mb-8">
       <h2 className="text-2xl font-semibold mb-4 text-foreground">Module 1: Introduction</h2>
       <p className="text-muted-foreground mb-4">
-        The left sidebar layout is perfect for applications that need persistent navigation 
-        alongside the main content. This layout is commonly used in documentation sites, 
+        The left sidebar layout is perfect for applications that need persistent navigation
+        alongside the main content. This layout is commonly used in documentation sites,
         learning management systems, and administrative dashboards.
       </p>
-      
+
       <h3 className="text-xl font-semibold mb-3 text-foreground">Key Features</h3>
       <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-1">
         <li>Persistent navigation sidebar</li>
@@ -77,11 +77,11 @@ const MainContent = () => (
         <li>Scrollable content areas</li>
         <li>Theme-aware styling</li>
       </ul>
-      
+
       <div className="bg-muted p-6 rounded-lg mb-6">
         <h4 className="text-lg font-medium mb-3 text-foreground">Code Example</h4>
         <pre className="text-sm text-foreground overflow-x-auto">
-{`<LeftSidebarLayout
+          {`<LeftSidebarLayout
   locale="en"
   sidebar={<Sidebar />}
   sidebarWidth="md"
@@ -90,7 +90,7 @@ const MainContent = () => (
 </LeftSidebarLayout>`}
         </pre>
       </div>
-      
+
       <h3 className="text-xl font-semibold mb-3 text-foreground">Use Cases</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="p-4 border border-border rounded-lg">
@@ -118,11 +118,11 @@ const MainContent = () => (
           </p>
         </div>
       </div>
-      
+
       <div className="bg-chart-2/10 border border-chart-2/20 p-4 rounded-lg">
         <h4 className="text-sm font-medium mb-2 text-chart-2">💡 Pro Tip</h4>
         <p className="text-sm text-muted-foreground">
-          Use the left sidebar layout when your navigation is hierarchical and users 
+          Use the left sidebar layout when your navigation is hierarchical and users
           need to maintain context while browsing through different sections.
         </p>
       </div>
@@ -136,7 +136,7 @@ type PageProps = {
 
 export default async function LeftSidebarExamplePage({ params }: PageProps) {
   const { locale } = await params;
-  
+
   return (
     <LeftSidebarLayout
       locale={locale}

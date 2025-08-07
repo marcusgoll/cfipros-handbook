@@ -15,7 +15,7 @@ const LeftSidebar = () => (
         Section 3
       </a>
     </nav>
-    
+
     <div className="mt-8">
       <h4 className="text-sm font-medium mb-3 text-foreground">Quick Links</h4>
       <div className="space-y-1">
@@ -51,7 +51,7 @@ const RightSidebar = () => (
         Conclusion
       </a>
     </nav>
-    
+
     <div className="mt-8 p-4 bg-accent rounded-lg">
       <h4 className="text-sm font-medium mb-2 text-foreground">Pro Tip</h4>
       <p className="text-xs text-muted-foreground">
@@ -65,17 +65,17 @@ const RightSidebar = () => (
 const MainContent = () => (
   <div className="prose prose-sm max-w-none">
     <h1 className="text-3xl font-bold mb-6 text-foreground">Holy Grail Layout</h1>
-    
+
     <section id="intro" className="mb-8">
       <h2 className="text-2xl font-semibold mb-4 text-foreground">Introduction</h2>
       <p className="text-muted-foreground mb-4">
-        The Holy Grail layout is a classic web design pattern that provides a header, footer, 
-        and three columns: left sidebar, main content, and right sidebar. This layout is 
-        particularly useful for content-heavy applications where you need navigation, 
+        The Holy Grail layout is a classic web design pattern that provides a header, footer,
+        and three columns: left sidebar, main content, and right sidebar. This layout is
+        particularly useful for content-heavy applications where you need navigation,
         main content, and supplementary information.
       </p>
     </section>
-    
+
     <section id="overview" className="mb-8">
       <h2 className="text-2xl font-semibold mb-4 text-foreground">Layout Overview</h2>
       <p className="text-muted-foreground mb-4">
@@ -90,14 +90,14 @@ const MainContent = () => (
         <li>Footer with additional links</li>
       </ul>
     </section>
-    
+
     <section id="details" className="mb-8">
       <h2 className="text-2xl font-semibold mb-4 text-foreground">Implementation Details</h2>
       <p className="text-muted-foreground mb-4">
-        The layout uses CSS Flexbox for proper alignment and responsive behavior. 
+        The layout uses CSS Flexbox for proper alignment and responsive behavior.
         Both sidebars are optional and can be conditionally rendered based on your needs.
       </p>
-      
+
       <div className="bg-muted p-4 rounded-lg mb-4">
         <code className="text-sm text-foreground">
           {`<HolyGrailLayout
@@ -110,12 +110,12 @@ const MainContent = () => (
         </code>
       </div>
     </section>
-    
+
     <section id="conclusion" className="mb-8">
       <h2 className="text-2xl font-semibold mb-4 text-foreground">Conclusion</h2>
       <p className="text-muted-foreground">
-        The Holy Grail layout is perfect for documentation sites, dashboards, 
-        and content management systems where you need multiple areas of information 
+        The Holy Grail layout is perfect for documentation sites, dashboards,
+        and content management systems where you need multiple areas of information
         accessible simultaneously.
       </p>
     </section>
@@ -128,7 +128,7 @@ type PageProps = {
 
 export default async function HolyGrailExamplePage({ params }: PageProps) {
   const { locale } = await params;
-  
+
   return (
     <HolyGrailLayout
       locale={locale}

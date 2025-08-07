@@ -1,18 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { useState } from 'react';
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
-  SidebarNav,
   SidebarProvider,
   SidebarToggle,
 } from '@/components/ui/sidebar';
+import { cn } from '@/lib/utils';
 
 type HandbookLayoutProps = {
   children: React.ReactNode;
@@ -92,12 +90,12 @@ export function HandbookLayout({ children, locale }: HandbookLayoutProps) {
                       'block px-3 py-2 text-sm font-medium rounded-md transition-colors',
                       pathname === unit.href
                         ? 'bg-primary/10 text-primary'
-                        : 'hover:bg-muted text-foreground'
+                        : 'hover:bg-muted text-foreground',
                     )}
                   >
                     {unit.title}
                   </Link>
-                  
+
                   {unit.lessons.map((lesson, lessonIndex) => {
                     const isActive = pathname === lesson.href;
                     return (
@@ -108,7 +106,7 @@ export function HandbookLayout({ children, locale }: HandbookLayoutProps) {
                           'block pl-6 pr-3 py-1.5 text-sm rounded-md transition-colors',
                           isActive
                             ? 'bg-primary/10 text-primary font-medium'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-muted',
                         )}
                       >
                         {lesson.title}
@@ -126,7 +124,7 @@ export function HandbookLayout({ children, locale }: HandbookLayoutProps) {
             <SidebarToggle />
             <span className="text-sm font-medium">Table of Contents</span>
           </div>
-          
+
           <div className="p-6">
             {children}
           </div>

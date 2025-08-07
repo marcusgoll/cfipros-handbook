@@ -41,7 +41,7 @@ export type ButtonProps = {
 
 const Button = ({ ref, className, variant, size, asChild = false, children, ...props }: ButtonProps & { ref?: React.RefObject<HTMLButtonElement | null> }) => {
   const Comp = asChild ? Slot : 'button';
-  
+
   if (variant === 'posthog') {
     return (
       <Comp
@@ -55,7 +55,7 @@ const Button = ({ ref, className, variant, size, asChild = false, children, ...p
       </Comp>
     );
   }
-  
+
   return (
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}

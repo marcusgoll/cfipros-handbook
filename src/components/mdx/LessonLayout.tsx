@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-interface LessonLayoutProps {
+type LessonLayoutProps = {
   children: React.ReactNode;
   metadata: {
     title: string;
@@ -23,7 +23,7 @@ interface LessonLayoutProps {
     id: string;
     title: string;
   };
-}
+};
 
 export function LessonLayout({
   children,
@@ -60,7 +60,10 @@ export function LessonLayout({
             </p>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <span className="text-muted-foreground">Duration: {metadata.duration}</span>
+            <span className="text-muted-foreground">
+              Duration:
+              {metadata.duration}
+            </span>
           </div>
         </div>
       </div>
@@ -76,26 +79,32 @@ export function LessonLayout({
 
       {/* Navigation and Actions */}
       <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t">
-        {previousLesson ? (
-          <Button asChild variant="outline">
-            <Link href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}>
-              ← {previousLesson.title}
-            </Link>
-          </Button>
-        ) : (
-          <Button asChild variant="outline">
-            <Link href={`/${locale}/handbook/private-pilot/${unitId}`}>
-              ← Back to Unit
-            </Link>
-          </Button>
-        )}
-        
+        {previousLesson
+          ? (
+              <Button asChild variant="outline">
+                <Link href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}>
+                  ←
+                  {' '}
+                  {previousLesson.title}
+                </Link>
+              </Button>
+            )
+          : (
+              <Button asChild variant="outline">
+                <Link href={`/${locale}/handbook/private-pilot/${unitId}`}>
+                  ← Back to Unit
+                </Link>
+              </Button>
+            )}
+
         <div className="flex-1" />
-        
+
         {nextLesson && (
           <Button asChild>
             <Link href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}>
-              {nextLesson.title} →
+              {nextLesson.title}
+              {' '}
+              →
             </Link>
           </Button>
         )}
@@ -107,7 +116,10 @@ export function LessonLayout({
           <div className="flex items-center justify-between text-sm">
             <span className="text-primary font-medium">Lesson Progress</span>
             {nextLesson && (
-              <span className="text-muted-foreground">Next: {nextLesson.title}</span>
+              <span className="text-muted-foreground">
+                Next:
+                {nextLesson.title}
+              </span>
             )}
           </div>
         </CardContent>

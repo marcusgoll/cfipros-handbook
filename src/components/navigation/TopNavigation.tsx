@@ -55,7 +55,7 @@ export function TopNavigation({ locale }: TopNavigationProps) {
 
           {/* Main Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -64,8 +64,8 @@ export function TopNavigation({ locale }: TopNavigationProps) {
                   item.active && isHandbookPage
                     ? 'bg-muted text-foreground border-b-2 border-chart-1 rounded-b-none'
                     : item.active
-                    ? 'bg-muted text-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      ? 'bg-muted text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent',
                 )}
               >
                 {item.title}
@@ -77,7 +77,7 @@ export function TopNavigation({ locale }: TopNavigationProps) {
           <div className="flex items-center gap-2">
             {/* Theme Switcher */}
             <ThemeSwitcher />
-            
+
             {/* User Menu */}
             <SignedIn>
               <UserButton

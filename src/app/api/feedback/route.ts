@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || undefined;
     const forwardedFor = request.headers.get('x-forwarded-for');
     const ipAddress = forwardedFor
-      ? forwardedFor.split(',')[0].trim()
+      ? forwardedFor.split(',')[0]?.trim()
       : request.headers.get('x-real-ip')
         || undefined;
     const referrer = request.headers.get('referer') || undefined;

@@ -1,12 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
 import { createErrorResponse, ErrorHandler } from '@/lib/error-handling';
-
-const uploadSchema = z.object({
-  file: z.instanceof(File),
-});
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_TYPES = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
@@ -74,8 +69,7 @@ export async function POST(request: NextRequest) {
 
     for (const file of validatedFiles) {
       try {
-        const buffer = await file.arrayBuffer();
-        const bytes = new Uint8Array(buffer);
+        await file.arrayBuffer();
 
         const fileName = `${userId}-${Date.now()}-${file.name}`;
 

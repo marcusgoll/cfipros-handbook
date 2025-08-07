@@ -6,17 +6,17 @@ const MainContent = () => (
     <div className="text-center mb-12">
       <h1 className="text-4xl font-bold mb-6 text-foreground">Full Width Layout</h1>
       <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-        The full width layout maximizes screen real estate for content that benefits from 
+        The full width layout maximizes screen real estate for content that benefits from
         horizontal space like dashboards, data tables, and visual presentations.
       </p>
     </div>
-    
+
     {/* Hero Section */}
     <section className="mb-16 p-8 bg-gradient-to-r from-chart-1/10 to-chart-2/10 rounded-lg">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4 text-foreground">Maximize Your Content</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Full width layouts are perfect for showcasing large amounts of data, 
+          Full width layouts are perfect for showcasing large amounts of data,
           creating immersive experiences, or building landing pages.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
@@ -32,7 +32,7 @@ const MainContent = () => (
         </div>
       </div>
     </section>
-    
+
     {/* Features Grid */}
     <section className="mb-16">
       <h2 className="text-2xl font-bold mb-8 text-center text-foreground">Layout Features</h2>
@@ -48,7 +48,7 @@ const MainContent = () => (
             Configure maximum width constraints from full width to centered containers.
           </p>
         </div>
-        
+
         <div className="p-6 border border-border rounded-lg hover:shadow-md transition-shadow">
           <div className="w-12 h-12 bg-chart-2 rounded-lg mb-4 flex items-center justify-center">
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,7 +60,7 @@ const MainContent = () => (
             Automatically adapts to different screen sizes with mobile-first approach.
           </p>
         </div>
-        
+
         <div className="p-6 border border-border rounded-lg hover:shadow-md transition-shadow">
           <div className="w-12 h-12 bg-chart-3 rounded-lg mb-4 flex items-center justify-center">
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,7 +74,7 @@ const MainContent = () => (
         </div>
       </div>
     </section>
-    
+
     {/* Data Visualization Example */}
     <section className="mb-16">
       <h2 className="text-2xl font-bold mb-8 text-center text-foreground">Perfect for Data Display</h2>
@@ -129,7 +129,7 @@ const MainContent = () => (
         </div>
       </div>
     </section>
-    
+
     {/* Implementation Example */}
     <section className="mb-16">
       <h2 className="text-2xl font-bold mb-8 text-center text-foreground">Implementation Options</h2>
@@ -137,16 +137,16 @@ const MainContent = () => (
         <div className="p-6 bg-muted rounded-lg">
           <h3 className="text-lg font-semibold mb-4 text-foreground">Basic Usage</h3>
           <pre className="text-sm text-foreground overflow-x-auto">
-{`<FullWidthLayout locale="en">
+            {`<FullWidthLayout locale="en">
   <YourContent />
 </FullWidthLayout>`}
           </pre>
         </div>
-        
+
         <div className="p-6 bg-muted rounded-lg">
           <h3 className="text-lg font-semibold mb-4 text-foreground">With Constraints</h3>
           <pre className="text-sm text-foreground overflow-x-auto">
-{`<FullWidthLayout 
+            {`<FullWidthLayout 
   locale="en"
   maxWidth="7xl"
   padding="lg"
@@ -157,7 +157,7 @@ const MainContent = () => (
         </div>
       </div>
     </section>
-    
+
     {/* Call to Action */}
     <section className="text-center">
       <div className="p-8 bg-gradient-to-r from-chart-4/10 to-chart-5/10 rounded-lg">
@@ -184,7 +184,7 @@ type PageProps = {
 
 export default async function FullWidthExamplePage({ params }: PageProps) {
   const { locale } = await params;
-  
+
   return (
     <FullWidthLayout
       locale={locale}
