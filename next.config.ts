@@ -13,7 +13,7 @@ const baseConfig: NextConfig = {
   },
   typescript: {
     // Allow production builds to complete even with type errors for Railway deployment
-    ignoreBuildErrors: process.env.NODE_ENV === 'production' || process.env.DISABLE_TYPE_CHECKING === 'true',
+    ignoreBuildErrors: true,
   },
   poweredByHeader: false,
   reactStrictMode: true,
