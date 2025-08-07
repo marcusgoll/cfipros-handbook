@@ -5,7 +5,7 @@ import { dbPool } from '@/lib/database/connection-pool';
 import { counterSchema } from '@/models/Schema';
 
 // Health check endpoint for Railway zero-downtime deployments
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const startTime = Date.now();
 
   // Initialize health check response

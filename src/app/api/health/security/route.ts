@@ -140,7 +140,7 @@ async function validateSecurityHeaders(): Promise<SecurityCheckResult> {
     },
     hstsStatus: {
       isEnabled: hstsEnabled,
-      maxAge,
+      maxAge: maxAge || null,
       includeSubDomains,
       preload,
     },
@@ -149,7 +149,7 @@ async function validateSecurityHeaders(): Promise<SecurityCheckResult> {
   };
 }
 
-async function handleSecurityCheck(request: NextRequest): Promise<NextResponse> {
+async function handleSecurityCheck(_request: NextRequest): Promise<NextResponse> {
   try {
     const checkResult = await validateSecurityHeaders();
 

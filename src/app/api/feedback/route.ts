@@ -33,18 +33,20 @@ export async function POST(request: NextRequest) {
 
     // Insert feedback into database
     const feedbackData = {
-      pageId: body.pageId,
+      pageUrl: body.pageId, // Map pageId to pageUrl for database schema compatibility
       userId: userId || undefined,
       sessionId: effectiveSessionId,
       feedbackType: body.feedbackType,
-      helpful: body.helpful !== undefined ? (body.helpful ? 1 : 0) : undefined,
-      emoji: body.emoji || undefined,
-      comment: body.comment?.trim() || undefined,
-      difficulty: body.difficulty || undefined,
-      completionTime: body.completionTime || undefined,
-      userAgent,
-      ipAddress,
-      referrer,
+      message: body.comment?.trim() || undefined,
+      metadata: {
+        helpful: body.helpful !== undefined ? (body.helpful ? 1 : 0) : undefined,
+        emoji: body.emoji || undefined,
+        difficulty: body.difficulty || undefined,
+        completionTime: body.completionTime || undefined,
+        userAgent,
+        ipAddress,
+        referrer,
+      },
     };
 
     const [result] = await db
@@ -54,7 +56,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      feedbackId: result.id,
+      feedbackId: result?.id,
       message: 'Feedback submitted successfully',
     }, { status: 201 });
   } catch (error) {
@@ -84,13 +86,13 @@ export async function GET(request: NextRequest) {
     const feedback = await db
       .select()
       .from(pageFeedbackSchema)
-      .where(eq(pageFeedbackSchema.pageId, pageId))
+      .where(eq(pageFeedbackSchema.pageUrl, pageId))
       .orderBy(desc(pageFeedbackSchema.createdAt))
       .limit(100);
 
     const totalFeedback = feedback.length;
-    const positiveCount = feedback.filter(f => f.feedbackType === 'positive' || f.helpful === 1).length;
-    const negativeCount = feedback.filter(f => f.feedbackType === 'negative' || f.helpful === 0).length;
+    const positiveCount = feedback.filter(f => f.feedbackType === 'positive' || (f.metadata as any)?.helpful === 1).length;
+    const negativeCount = feedback.filter(f => f.feedbackType === 'negative' || (f.metadata as any)?.helpful === 0).length;
     const helpfulPercentage = totalFeedback > 0 ? Math.round((positiveCount / totalFeedback) * 100) : 0;
 
     return NextResponse.json({
