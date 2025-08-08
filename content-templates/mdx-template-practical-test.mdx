@@ -1,0 +1,152 @@
+---
+title: "Practical Test Prep: Topic Name"
+description: "Checkride preparation for this specific area"
+category: "practical-test"
+section: "checkride-prep" 
+order: 1
+status: "published"
+test_type: "practical"              # practical | oral | written
+acs_task: "PA.I.B"                 # Primary ACS task code
+difficulty: "advanced"
+checkride_focus: true              # Marks as checkride-specific content
+common_errors: 
+  - "Error 1 description"
+  - "Error 2 description"
+examiner_questions:
+  - "Common oral question 1"
+  - "Common oral question 2"
+---
+
+# Practical Test Prep: {frontmatter.title.replace('Practical Test Prep: ', '')}
+
+## 🎯 Checkride Focus Area
+
+This lesson prepares you for the **{frontmatter.acs_task}** task on your Private Pilot practical test.
+
+## ACS Standards & Requirements
+
+### Knowledge Requirements
+The examiner expects you to demonstrate knowledge of:
+
+- [ ] **Fundamental Principles** - Core concepts and theory
+- [ ] **Regulatory Requirements** - Applicable FARs and standards  
+- [ ] **Operational Procedures** - Normal and emergency operations
+- [ ] **Risk Management** - Hazard identification and mitigation
+
+### Skill Requirements  
+You must demonstrate the ability to:
+
+- [ ] **Plan and Execute** - Proper planning and execution techniques
+- [ ] **Monitor and Adjust** - Situational awareness and adaptation
+- [ ] **Communicate** - Clear, accurate communication
+- [ ] **Apply Sound Judgment** - Risk assessment and decision making
+
+## Common Examiner Questions
+
+### Oral Examination Topics
+
+{frontmatter.examiner_questions.map((question, index) => (
+  <div key={index}>
+    <h4>Q{index + 1}: {question}</h4>
+    <p><strong>Expected Answer Points:</strong></p>
+    <ul>
+      <li>Key point 1</li>
+      <li>Key point 2</li>
+      <li>Key point 3</li>
+    </ul>
+  </div>
+))}
+
+### Scenario-Based Questions
+The examiner may present scenarios such as:
+
+1. **Scenario 1**: "What would you do if..."
+   - **Answer Approach**: Step-by-step response methodology
+
+2. **Scenario 2**: "How would you handle..."
+   - **Answer Approach**: Risk assessment and decision process
+
+## Practical Test Performance
+
+### Flight Test Elements
+During the flight portion, demonstrate:
+
+#### Setup and Planning
+- [ ] Proper preflight planning and preparation
+- [ ] Appropriate charts and references available
+- [ ] Risk assessment completed
+
+#### Execution Standards
+- [ ] Altitude: ±100 feet (or as specified)
+- [ ] Airspeed: ±10 knots (or as specified)  
+- [ ] Heading: ±10° (or as specified)
+- [ ] Configuration: Appropriate for conditions
+
+#### Risk Management
+- [ ] Collision avoidance scanning
+- [ ] Weather awareness and decisions
+- [ ] Appropriate use of resources
+- [ ] Workload management
+
+## Common Errors to Avoid
+
+{frontmatter.common_errors.map((error, index) => (
+  <div key={index}>
+    <h4>⚠️ Error {index + 1}: {error}</h4>
+    <p><strong>How to Avoid:</strong> Prevention strategy and proper technique</p>
+  </div>
+))}
+
+## Examiner Expectations
+
+### What Impresses Examiners
+- **Thorough Knowledge**: Understanding beyond memorization
+- **Safety Focus**: Always prioritizing safety in decisions
+- **Professional Attitude**: Confidence without overconfidence
+- **Practical Application**: Connecting theory to real-world flying
+
+### Red Flags to Avoid
+- **Unsafe Attitudes**: Overconfidence or excessive caution
+- **Poor Communication**: Unclear or incorrect radio calls
+- **Lack of Preparation**: Missing required materials or knowledge gaps
+- **Poor Airmanship**: Not maintaining aircraft control or situational awareness
+
+## Study Recommendations
+
+### 30 Days Before Test
+- [ ] Complete all related lessons in this section
+- [ ] Practice oral questions with CFI
+- [ ] Review ACS standards thoroughly
+
+### 7 Days Before Test  
+- [ ] Final review of key concepts
+- [ ] Practice flight maneuvers
+- [ ] Organize test materials and documents
+
+### Day of Test
+- [ ] Review weather and NOTAMs
+- [ ] Complete aircraft preflight inspection
+- [ ] Have all required documents organized
+
+## Quick Reference
+
+### ACS Task: **{frontmatter.acs_task}**
+
+**Performance Standards:**
+- Altitude: ±100 ft
+- Airspeed: ±10 kts
+- Heading: ±10°
+
+**Key Regulations:**
+- 14 CFR Part 61
+- 14 CFR Part 91
+
+**Required Equipment:**
+- Current charts
+- Aircraft documents
+- Personal documents
+
+---
+
+**Checkride Success Rate**: Students who master this content have a 95%+ pass rate  
+**Practice Recommendation**: Minimum 3 practice sessions with CFI before test

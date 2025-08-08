@@ -130,3 +130,4 @@ logger.fatal('Database connection pool exhausted', {
 ## Version Control
 
 - Commit frequently so that we have proper version control of our web app.
+- After a big edit and update please run our sub agents for version control and deployment.

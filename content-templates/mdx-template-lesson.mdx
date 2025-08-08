@@ -1,0 +1,133 @@
+---
+title: "Lesson Title Here"
+description: "Brief description of what students will learn in this lesson"
+duration: "30 min"
+category: "category-folder-name"  # Must match folder name (e.g., "aircraft-systems")
+section: "section-name"            # Optional: subsection grouping
+order: 1                          # Order within the category
+status: "published"               # published | draft | review
+difficulty: "beginner"            # beginner | intermediate | advanced
+prerequisites: []                 # Array of required prior lessons
+objectives:                       # Learning objectives
+  - "Explain the primary concept"
+  - "Identify key components"
+  - "Demonstrate practical application"
+keywords:                         # SEO and search keywords
+  - "keyword1"
+  - "keyword2" 
+  - "keyword3"
+acs_codes:                        # Applicable ACS task codes
+  - "PA.I.B.K1"
+  - "PA.I.B.K2"
+far_references:                   # Relevant FAR sections
+  - "14 CFR 91.3"
+  - "14 CFR 61.87"
+# Optional metadata
+author: "CFI Name"
+last_updated: "2025-08-08"
+version: "1.0"
+---
+
+# {frontmatter.title}
+
+## Introduction
+
+Brief introduction explaining what this lesson covers and why it's important for private pilots.
+
+## Learning Objectives
+
+By the end of this lesson, you should be able to:
+
+{frontmatter.objectives.map((objective, index) => (
+  <div key={index}>• {objective}</div>
+))}
+
+## Key Concepts
+
+### Primary Concept Name
+
+Explain the main concept with clear, practical examples.
+
+**Important Points:**
+- Key point 1
+- Key point 2  
+- Key point 3
+
+### Secondary Concept
+
+Additional concept explanation with aviation-specific examples.
+
+## Practical Application
+
+### Real-World Examples
+
+Describe how this concept applies in actual flight operations.
+
+### Common Scenarios
+
+- **Scenario 1**: Description and explanation
+- **Scenario 2**: Description and explanation
+
+## Regulatory Requirements
+
+{frontmatter.far_references && (
+  <div>
+    <h4>Applicable Regulations:</h4>
+    <ul>
+      {frontmatter.far_references.map((ref, index) => (
+        <li key={index}>{ref}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
+## Memory Aids & Tips
+
+### Mnemonics
+- **GUMPS**: Gas, Undercarriage, Mixture, Prop, Seatbelts
+- Create memorable acronyms for key procedures
+
+### Study Tips
+- Practice recommendations
+- Common mistakes to avoid
+- Review techniques
+
+## Knowledge Check
+
+### Review Questions
+
+1. **Question 1**: Multiple choice or short answer question
+   - Answer explanation
+
+2. **Question 2**: Practical application question  
+   - Answer explanation
+
+### ACS Standards
+
+{frontmatter.acs_codes && (
+  <div>
+    <p>This lesson addresses the following ACS standards:</p>
+    <ul>
+      {frontmatter.acs_codes.map((code, index) => (
+        <li key={index}><strong>{code}</strong></li>
+      ))}
+    </ul>
+  </div>
+)}
+
+## Further Study
+
+### Recommended Resources
+- FAA Handbook references
+- Additional reading materials
+- Video resources
+
+### Next Steps
+- Link to related lessons
+- Suggested practice exercises
+
+---
+
+**Prerequisites**: {frontmatter.prerequisites.length > 0 ? frontmatter.prerequisites.join(', ') : 'None'}  
+**Estimated Study Time**: {frontmatter.duration}  
+**Last Updated**: {frontmatter.last_updated}

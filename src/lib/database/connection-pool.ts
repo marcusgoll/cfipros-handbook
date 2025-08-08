@@ -170,7 +170,7 @@ class DatabaseConnectionPool {
     // Skip health checks if database URL suggests localhost (development/misconfiguration)
     const databaseUrl = process.env.DATABASE_URL || '';
     const isLocalhost = databaseUrl.includes('127.0.0.1') || databaseUrl.includes('localhost');
-    
+
     if (isLocalhost && process.env.NODE_ENV === 'production') {
       console.warn('⚠️  Database health checks disabled: DATABASE_URL points to localhost in production');
       console.warn('💡 Please update DATABASE_URL to point to your Supabase database');

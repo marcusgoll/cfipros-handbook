@@ -1,7 +1,20 @@
 import type { MDXComponents } from 'mdx/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ContextualParagraph } from './ContextualText';
+import { ProgressIndicator, CircularProgress, LessonProgressRing } from './ProgressIndicator';
+import { InteractiveElements } from './InteractiveElements';
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+type MDXComponentsProps = {
+  locale?: string;
+  enableContextLinking?: boolean;
+};
+
+export function useMDXComponents(
+  components: MDXComponents, 
+  options: MDXComponentsProps = {}
+): MDXComponents {
+  const { locale = 'en', enableContextLinking = true } = options;
+  
   return {
     ...components,
     h1: ({ children }) => (
@@ -13,9 +26,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: ({ children }) => (
       <h3 className="text-xl font-semibold tracking-tight mt-6 mb-3">{children}</h3>
     ),
-    p: ({ children }) => (
-      <p className="text-base leading-7 mb-4">{children}</p>
+    h4: ({ children }) => (
+      <h4 className="text-lg font-semibold tracking-tight mt-4 mb-2">{children}</h4>
     ),
+    // Enhanced paragraph with context linking
+    p: ({ children }) => {
+      if (!enableContextLinking || typeof children !== 'string') {
+        return <p className="text-base leading-7 mb-4">{children}</p>;
+      }
+      
+      return (
+        <ContextualParagraph 
+          locale={locale}
+          className="text-base leading-7 mb-4"
+          config={{ maxLinksPerParagraph: 2 }}
+        >
+          {children}
+        </ContextualParagraph>
+      );
+    },
     ul: ({ children }) => (
       <ul className="list-disc list-inside space-y-2 mb-4">{children}</ul>
     ),
@@ -46,9 +75,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => (
       <hr className="border-t border-border my-8" />
     ),
+    
+    // Aviation-specific components
     Card,
     CardContent,
     CardHeader,
     CardTitle,
+    
+    // Progress tracking components
+    ProgressIndicator,
+    CircularProgress,
+    LessonProgressRing,
+    
+    // Interactive learning components
+    ...InteractiveElements,
   };
 }
