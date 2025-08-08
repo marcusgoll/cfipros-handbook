@@ -125,7 +125,8 @@
       "Bash(timeout:*)",
       "Bash(npm audit:*)",
       "Bash(npm view:*)",
-      "Bash(npx prettier:*)"
+      "Bash(npx prettier:*)",
+      "Bash(git fetch:*)"
     ],
     "deny": []
   },
