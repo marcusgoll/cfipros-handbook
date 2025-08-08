@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 
 type Question = {
@@ -24,14 +24,14 @@ type KnowledgeCheckProps = {
   onComplete?: (score: number, passed: boolean) => void;
 };
 
-export function KnowledgeCheck({ 
-  questions, 
-  title = "Knowledge Check", 
+export function KnowledgeCheck({
+  questions,
+  title = 'Knowledge Check',
   passingScore = 70,
-  onComplete 
+  onComplete,
 }: KnowledgeCheckProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Array<number | null>>(new Array(questions.length).fill(null));
+  const [answers, setAnswers] = useState<Array<number | null>>(() => Array(questions.length).fill(null));
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
@@ -41,12 +41,12 @@ export function KnowledgeCheck({
 
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex) / questions.length) * 100;
-  
+
   // Calculate results
   const correctAnswers = answers.reduce((acc, answer, index) => {
-    return answer === questions[index]?.correctAnswer ? acc + 1 : acc;
+    return answer === questions[index]?.correctAnswer ? (acc || 0) + 1 : (acc || 0);
   }, 0);
-  const score = Math.round((correctAnswers / questions.length) * 100);
+  const score = Math.round(((correctAnswers || 0) / questions.length) * 100);
   const passed = score >= passingScore;
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export function KnowledgeCheck({
 
   const handleRestart = () => {
     setCurrentQuestionIndex(0);
-    setAnswers(new Array(questions.length).fill(null));
+    setAnswers(Array(questions.length).fill(null));
     setShowResults(false);
     setSelectedAnswer(null);
   };
@@ -96,35 +96,54 @@ export function KnowledgeCheck({
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span className="flex items-center gap-2">
-              {passed ? '🎉' : '📚'} {title} Results
+              {passed ? '🎉' : '📚'}
+              {' '}
+              {title}
+              {' '}
+              Results
             </span>
-            <Badge variant={passed ? "default" : "secondary"} className={
-              passed ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"
-            }>
-              {score}% {passed ? 'Passed' : 'Review Needed'}
+            <Badge
+              variant={passed ? 'default' : 'secondary'}
+              className={
+                passed ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
+              }
+            >
+              {score}
+              %
+              {passed ? 'Passed' : 'Review Needed'}
             </Badge>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Score Summary */}
           <div className={`p-4 rounded-lg ${
-            passed ? 'bg-green-50 border border-green-200 dark:bg-green-950/20' : 
-                    'bg-amber-50 border border-amber-200 dark:bg-amber-950/20'
-          }`}>
+            passed
+              ? 'bg-green-50 border border-green-200 dark:bg-green-950/20'
+              : 'bg-amber-50 border border-amber-200 dark:bg-amber-950/20'
+          }`}
+          >
             <div className="flex items-center justify-between mb-3">
               <span className="font-medium">
-                {correctAnswers} of {questions.length} correct
+                {correctAnswers}
+                {' '}
+                of
+                {questions.length}
+                {' '}
+                correct
               </span>
-              <span className="text-2xl font-bold">{score}%</span>
+              <span className="text-2xl font-bold">
+                {score}
+                %
+              </span>
             </div>
             <Progress value={score} className="h-2" />
             <p className={`mt-3 text-sm ${
               passed ? 'text-green-700 dark:text-green-300' : 'text-amber-700 dark:text-amber-300'
-            }`}>
-              {passed ? 
-                'Great work! You\'ve mastered this content.' : 
-                `You need ${passingScore}% to pass. Review the material and try again.`
-              }
+            }`}
+            >
+              {passed
+                ? 'Great work! You\'ve mastered this content.'
+                : `You need ${passingScore}% to pass. Review the material and try again.`}
             </p>
           </div>
 
@@ -134,37 +153,50 @@ export function KnowledgeCheck({
             {questions.map((question, index) => {
               const userAnswer = answers[index];
               const isCorrect = userAnswer !== null && userAnswer === question.correctAnswer;
-              
+
               return (
-                <Card key={question.id} className={`border-l-4 ${
-                  isCorrect ? 'border-l-green-500' : 'border-l-red-500'
-                }`}>
+                <Card
+                  key={question.id}
+                  className={`border-l-4 ${
+                    isCorrect ? 'border-l-green-500' : 'border-l-red-500'
+                  }`}
+                >
                   <CardContent className="p-4">
                     <div className="flex items-start gap-3">
                       <span className={`text-lg ${
                         isCorrect ? 'text-green-600' : 'text-red-600'
-                      }`}>
+                      }`}
+                      >
                         {isCorrect ? '✅' : '❌'}
                       </span>
                       <div className="flex-1">
-                        <h4 className="font-medium mb-2">Q{index + 1}: {question.question}</h4>
+                        <h4 className="font-medium mb-2">
+                          Q
+                          {index + 1}
+                          :
+                          {question.question}
+                        </h4>
                         <div className="text-sm space-y-1">
                           <p>
-                            <strong>Your answer:</strong>{' '}
+                            <strong>Your answer:</strong>
+                            {' '}
                             <span className={isCorrect ? 'text-green-700' : 'text-red-700'}>
-                              {userAnswer !== null ? question.options[userAnswer] : 'No answer'}
+                              {userAnswer !== null && userAnswer !== undefined ? question.options[userAnswer] : 'No answer'}
                             </span>
                           </p>
                           {!isCorrect && (
                             <p>
-                              <strong>Correct answer:</strong>{' '}
+                              <strong>Correct answer:</strong>
+                              {' '}
                               <span className="text-green-700">
                                 {question.options[question.correctAnswer]}
                               </span>
                             </p>
                           )}
                           <p className="text-muted-foreground pt-2">
-                            <strong>Explanation:</strong> {question.explanation}
+                            <strong>Explanation:</strong>
+                            {' '}
+                            {question.explanation}
                           </p>
                         </div>
                       </div>
@@ -196,41 +228,54 @@ export function KnowledgeCheck({
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2">
-            🧠 {title}
+            🧠
+            {' '}
+            {title}
           </span>
           <Badge variant="outline">
-            {currentQuestionIndex + 1} of {questions.length}
+            {currentQuestionIndex + 1}
+            {' '}
+            of
+            {questions.length}
           </Badge>
         </CardTitle>
-        
+
         {/* Progress Bar */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm text-muted-foreground">
             <span>Progress</span>
-            <span>{Math.round(progress)}%</span>
+            <span>
+              {Math.round(progress)}
+              %
+            </span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         {/* Question */}
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Badge variant="secondary" className="text-xs">
-              {currentQuestion.category}
+              {currentQuestion?.category}
             </Badge>
-            <Badge variant="outline" className={`text-xs ${
-              currentQuestion.difficulty === 'hard' ? 'border-red-300 text-red-700' :
-              currentQuestion.difficulty === 'medium' ? 'border-amber-300 text-amber-700' :
-              'border-green-300 text-green-700'
-            }`}>
-              {currentQuestion.difficulty}
+            <Badge
+              variant="outline"
+              className={`text-xs ${
+                currentQuestion?.difficulty === 'hard'
+                  ? 'border-red-300 text-red-700'
+                  : currentQuestion?.difficulty === 'medium'
+                    ? 'border-amber-300 text-amber-700'
+                    : 'border-green-300 text-green-700'
+              }`}
+            >
+              {currentQuestion?.difficulty}
             </Badge>
           </div>
-          
+
           <h3 className="text-lg font-medium mb-4">
-            {currentQuestion.question}
+            {currentQuestion?.question}
           </h3>
         </div>
 
@@ -250,7 +295,8 @@ export function KnowledgeCheck({
                 selectedAnswer === index
                   ? 'bg-primary border-primary'
                   : 'border-muted-foreground'
-              }`}>
+              }`}
+              >
                 {selectedAnswer === index && (
                   <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
                 )}
@@ -285,7 +331,7 @@ export function KnowledgeCheck({
           >
             ← Previous
           </Button>
-          
+
           <Button
             onClick={handleNext}
             disabled={selectedAnswer === null}
