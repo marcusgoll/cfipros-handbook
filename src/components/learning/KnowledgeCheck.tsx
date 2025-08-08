@@ -31,7 +31,7 @@ export function KnowledgeCheck({
   onComplete,
 }: KnowledgeCheckProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Array<number | null>>(() => Array(questions.length).fill(null));
+  const [answers, setAnswers] = useState<Array<number | null>>(() => Array(questions.length).fill(null) as (number | null)[]);
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
@@ -85,7 +85,7 @@ export function KnowledgeCheck({
 
   const handleRestart = () => {
     setCurrentQuestionIndex(0);
-    setAnswers(Array(questions.length).fill(null));
+    setAnswers(Array(questions.length).fill(null) as (number | null)[]);
     setShowResults(false);
     setSelectedAnswer(null);
   };
@@ -281,7 +281,7 @@ export function KnowledgeCheck({
 
         {/* Answer Options */}
         <div className="space-y-3">
-          {currentQuestion.options.map((option, index) => (
+          {currentQuestion?.options.map((option, index) => (
             <label
               key={index}
               className={`flex items-center space-x-3 p-4 rounded-lg cursor-pointer transition-all ${
@@ -309,14 +309,14 @@ export function KnowledgeCheck({
         </div>
 
         {/* Hint */}
-        {currentQuestion.hint && (
+        {currentQuestion?.hint && (
           <details className="group">
             <summary className="cursor-pointer text-sm text-primary hover:underline">
               💡 Need a hint?
             </summary>
             <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-950/20">
               <p className="text-sm text-blue-800 dark:text-blue-200">
-                {currentQuestion.hint}
+                {currentQuestion?.hint}
               </p>
             </div>
           </details>

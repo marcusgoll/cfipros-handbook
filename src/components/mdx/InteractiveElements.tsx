@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Badge } from '@/components/ui/badge';
 
 // Knowledge Check Question Component (Khan Academy style)
 export function KnowledgeCheck({
@@ -12,7 +12,7 @@ export function KnowledgeCheck({
   options,
   correctAnswer,
   explanation,
-  hint
+  hint,
 }: {
   question: string;
   options: string[];
@@ -48,7 +48,7 @@ export function KnowledgeCheck({
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="font-medium">{question}</p>
-        
+
         <div className="space-y-2">
           {options.map((option, index) => (
             <label
@@ -58,11 +58,11 @@ export function KnowledgeCheck({
                   ? index === correctAnswer
                     ? 'bg-green-100 border border-green-300 dark:bg-green-950/30 dark:border-green-700'
                     : selectedAnswer === index && !isCorrect
-                    ? 'bg-red-100 border border-red-300 dark:bg-red-950/30 dark:border-red-700'
-                    : 'bg-gray-50 border border-gray-200 dark:bg-gray-800 dark:border-gray-700'
+                      ? 'bg-red-100 border border-red-300 dark:bg-red-950/30 dark:border-red-700'
+                      : 'bg-gray-50 border border-gray-200 dark:bg-gray-800 dark:border-gray-700'
                   : selectedAnswer === index
-                  ? 'bg-blue-100 border border-blue-300 dark:bg-blue-950/30 dark:border-blue-700'
-                  : 'bg-gray-50 border border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'
+                    ? 'bg-blue-100 border border-blue-300 dark:bg-blue-950/30 dark:border-blue-700'
+                    : 'bg-gray-50 border border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'
               }`}
             >
               <input
@@ -78,11 +78,12 @@ export function KnowledgeCheck({
                 showResult && index === correctAnswer
                   ? 'bg-green-500 border-green-500'
                   : showResult && selectedAnswer === index && !isCorrect
-                  ? 'bg-red-500 border-red-500'
-                  : selectedAnswer === index
-                  ? 'bg-blue-500 border-blue-500'
-                  : 'border-gray-300'
-              }`}>
+                    ? 'bg-red-500 border-red-500'
+                    : selectedAnswer === index
+                      ? 'bg-blue-500 border-blue-500'
+                      : 'border-gray-300'
+              }`}
+              >
                 {((showResult && index === correctAnswer) || (selectedAnswer === index)) && (
                   <div className="w-2 h-2 rounded-full bg-white"></div>
                 )}
@@ -100,53 +101,60 @@ export function KnowledgeCheck({
         </div>
 
         <div className="flex gap-2">
-          {!showResult ? (
-            <>
-              <Button 
-                onClick={handleSubmit} 
-                disabled={selectedAnswer === null}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                Check Answer
-              </Button>
-              {hint && (
-                <Button
-                  variant="outline"
-                  onClick={() => setShowHint(!showHint)}
-                >
-                  {showHint ? 'Hide Hint' : 'Show Hint'}
+          {!showResult
+            ? (
+                <>
+                  <Button
+                    onClick={handleSubmit}
+                    disabled={selectedAnswer === null}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    Check Answer
+                  </Button>
+                  {hint && (
+                    <Button
+                      variant="outline"
+                      onClick={() => setShowHint(!showHint)}
+                    >
+                      {showHint ? 'Hide Hint' : 'Show Hint'}
+                    </Button>
+                  )}
+                </>
+              )
+            : (
+                <Button variant="outline" onClick={handleReset}>
+                  Try Again
                 </Button>
               )}
-            </>
-          ) : (
-            <Button variant="outline" onClick={handleReset}>
-              Try Again
-            </Button>
-          )}
         </div>
 
         {showHint && hint && (
           <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg dark:bg-amber-950/20 dark:border-amber-800">
             <p className="text-sm text-amber-800 dark:text-amber-200">
-              <strong>💡 Hint:</strong> {hint}
+              <strong>💡 Hint:</strong>
+              {' '}
+              {hint}
             </p>
           </div>
         )}
 
         {showResult && (
           <div className={`p-4 rounded-lg ${
-            isCorrect 
+            isCorrect
               ? 'bg-green-50 border border-green-200 dark:bg-green-950/20 dark:border-green-800'
               : 'bg-red-50 border border-red-200 dark:bg-red-950/20 dark:border-red-800'
-          }`}>
+          }`}
+          >
             <p className={`font-medium ${
               isCorrect ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'
-            }`}>
+            }`}
+            >
               {isCorrect ? '✅ Correct!' : '❌ Incorrect'}
             </p>
             <p className={`mt-2 text-sm ${
               isCorrect ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300'
-            }`}>
+            }`}
+            >
               {explanation}
             </p>
           </div>
@@ -159,13 +167,13 @@ export function KnowledgeCheck({
 // Learning Objectives Checklist (Teachable style)
 export function LearningObjectives({
   objectives,
-  title = "Learning Objectives"
+  title = 'Learning Objectives',
 }: {
   objectives: string[];
   title?: string;
 }) {
-  const [checkedItems, setCheckedItems] = useState<boolean[]>(
-    new Array(objectives.length).fill(false)
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(() => 
+    Array(objectives.length).fill(false) as boolean[]
   );
 
   const toggleItem = (index: number) => {
@@ -186,19 +194,22 @@ export function LearningObjectives({
             {title}
           </span>
           <Badge variant="secondary" className="bg-purple-100 text-purple-800">
-            {completedCount}/{objectives.length}
+            {completedCount}
+            /
+            {objectives.length}
           </Badge>
         </CardTitle>
-        
+
         {/* Progress bar */}
         <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-          <div 
+          <div
             className="bg-purple-600 h-2 rounded-full transition-all duration-300"
             style={{ width: `${progressPercentage}%` }}
-          ></div>
+          >
+          </div>
         </div>
       </CardHeader>
-      
+
       <CardContent>
         <div className="space-y-3">
           {objectives.map((objective, index) => (
@@ -212,16 +223,17 @@ export function LearningObjectives({
                 className="mt-1"
               />
               <span className={`text-sm transition-colors ${
-                checkedItems[index] 
-                  ? 'line-through text-muted-foreground' 
+                checkedItems[index]
+                  ? 'line-through text-muted-foreground'
                   : 'group-hover:text-purple-700 dark:group-hover:text-purple-300'
-              }`}>
+              }`}
+              >
                 {objective}
               </span>
             </label>
           ))}
         </div>
-        
+
         {completedCount === objectives.length && (
           <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg dark:bg-green-950/20 dark:border-green-800">
             <p className="text-green-800 dark:text-green-200 font-medium">
@@ -238,7 +250,7 @@ export function LearningObjectives({
 export function ACSReference({
   code,
   title,
-  description
+  description,
 }: {
   code: string;
   title: string;
@@ -269,7 +281,7 @@ export function ACSReference({
 export function FARReference({
   section,
   title,
-  summary
+  summary,
 }: {
   section: string;
   title: string;
