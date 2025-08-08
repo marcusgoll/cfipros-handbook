@@ -362,8 +362,24 @@ class DatabaseConnectionPool {
 export const dbPool = DatabaseConnectionPool.getInstance();
 
 // Export for use in API routes and server-side code
-export const db = dbPool.getDatabase();
-export const pool = dbPool.getPool();
+// For MVP launch, make these exports safe for build time
+export const getDatabaseSafe = () => {
+  try {
+    return dbPool.isDatabaseAvailable() ? dbPool.getDatabase() : null;
+  } catch (error) {
+    console.warn('Database not available during build:', error.message);
+    return null;
+  }
+};
+
+export const getPoolSafe = () => {
+  try {
+    return dbPool.isDatabaseAvailable() ? dbPool.getPool() : null;
+  } catch (error) {
+    console.warn('Database pool not available during build:', error.message);
+    return null;
+  }
+};
 
 // Graceful shutdown handler
 if (typeof process !== 'undefined') {

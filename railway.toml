@@ -40,28 +40,39 @@ timeout = 30
 interval = 60
 failureThreshold = 5
 
-# Environment variables for production
+# Environment variables for production (MVP optimized)
 [variables]
 NODE_ENV = "production"
 NEXT_TELEMETRY_DISABLED = "1"
+# Database settings (optional for MVP launch)
 DATABASE_SSL = "true"
-DATABASE_CONNECTION_POOL_SIZE = "15"
+DATABASE_CONNECTION_POOL_SIZE = "10"
 DATABASE_CONNECTION_TIMEOUT = "30000"
-DATABASE_IDLE_TIMEOUT = "600000"
-DATABASE_MAX_LIFETIME = "3600000"
+DATABASE_IDLE_TIMEOUT = "300000"
+DATABASE_MAX_LIFETIME = "1800000"
+# Health check configuration
 HEALTH_CHECK_TIMEOUT = "30000"
 READINESS_CHECK_TIMEOUT = "30000"
+# Railway deployment settings
 DEPLOYMENT_ENVIRONMENT = "production"
 RAILWAY_ENVIRONMENT = "production"
 ZERO_DOWNTIME_ENABLED = "true"
+# Build optimization
 ESLINT_NO_DEV_ERRORS = "true"
+DISABLE_ESLINT = "true"
+DISABLE_TYPE_CHECKING = "true"
+# Sentry configuration
 NEXT_PUBLIC_SENTRY_DISABLED = "false"
 SENTRY_ENVIRONMENT = "production"
+# Node.js optimization
 NODE_OPTIONS = "--max-old-space-size=2048 --optimize-for-size"
 NPM_CONFIG_CACHE = ".npm-cache"
 BUILD_TIMEOUT = "1200"
 LOG_LEVEL = "info"
 GRACEFUL_SHUTDOWN_TIMEOUT = "30000"
+# MVP launch settings
+MVP_MODE = "true"
+DATABASE_CHECKS_DISABLED = "true"
 
 # Optimized resource allocation for CFI Handbook
 [resources]

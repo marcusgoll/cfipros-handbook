@@ -20,7 +20,13 @@ Sentry.init({
 
   // Custom sampling for different transaction types
   tracesSampler: (samplingContext) => {
-    const { name, op } = samplingContext.transactionContext;
+    // Handle undefined transactionContext safely for MVP launch
+    const transactionContext = samplingContext?.transactionContext;
+    if (!transactionContext) {
+      return isProduction ? 0.1 : 1.0;
+    }
+
+    const { name, op } = transactionContext;
 
     // Always sample critical aviation operations
     if (name?.includes('/handbook/') || name?.includes('/dashboard/')) {
@@ -94,6 +100,9 @@ Sentry.init({
     bufferSize: 30,
   },
 });
+
+// Export required hooks for Sentry
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
 // Custom error reporting functions
 export const reportHandbookError = (error: Error, context: Record<string, any> = {}) => {
