@@ -51,6 +51,14 @@ config:
   MD050:
     style: asterisk
 
+  # Rules to disable for aviation technical content
+  
+  # Allow HTML in markdown (needed for aviation diagrams and interactive elements)
+  MD033: false
+
+  # Allow duplicate headings (common in aviation procedures with repeated sections) 
+  MD024: false
+
 # Files to process
 
 globs:
@@ -79,14 +87,6 @@ ignores:
   - README_OLD.md
   - '*-report.md'
   - monitoring-setup.md
-
-  # Rules to disable for aviation technical content
-  
-  # Allow HTML in markdown (needed for aviation diagrams and interactive elements)
-  MD033: false
-
-  # Allow duplicate headings (common in aviation procedures with repeated sections) 
-  MD024: false
 
   # Allow multiple H1 headings (common in MDX lesson structure)
   MD025: false

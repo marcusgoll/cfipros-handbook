@@ -32,8 +32,9 @@ export function findTermMatches(text: string, config: ContextLinkConfig = DEFAUL
   let match;
   while ((match = termPattern.exec(text)) !== null) {
     const matchedText = match[1];
+    if (!matchedText) continue;
+    
     const term = findTermByText(matchedText);
-
     if (term && matchedText.length >= config.minTermLength) {
       matches.push({
         term: matchedText,
