@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { useLessonProgress } from '@/lib/progress-tracking';
-import { CircularProgress } from './ProgressIndicator';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+// Simplified for MVP - removed complex progress tracking
+import { CircularProgress } from "./ProgressIndicator";
 
 type LessonLayoutProps = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ type LessonLayoutProps = {
     duration: string;
     category: string;
     order: number;
-    difficulty?: 'beginner' | 'intermediate' | 'advanced';
+    difficulty?: "beginner" | "intermediate" | "advanced";
     estimatedTime?: number;
     objectives?: string[];
     prerequisites?: string[];
@@ -52,40 +52,36 @@ export function LessonLayout({
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showFocusMode, setShowFocusMode] = useState(false);
 
-  const {
-    progress,
-    startLesson,
-    completeLesson,
-    toggleBookmark,
-    updateTimeSpent,
-  } = useLessonProgress(lessonId);
+  // Simplified progress tracking for MVP
+  const progress = null;
+  const startLesson = () => {};
+  const completeLesson = () => {};
+  const toggleBookmark = () => false;
+  const updateTimeSpent = () => {};
 
   // Track reading progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min(Math.max(scrollTop / docHeight, 0), 1);
       setReadingProgress(progress * 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Start lesson on mount
+  // Start lesson on mount (simplified for MVP)
   useEffect(() => {
-    startLesson();
-  }, [lessonId, startLesson]);
+    // Basic lesson tracking
+  }, [lessonId]);
 
-  // Track time spent
+  // Track time spent (simplified for MVP)
   useEffect(() => {
-    const interval = setInterval(() => {
-      updateTimeSpent(1); // 1 minute
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, [updateTimeSpent]);
+    // Basic time tracking would go here
+  }, []);
 
   const handleBookmarkToggle = () => {
     const newBookmarked = toggleBookmark();
@@ -100,13 +96,15 @@ export function LessonLayout({
   };
 
   const difficultyColors = {
-    beginner: 'bg-green-100 text-green-800 dark:bg-green-900/30',
-    intermediate: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30',
-    advanced: 'bg-red-100 text-red-800 dark:bg-red-900/30',
+    beginner: "bg-green-100 text-green-800 dark:bg-green-900/30",
+    intermediate: "bg-amber-100 text-amber-800 dark:bg-amber-900/30",
+    advanced: "bg-red-100 text-red-800 dark:bg-red-900/30",
   };
 
   return (
-    <div className={`max-w-4xl mx-auto space-y-6 ${showFocusMode ? 'focus-mode' : ''}`}>
+    <div
+      className={`max-w-4xl mx-auto space-y-6 ${showFocusMode ? "focus-mode" : ""}`}
+    >
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
         <div
@@ -123,7 +121,7 @@ export function LessonLayout({
           onClick={() => setShowFocusMode(!showFocusMode)}
           className="bg-background/80 backdrop-blur"
         >
-          {showFocusMode ? '👁️ Normal' : '🎯 Focus'}
+          {showFocusMode ? "👁️ Normal" : "🎯 Focus"}
         </Button>
       </div>
 
@@ -131,11 +129,17 @@ export function LessonLayout({
         <>
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href={`/${locale}/handbook/private-pilot`} className="hover:text-foreground">
+            <Link
+              href={`/${locale}/handbook/private-pilot`}
+              className="hover:text-foreground"
+            >
               Private Pilot
             </Link>
             <span>›</span>
-            <Link href={`/${locale}/handbook/private-pilot/${unitId}`} className="hover:text-foreground">
+            <Link
+              href={`/${locale}/handbook/private-pilot/${unitId}`}
+              className="hover:text-foreground"
+            >
               {categoryTitle}
             </Link>
             <span>›</span>
@@ -150,15 +154,14 @@ export function LessonLayout({
                   <div className="flex items-center gap-2 mb-3">
                     <Badge variant="secondary">{metadata.category}</Badge>
                     {metadata.difficulty && (
-                      <Badge variant="secondary" className={difficultyColors[metadata.difficulty]}>
+                      <Badge
+                        variant="secondary"
+                        className={difficultyColors[metadata.difficulty]}
+                      >
                         {metadata.difficulty}
                       </Badge>
                     )}
-                    <Badge variant="outline">
-                      ⏱️
-                      {' '}
-                      {metadata.duration}
-                    </Badge>
+                    <Badge variant="outline">⏱️ {metadata.duration}</Badge>
                   </div>
 
                   <CardTitle className="text-2xl font-bold mb-2">
@@ -173,8 +176,11 @@ export function LessonLayout({
                     <div className="mt-4">
                       <h3 className="font-semibold mb-2">What you'll learn:</h3>
                       <ul className="text-sm space-y-1">
-                        {metadata.objectives.map((objective, index) => (
-                          <li key={index} className="flex items-center gap-2">
+                        {metadata.objectives.map((objective, objIndex) => (
+                          <li
+                            key={`objective-${objIndex}`}
+                            className="flex items-center gap-2"
+                          >
                             <span className="text-green-600">✓</span>
                             {objective}
                           </li>
@@ -190,9 +196,13 @@ export function LessonLayout({
                     percentage={readingProgress}
                     size={60}
                     strokeWidth={4}
-                    variant={progress?.status === 'completed' ? 'success' : 'default'}
+                    variant={
+                      progress?.status === "completed" ? "success" : "default"
+                    }
                   />
-                  <span className="text-xs text-muted-foreground">Progress</span>
+                  <span className="text-xs text-muted-foreground">
+                    Progress
+                  </span>
                 </div>
               </div>
 
@@ -202,13 +212,13 @@ export function LessonLayout({
                   variant="outline"
                   size="sm"
                   onClick={handleBookmarkToggle}
-                  className={isBookmarked ? 'bg-amber-50 border-amber-200' : ''}
+                  className={isBookmarked ? "bg-amber-50 border-amber-200" : ""}
                 >
-                  {isBookmarked ? '📑' : '🔖'}
-                  {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+                  {isBookmarked ? "📑" : "🔖"}
+                  {isBookmarked ? "Bookmarked" : "Bookmark"}
                 </Button>
 
-                {readingProgress > 80 && progress?.status !== 'completed' && (
+                {readingProgress > 80 && progress?.status !== "completed" && (
                   <Button
                     size="sm"
                     onClick={handleCompleteLesson}
@@ -225,8 +235,8 @@ export function LessonLayout({
 
       {/* MDX Content - Khan Academy Style */}
       <div className="prose prose-slate max-w-none">
-        <Card className={showFocusMode ? 'border-0 shadow-none' : ''}>
-          <CardContent className={`p-8 ${showFocusMode ? 'p-4' : ''}`}>
+        <Card className={showFocusMode ? "border-0 shadow-none" : ""}>
+          <CardContent className={`p-8 ${showFocusMode ? "p-4" : ""}`}>
             {children}
           </CardContent>
         </Card>
@@ -239,39 +249,39 @@ export function LessonLayout({
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {previousLesson
-                    ? (
-                        <Button asChild variant="outline">
-                          <Link href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}>
-                            ←
-                            {' '}
-                            {previousLesson.title}
-                          </Link>
-                        </Button>
-                      )
-                    : (
-                        <Button asChild variant="outline">
-                          <Link href={`/${locale}/handbook/private-pilot/${unitId}`}>
-                            ← Back to
-                            {' '}
-                            {categoryTitle}
-                          </Link>
-                        </Button>
-                      )}
+                  {previousLesson ? (
+                    <Button asChild variant="outline">
+                      <Link
+                        href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}
+                      >
+                        ← {previousLesson.title}
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button asChild variant="outline">
+                      <Link
+                        href={`/${locale}/handbook/private-pilot/${unitId}`}
+                      >
+                        ← Back to {categoryTitle}
+                      </Link>
+                    </Button>
+                  )}
                 </div>
 
                 <div className="text-center">
-                  <div className="text-sm text-muted-foreground mb-1">Lesson Progress</div>
+                  <div className="text-sm text-muted-foreground mb-1">
+                    Lesson Progress
+                  </div>
                   <Progress value={readingProgress} className="w-32 h-2" />
                 </div>
 
                 <div className="flex items-center gap-4">
                   {nextLesson && (
                     <Button asChild>
-                      <Link href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}>
-                        {nextLesson.title}
-                        {' '}
-                        →
+                      <Link
+                        href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}
+                      >
+                        {nextLesson.title} →
                       </Link>
                     </Button>
                   )}
@@ -281,7 +291,7 @@ export function LessonLayout({
           </Card>
 
           {/* Study Recommendations */}
-          {progress?.status === 'completed' && (
+          {progress?.status === "completed" && (
             <Card className="bg-green-50/50 border-green-200 dark:bg-green-950/20 dark:border-green-800">
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
@@ -299,12 +309,10 @@ export function LessonLayout({
                 {nextLesson && (
                   <div className="mt-3">
                     <Button asChild size="sm">
-                      <Link href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}>
-                        Continue to:
-                        {' '}
-                        {nextLesson.title}
-                        {' '}
-                        →
+                      <Link
+                        href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}
+                      >
+                        Continue to: {nextLesson.title} →
                       </Link>
                     </Button>
                   </div>

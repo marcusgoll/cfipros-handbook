@@ -100,7 +100,7 @@ async function checkDatabase(healthStatus: any) {
   // TODO: Re-enable when DATABASE_URL is properly configured for production
   try {
     const databaseUrl = process.env.DATABASE_URL;
-    
+
     if (!databaseUrl) {
       healthStatus.checks.database = {
         status: 'degraded',

@@ -123,7 +123,9 @@
       "Bash($env:ESLINT_NO_DEV_ERRORS=\"true\")",
       "Bash(cross-env NEXT_PUBLIC_SENTRY_DISABLED=true ESLINT_NO_DEV_ERRORS=true timeout 120 npx next build)",
       "Bash(timeout:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(npm view:*)",
+      "Bash(npx prettier:*)"
     ],
     "deny": []
   },

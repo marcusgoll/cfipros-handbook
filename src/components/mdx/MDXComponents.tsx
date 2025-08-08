@@ -1,8 +1,12 @@
-import type { MDXComponents } from 'mdx/types';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ContextualParagraph } from './ContextualText';
-import { InteractiveElements } from './InteractiveElements';
-import { CircularProgress, LessonProgressRing, ProgressIndicator } from './ProgressIndicator';
+import type { MDXComponents } from "mdx/types";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Removed context linking for MVP
+import { InteractiveElements } from "./InteractiveElements";
+import {
+  CircularProgress,
+  LessonProgressRing,
+  ProgressIndicator,
+} from "./ProgressIndicator";
 
 type MDXComponentsProps = {
   locale?: string;
@@ -13,7 +17,10 @@ export function useMDXComponents(
   components: MDXComponents,
   options: MDXComponentsProps = {},
 ): MDXComponents {
-  const { locale = 'en', enableContextLinking = true } = options;
+  const {
+    locale: _locale = "en",
+    enableContextLinking: _enableContextLinking = true,
+  } = options;
 
   return {
     ...components,
@@ -21,39 +28,29 @@ export function useMDXComponents(
       <h1 className="text-3xl font-bold tracking-tight mb-6">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">{children}</h2>
+      <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
+        {children}
+      </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold tracking-tight mt-6 mb-3">{children}</h3>
+      <h3 className="text-xl font-semibold tracking-tight mt-6 mb-3">
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg font-semibold tracking-tight mt-4 mb-2">{children}</h4>
+      <h4 className="text-lg font-semibold tracking-tight mt-4 mb-2">
+        {children}
+      </h4>
     ),
-    // Enhanced paragraph with context linking
-    p: ({ children }) => {
-      if (!enableContextLinking || typeof children !== 'string') {
-        return <p className="text-base leading-7 mb-4">{children}</p>;
-      }
-
-      return (
-        <ContextualParagraph
-          locale={locale}
-          className="text-base leading-7 mb-4"
-          config={{ maxLinksPerParagraph: 2 }}
-        >
-          {children}
-        </ContextualParagraph>
-      );
-    },
+    // Simple paragraph for MVP
+    p: ({ children }) => <p className="text-base leading-7 mb-4">{children}</p>,
     ul: ({ children }) => (
       <ul className="list-disc list-inside space-y-2 mb-4">{children}</ul>
     ),
     ol: ({ children }) => (
       <ol className="list-decimal list-inside space-y-2 mb-4">{children}</ol>
     ),
-    li: ({ children }) => (
-      <li className="text-base leading-7">{children}</li>
-    ),
+    li: ({ children }) => <li className="text-base leading-7">{children}</li>,
     strong: ({ children }) => (
       <strong className="font-semibold">{children}</strong>
     ),
@@ -72,9 +69,7 @@ export function useMDXComponents(
         {children}
       </pre>
     ),
-    hr: () => (
-      <hr className="border-t border-border my-8" />
-    ),
+    hr: () => <hr className="border-t border-border my-8" />,
 
     // Aviation-specific components
     Card,

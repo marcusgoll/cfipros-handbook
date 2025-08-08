@@ -17,7 +17,7 @@ export async function GET(_request: NextRequest) {
         'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY',
         'CLERK_SECRET_KEY',
       ];
-      
+
       const optionalEnvVars = ['DATABASE_URL']; // For MVP launch
 
       // Railway-specific checks
