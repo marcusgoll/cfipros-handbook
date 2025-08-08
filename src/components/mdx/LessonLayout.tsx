@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { useLessonProgress } from '@/lib/progress-tracking';
 import { CircularProgress } from './ProgressIndicator';
-import { useState, useEffect } from 'react';
 
 type LessonLayoutProps = {
   children: React.ReactNode;
@@ -51,13 +51,13 @@ export function LessonLayout({
   const [readingProgress, setReadingProgress] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showFocusMode, setShowFocusMode] = useState(false);
-  
+
   const {
     progress,
     startLesson,
     completeLesson,
     toggleBookmark,
-    updateTimeSpent
+    updateTimeSpent,
   } = useLessonProgress(lessonId);
 
   // Track reading progress
@@ -102,15 +102,15 @@ export function LessonLayout({
   const difficultyColors = {
     beginner: 'bg-green-100 text-green-800 dark:bg-green-900/30',
     intermediate: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30',
-    advanced: 'bg-red-100 text-red-800 dark:bg-red-900/30'
+    advanced: 'bg-red-100 text-red-800 dark:bg-red-900/30',
   };
 
   return (
     <div className={`max-w-4xl mx-auto space-y-6 ${showFocusMode ? 'focus-mode' : ''}`}>
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
-        <div 
-          className="h-full bg-primary transition-all duration-150" 
+        <div
+          className="h-full bg-primary transition-all duration-150"
           style={{ width: `${readingProgress}%` }}
         />
       </div>
@@ -155,10 +155,12 @@ export function LessonLayout({
                       </Badge>
                     )}
                     <Badge variant="outline">
-                      ⏱️ {metadata.duration}
+                      ⏱️
+                      {' '}
+                      {metadata.duration}
                     </Badge>
                   </div>
-                  
+
                   <CardTitle className="text-2xl font-bold mb-2">
                     {metadata.title}
                   </CardTitle>
@@ -184,9 +186,9 @@ export function LessonLayout({
 
                 {/* Progress Ring */}
                 <div className="flex flex-col items-center gap-2 ml-6">
-                  <CircularProgress 
-                    percentage={readingProgress} 
-                    size={60} 
+                  <CircularProgress
+                    percentage={readingProgress}
+                    size={60}
                     strokeWidth={4}
                     variant={progress?.status === 'completed' ? 'success' : 'default'}
                   />
@@ -202,10 +204,10 @@ export function LessonLayout({
                   onClick={handleBookmarkToggle}
                   className={isBookmarked ? 'bg-amber-50 border-amber-200' : ''}
                 >
-                  {isBookmarked ? '📑' : '🔖'} 
+                  {isBookmarked ? '📑' : '🔖'}
                   {isBookmarked ? 'Bookmarked' : 'Bookmark'}
                 </Button>
-                
+
                 {readingProgress > 80 && progress?.status !== 'completed' && (
                   <Button
                     size="sm"
@@ -237,19 +239,25 @@ export function LessonLayout({
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {previousLesson ? (
-                    <Button asChild variant="outline">
-                      <Link href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}>
-                        ← {previousLesson.title}
-                      </Link>
-                    </Button>
-                  ) : (
-                    <Button asChild variant="outline">
-                      <Link href={`/${locale}/handbook/private-pilot/${unitId}`}>
-                        ← Back to {categoryTitle}
-                      </Link>
-                    </Button>
-                  )}
+                  {previousLesson
+                    ? (
+                        <Button asChild variant="outline">
+                          <Link href={`/${locale}/handbook/private-pilot/${unitId}/${previousLesson.id}`}>
+                            ←
+                            {' '}
+                            {previousLesson.title}
+                          </Link>
+                        </Button>
+                      )
+                    : (
+                        <Button asChild variant="outline">
+                          <Link href={`/${locale}/handbook/private-pilot/${unitId}`}>
+                            ← Back to
+                            {' '}
+                            {categoryTitle}
+                          </Link>
+                        </Button>
+                      )}
                 </div>
 
                 <div className="text-center">
@@ -261,7 +269,9 @@ export function LessonLayout({
                   {nextLesson && (
                     <Button asChild>
                       <Link href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}>
-                        {nextLesson.title} →
+                        {nextLesson.title}
+                        {' '}
+                        →
                       </Link>
                     </Button>
                   )}
@@ -285,12 +295,16 @@ export function LessonLayout({
                     </p>
                   </div>
                 </div>
-                
+
                 {nextLesson && (
                   <div className="mt-3">
                     <Button asChild size="sm">
                       <Link href={`/${locale}/handbook/private-pilot/${unitId}/${nextLesson.id}`}>
-                        Continue to: {nextLesson.title} →
+                        Continue to:
+                        {' '}
+                        {nextLesson.title}
+                        {' '}
+                        →
                       </Link>
                     </Button>
                   </div>

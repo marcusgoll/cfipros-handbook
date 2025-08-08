@@ -1,16 +1,16 @@
 'use client';
 
+import type { StudyRecommendation } from '@/types/progress';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CircularProgress } from '@/components/mdx/ProgressIndicator';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CircularProgress } from '@/components/mdx/ProgressIndicator';
-import { 
-  getLessonProgressManager, 
-  getSectionProgressManager, 
-  generateStudyRecommendations 
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  generateStudyRecommendations,
+  getLessonProgressManager,
+  getSectionProgressManager,
 } from '@/lib/progress-tracking';
-import type { StudyRecommendation } from '@/types/progress';
 
 type StudyDashboardProps = {
   locale?: string;
@@ -19,7 +19,7 @@ type StudyDashboardProps = {
 export function StudyDashboard({ locale = 'en' }: StudyDashboardProps) {
   const lessonManager = getLessonProgressManager();
   const sectionManager = getSectionProgressManager();
-  
+
   const allProgress = lessonManager.getAllProgress();
   const bookmarkedLessons = lessonManager.getBookmarkedLessons();
   const inProgressLessons = lessonManager.getInProgressLessons();
@@ -44,9 +44,9 @@ export function StudyDashboard({ locale = 'en' }: StudyDashboardProps) {
                 Ready to continue your Private Pilot journey?
               </p>
             </div>
-            <CircularProgress 
-              percentage={completionRate} 
-              size={80} 
+            <CircularProgress
+              percentage={completionRate}
+              size={80}
               strokeWidth={6}
               variant={completionRate > 75 ? 'success' : 'default'}
             />
@@ -97,17 +97,19 @@ export function StudyDashboard({ locale = 'en' }: StudyDashboardProps) {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {recommendations.length > 0 ? (
-                recommendations.map((rec) => (
-                  <RecommendationCard key={rec.lessonId} recommendation={rec} locale={locale} />
-                ))
-              ) : (
-                <div className="text-center py-8 text-muted-foreground">
-                  <span className="text-4xl mb-4 block">🎉</span>
-                  <p className="font-medium">All caught up!</p>
-                  <p className="text-sm">Check back later for new recommendations</p>
-                </div>
-              )}
+              {recommendations.length > 0
+                ? (
+                    recommendations.map(rec => (
+                      <RecommendationCard key={rec.lessonId} recommendation={rec} locale={locale} />
+                    ))
+                  )
+                : (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <span className="text-4xl mb-4 block">🎉</span>
+                      <p className="font-medium">All caught up!</p>
+                      <p className="text-sm">Check back later for new recommendations</p>
+                    </div>
+                  )}
             </CardContent>
           </Card>
         </div>
@@ -123,30 +125,34 @@ export function StudyDashboard({ locale = 'en' }: StudyDashboardProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {bookmarkedLessons.length > 0 ? (
-                <div className="space-y-2">
-                  {bookmarkedLessons.slice(0, 3).map((lesson) => (
-                    <div key={lesson.lessonId} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
-                      <Link
-                        href={`/${locale}/handbook/lesson/${lesson.lessonId}`}
-                        className="text-sm hover:text-primary truncate"
-                      >
-                        {lesson.lessonId}
-                      </Link>
+              {bookmarkedLessons.length > 0
+                ? (
+                    <div className="space-y-2">
+                      {bookmarkedLessons.slice(0, 3).map(lesson => (
+                        <div key={lesson.lessonId} className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
+                          <Link
+                            href={`/${locale}/handbook/lesson/${lesson.lessonId}`}
+                            className="text-sm hover:text-primary truncate"
+                          >
+                            {lesson.lessonId}
+                          </Link>
+                        </div>
+                      ))}
+                      {bookmarkedLessons.length > 3 && (
+                        <Button variant="ghost" size="sm" className="w-full mt-2">
+                          View All (
+                          {bookmarkedLessons.length}
+                          )
+                        </Button>
+                      )}
                     </div>
-                  ))}
-                  {bookmarkedLessons.length > 3 && (
-                    <Button variant="ghost" size="sm" className="w-full mt-2">
-                      View All ({bookmarkedLessons.length})
-                    </Button>
+                  )
+                : (
+                    <p className="text-sm text-muted-foreground">
+                      No bookmarked lessons yet
+                    </p>
                   )}
-                </div>
-              ) : (
-                <p className="text-sm text-muted-foreground">
-                  No bookmarked lessons yet
-                </p>
-              )}
             </CardContent>
           </Card>
 
@@ -187,7 +193,7 @@ function StatCard({
   value,
   subtitle,
   icon,
-  color
+  color,
 }: {
   title: string;
   value: number;
@@ -199,7 +205,7 @@ function StatCard({
     green: 'bg-green-100 text-green-600 dark:bg-green-900/30',
     blue: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30',
     orange: 'bg-orange-100 text-orange-600 dark:bg-orange-900/30',
-    purple: 'bg-purple-100 text-purple-600 dark:bg-purple-900/30'
+    purple: 'bg-purple-100 text-purple-600 dark:bg-purple-900/30',
   };
 
   return (
@@ -212,7 +218,9 @@ function StatCard({
           <div>
             <div className="text-2xl font-bold">{value}</div>
             <div className="text-sm text-muted-foreground">
-              {title} {subtitle}
+              {title}
+              {' '}
+              {subtitle}
             </div>
           </div>
         </div>
@@ -223,7 +231,7 @@ function StatCard({
 
 function RecommendationCard({
   recommendation,
-  locale
+  locale,
 }: {
   recommendation: StudyRecommendation;
   locale: string;
@@ -232,14 +240,14 @@ function RecommendationCard({
     continue: '▶️',
     review: '🔄',
     practice: '🎯',
-    next: '➡️'
+    next: '➡️',
   };
 
   const typeColors = {
     continue: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30',
     review: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30',
     practice: 'bg-green-100 text-green-800 dark:bg-green-900/30',
-    next: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30'
+    next: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30',
   };
 
   return (
@@ -262,7 +270,12 @@ function RecommendationCard({
             {recommendation.reason}
           </p>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span>⏱️ {recommendation.estimatedTime} min</span>
+            <span>
+              ⏱️
+              {recommendation.estimatedTime}
+              {' '}
+              min
+            </span>
             <span>•</span>
             <span>{recommendation.category}</span>
           </div>

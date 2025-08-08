@@ -131,3 +131,4 @@ logger.fatal('Database connection pool exhausted', {
 
 - Commit frequently so that we have proper version control of our web app.
 - After a big edit and update please run our sub agents for version control and deployment.
+- After a big change or update and after our devops sub agent runs, commit to our git, make sure we pass all of our precommit checks as well. DO NOT GET LAZY AND SKIP CHECKS.

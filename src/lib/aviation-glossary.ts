@@ -11,12 +11,12 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     synonyms: ['wing section', 'aerofoil'],
     relatedTerms: ['lift', 'camber', 'chord line', 'angle of attack'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/airfoil-theory', title: 'Airfoil Theory and Design' }
+      { path: '/handbook/private-pilot/principles-of-flight/airfoil-theory', title: 'Airfoil Theory and Design' },
     ],
     acsRefs: ['PA.I.B.K1'],
     farRefs: [],
     priority: 'high',
-    contexts: ['aerodynamics', 'flight theory', 'wing design']
+    contexts: ['aerodynamics', 'flight theory', 'wing design'],
   },
   {
     id: 'angle-of-attack',
@@ -26,11 +26,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     synonyms: ['AOA'],
     relatedTerms: ['airfoil', 'lift', 'stall', 'critical angle of attack'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/angle-of-attack', title: 'Angle of Attack' }
+      { path: '/handbook/private-pilot/principles-of-flight/angle-of-attack', title: 'Angle of Attack' },
     ],
     acsRefs: ['PA.I.B.K2'],
     priority: 'high',
-    contexts: ['flight controls', 'aerodynamics', 'performance']
+    contexts: ['flight controls', 'aerodynamics', 'performance'],
   },
   {
     id: 'four-forces',
@@ -40,11 +40,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     synonyms: ['four forces'],
     relatedTerms: ['lift', 'weight', 'thrust', 'drag', 'equilibrium'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' }
+      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' },
     ],
     acsRefs: ['PA.I.B.K1'],
     priority: 'high',
-    contexts: ['flight theory', 'aerodynamics']
+    contexts: ['flight theory', 'aerodynamics'],
   },
   {
     id: 'lift',
@@ -54,11 +54,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['airfoil', 'angle of attack', 'bernoulli principle', 'newton laws'],
     handbookRefs: [
       { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' },
-      { path: '/handbook/private-pilot/principles-of-flight/airfoil-theory', title: 'Airfoil Theory and Design' }
+      { path: '/handbook/private-pilot/principles-of-flight/airfoil-theory', title: 'Airfoil Theory and Design' },
     ],
     acsRefs: ['PA.I.B.K1'],
     priority: 'high',
-    contexts: ['aerodynamics', 'flight theory']
+    contexts: ['aerodynamics', 'flight theory'],
   },
   {
     id: 'drag',
@@ -68,11 +68,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     synonyms: ['air resistance'],
     relatedTerms: ['induced drag', 'parasite drag', 'form drag', 'friction drag'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' }
+      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' },
     ],
     acsRefs: ['PA.I.B.K1'],
     priority: 'high',
-    contexts: ['aerodynamics', 'performance']
+    contexts: ['aerodynamics', 'performance'],
   },
   {
     id: 'thrust',
@@ -81,11 +81,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     category: 'aircraft',
     relatedTerms: ['propeller', 'engine', 'power', 'torque'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' }
+      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' },
     ],
     acsRefs: ['PA.I.B.K1'],
     priority: 'high',
-    contexts: ['powerplant', 'performance']
+    contexts: ['powerplant', 'performance'],
   },
   {
     id: 'weight',
@@ -95,11 +95,11 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     synonyms: ['gravity'],
     relatedTerms: ['center of gravity', 'gross weight', 'useful load'],
     handbookRefs: [
-      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' }
+      { path: '/handbook/private-pilot/principles-of-flight/four-forces', title: 'The Four Forces of Flight' },
     ],
     acsRefs: ['PA.I.B.K1'],
     priority: 'high',
-    contexts: ['weight and balance', 'performance']
+    contexts: ['weight and balance', 'performance'],
   },
 
   // Navigation Terms
@@ -114,7 +114,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     acsRefs: ['PA.III.A.K1'],
     farRefs: ['14 CFR 91.205'],
     priority: 'high',
-    contexts: ['navigation', 'instruments', 'cross-country']
+    contexts: ['navigation', 'instruments', 'cross-country'],
   },
   {
     id: 'gps',
@@ -126,7 +126,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     acsRefs: ['PA.III.A.K2'],
     farRefs: ['14 CFR 91.205'],
     priority: 'high',
-    contexts: ['navigation', 'modern avionics']
+    contexts: ['navigation', 'modern avionics'],
   },
 
   // Weather Terms
@@ -139,7 +139,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['TAF', 'visibility', 'ceiling', 'wind'],
     acsRefs: ['PA.I.D.K1'],
     priority: 'high',
-    contexts: ['weather', 'flight planning']
+    contexts: ['weather', 'flight planning'],
   },
   {
     id: 'taf',
@@ -150,7 +150,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['METAR', 'forecast', 'weather briefing'],
     acsRefs: ['PA.I.D.K1'],
     priority: 'high',
-    contexts: ['weather', 'flight planning']
+    contexts: ['weather', 'flight planning'],
   },
 
   // Regulations
@@ -164,7 +164,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     farRefs: ['14 CFR 91.155'],
     acsRefs: ['PA.I.C.K1'],
     priority: 'high',
-    contexts: ['regulations', 'weather minimums', 'airspace']
+    contexts: ['regulations', 'weather minimums', 'airspace'],
   },
   {
     id: 'ifr',
@@ -175,7 +175,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['VFR', 'instrument rating', 'clearance'],
     farRefs: ['14 CFR 91.167'],
     priority: 'medium',
-    contexts: ['regulations', 'instrument flight']
+    contexts: ['regulations', 'instrument flight'],
   },
 
   // Operations
@@ -188,7 +188,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['downwind', 'base', 'final', 'crosswind', 'upwind'],
     acsRefs: ['PA.II.E.K1'],
     priority: 'high',
-    contexts: ['airport operations', 'landings', 'takeoffs']
+    contexts: ['airport operations', 'landings', 'takeoffs'],
   },
   {
     id: 'downwind',
@@ -198,7 +198,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['traffic pattern', 'base', 'final', 'abeam'],
     acsRefs: ['PA.II.E.K1'],
     priority: 'medium',
-    contexts: ['airport operations', 'traffic pattern']
+    contexts: ['airport operations', 'traffic pattern'],
   },
   {
     id: 'base',
@@ -209,7 +209,7 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['traffic pattern', 'downwind', 'final', 'turn to final'],
     acsRefs: ['PA.II.E.K1'],
     priority: 'medium',
-    contexts: ['airport operations', 'traffic pattern']
+    contexts: ['airport operations', 'traffic pattern'],
   },
   {
     id: 'final',
@@ -220,8 +220,8 @@ export const AVIATION_GLOSSARY: GlossaryTerm[] = [
     relatedTerms: ['traffic pattern', 'base', 'approach', 'landing'],
     acsRefs: ['PA.II.E.K1'],
     priority: 'medium',
-    contexts: ['airport operations', 'landing']
-  }
+    contexts: ['airport operations', 'landing'],
+  },
 ];
 
 // Create lookup maps for efficient searching
@@ -229,11 +229,11 @@ export const termLookup = new Map<string, GlossaryTerm>();
 export const synonymLookup = new Map<string, GlossaryTerm>();
 
 // Initialize lookup maps
-AVIATION_GLOSSARY.forEach(term => {
+AVIATION_GLOSSARY.forEach((term) => {
   termLookup.set(term.term.toLowerCase(), term);
-  
+
   if (term.synonyms) {
-    term.synonyms.forEach(synonym => {
+    term.synonyms.forEach((synonym) => {
       synonymLookup.set(synonym.toLowerCase(), term);
     });
   }
@@ -250,15 +250,17 @@ export function findTermsByCategory(category: GlossaryTerm['category']): Glossar
 }
 
 export function findTermsByContext(context: string): GlossaryTerm[] {
-  return AVIATION_GLOSSARY.filter(term => 
-    term.contexts?.some(ctx => ctx.toLowerCase().includes(context.toLowerCase()))
+  return AVIATION_GLOSSARY.filter(term =>
+    term.contexts?.some(ctx => ctx.toLowerCase().includes(context.toLowerCase())),
   );
 }
 
 export function getRelatedTerms(termId: string): GlossaryTerm[] {
   const term = AVIATION_GLOSSARY.find(t => t.id === termId);
-  if (!term || !term.relatedTerms) return [];
-  
+  if (!term || !term.relatedTerms) {
+    return [];
+  }
+
   return term.relatedTerms
     .map(relatedId => AVIATION_GLOSSARY.find(t => t.id === relatedId || t.term.toLowerCase() === relatedId.toLowerCase()))
     .filter(Boolean) as GlossaryTerm[];
@@ -266,19 +268,19 @@ export function getRelatedTerms(termId: string): GlossaryTerm[] {
 
 export function searchGlossary(query: string): GlossaryTerm[] {
   const normalized = query.toLowerCase();
-  
-  return AVIATION_GLOSSARY.filter(term => 
-    term.term.toLowerCase().includes(normalized) ||
-    term.definition.toLowerCase().includes(normalized) ||
-    term.synonyms?.some(synonym => synonym.toLowerCase().includes(normalized)) ||
-    term.relatedTerms?.some(related => related.toLowerCase().includes(normalized))
+
+  return AVIATION_GLOSSARY.filter(term =>
+    term.term.toLowerCase().includes(normalized)
+    || term.definition.toLowerCase().includes(normalized)
+    || term.synonyms?.some(synonym => synonym.toLowerCase().includes(normalized))
+    || term.relatedTerms?.some(related => related.toLowerCase().includes(normalized)),
   ).sort((a, b) => {
     // Prioritize exact matches and high priority terms
     const aExact = a.term.toLowerCase() === normalized ? 10 : 0;
     const bExact = b.term.toLowerCase() === normalized ? 10 : 0;
     const aPriority = a.priority === 'high' ? 5 : a.priority === 'medium' ? 2 : 0;
     const bPriority = b.priority === 'high' ? 5 : b.priority === 'medium' ? 2 : 0;
-    
+
     return (bExact + bPriority) - (aExact + aPriority);
   });
 }

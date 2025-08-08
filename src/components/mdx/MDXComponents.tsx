@@ -1,8 +1,8 @@
 import type { MDXComponents } from 'mdx/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ContextualParagraph } from './ContextualText';
-import { ProgressIndicator, CircularProgress, LessonProgressRing } from './ProgressIndicator';
 import { InteractiveElements } from './InteractiveElements';
+import { CircularProgress, LessonProgressRing, ProgressIndicator } from './ProgressIndicator';
 
 type MDXComponentsProps = {
   locale?: string;
@@ -10,11 +10,11 @@ type MDXComponentsProps = {
 };
 
 export function useMDXComponents(
-  components: MDXComponents, 
-  options: MDXComponentsProps = {}
+  components: MDXComponents,
+  options: MDXComponentsProps = {},
 ): MDXComponents {
   const { locale = 'en', enableContextLinking = true } = options;
-  
+
   return {
     ...components,
     h1: ({ children }) => (
@@ -34,9 +34,9 @@ export function useMDXComponents(
       if (!enableContextLinking || typeof children !== 'string') {
         return <p className="text-base leading-7 mb-4">{children}</p>;
       }
-      
+
       return (
-        <ContextualParagraph 
+        <ContextualParagraph
           locale={locale}
           className="text-base leading-7 mb-4"
           config={{ maxLinksPerParagraph: 2 }}
@@ -75,18 +75,18 @@ export function useMDXComponents(
     hr: () => (
       <hr className="border-t border-border my-8" />
     ),
-    
+
     // Aviation-specific components
     Card,
     CardContent,
     CardHeader,
     CardTitle,
-    
+
     // Progress tracking components
     ProgressIndicator,
     CircularProgress,
     LessonProgressRing,
-    
+
     // Interactive learning components
     ...InteractiveElements,
   };

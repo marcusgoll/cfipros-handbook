@@ -15,13 +15,13 @@ type ProgressIndicatorProps = {
 const sizeClasses = {
   sm: 'h-1.5',
   md: 'h-2',
-  lg: 'h-3'
+  lg: 'h-3',
 };
 
 const variantColors = {
   default: 'bg-primary',
   success: 'bg-green-500',
-  warning: 'bg-amber-500'
+  warning: 'bg-amber-500',
 };
 
 export function ProgressIndicator({
@@ -31,10 +31,10 @@ export function ProgressIndicator({
   size = 'md',
   showPercentage = true,
   showCounts = false,
-  variant = 'default'
+  variant = 'default',
 }: ProgressIndicatorProps) {
   const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
-  
+
   return (
     <div className="space-y-2">
       {title && (
@@ -43,18 +43,23 @@ export function ProgressIndicator({
           <div className="flex items-center gap-2 text-muted-foreground">
             {showCounts && (
               <span>
-                {current}/{total}
+                {current}
+                /
+                {total}
               </span>
             )}
             {showPercentage && (
-              <span>{percentage}%</span>
+              <span>
+                {percentage}
+                %
+              </span>
             )}
           </div>
         </div>
       )}
-      
-      <Progress 
-        value={percentage} 
+
+      <Progress
+        value={percentage}
         className={`${sizeClasses[size]} ${variantColors[variant]}`}
       />
     </div>
@@ -66,7 +71,7 @@ export function CircularProgress({
   percentage,
   size = 60,
   strokeWidth = 4,
-  variant = 'default'
+  variant = 'default',
 }: {
   percentage: number;
   size?: number;
@@ -76,13 +81,13 @@ export function CircularProgress({
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const offset = circumference - (percentage / 100) * circumference;
-  
+
   const colors = {
     default: '#3B82F6', // blue-500
     success: '#10B981', // emerald-500
-    warning: '#F59E0B'  // amber-500
+    warning: '#F59E0B', // amber-500
   };
-  
+
   return (
     <div className="relative inline-flex items-center justify-center">
       <svg
@@ -100,7 +105,7 @@ export function CircularProgress({
           fill="none"
           className="text-muted-foreground/20"
         />
-        
+
         {/* Progress circle */}
         <circle
           cx={size / 2}
@@ -115,11 +120,12 @@ export function CircularProgress({
           className="transition-all duration-300 ease-in-out"
         />
       </svg>
-      
+
       {/* Percentage text */}
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-sm font-semibold">
-          {Math.round(percentage)}%
+          {Math.round(percentage)}
+          %
         </span>
       </div>
     </div>
@@ -130,7 +136,7 @@ export function CircularProgress({
 export function LessonProgressRing({
   completed,
   total,
-  size = 24
+  size = 24,
 }: {
   completed: number;
   total: number;
@@ -138,20 +144,20 @@ export function LessonProgressRing({
 }) {
   const percentage = total > 0 ? (completed / total) * 100 : 0;
   const isComplete = completed === total && total > 0;
-  
+
   if (isComplete) {
     return (
-      <div 
+      <div
         className="inline-flex items-center justify-center rounded-full bg-green-500 text-white"
         style={{ width: size, height: size }}
       >
         <svg width={size * 0.6} height={size * 0.6} viewBox="0 0 16 16" fill="currentColor">
-          <path d="M13.485 1.515a2 2 0 0 1 0 2.828l-7.07 7.071a2 2 0 0 1-2.83 0l-3.535-3.536a2 2 0 0 1 2.83-2.828L5 7.172l5.657-5.657a2 2 0 0 1 2.828 0z"/>
+          <path d="M13.485 1.515a2 2 0 0 1 0 2.828l-7.07 7.071a2 2 0 0 1-2.83 0l-3.535-3.536a2 2 0 0 1 2.83-2.828L5 7.172l5.657-5.657a2 2 0 0 1 2.828 0z" />
         </svg>
       </div>
     );
   }
-  
+
   return (
     <CircularProgress
       percentage={percentage}

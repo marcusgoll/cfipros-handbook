@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CircularProgress, LessonProgressRing } from '@/components/mdx/ProgressIndicator';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { CircularProgress, LessonProgressRing } from '@/components/mdx/ProgressIndicator';
 import { useLessonProgress, useSectionProgress } from '@/lib/progress-tracking';
 
 type CourseSection = {
@@ -44,23 +44,31 @@ export function CourseProgress({ courseId, title, sections, locale = 'en' }: Cou
             <div>
               <CardTitle className="text-2xl font-bold">{title}</CardTitle>
               <p className="text-muted-foreground mt-1">
-                {sections.length} sections • {totalLessons} lessons
+                {sections.length}
+                {' '}
+                sections •
+                {totalLessons}
+                {' '}
+                lessons
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <CircularProgress 
-                percentage={overallProgress} 
-                size={80} 
+              <CircularProgress
+                percentage={overallProgress}
+                size={80}
                 strokeWidth={6}
                 variant={overallProgress === 100 ? 'success' : 'default'}
               />
             </div>
           </div>
-          
+
           <div className="mt-4">
             <div className="flex items-center justify-between text-sm mb-2">
               <span>Course Progress</span>
-              <span>{Math.round(overallProgress)}% Complete</span>
+              <span>
+                {Math.round(overallProgress)}
+                % Complete
+              </span>
             </div>
             <Progress value={overallProgress} className="h-2" />
           </div>
@@ -115,70 +123,76 @@ export function CourseProgress({ courseId, title, sections, locale = 'en' }: Cou
       {/* Section List */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Course Content</h2>
-        
+
         {sections
           .sort((a, b) => a.order - b.order)
-          .map((section) => (
+          .map(section => (
             <SectionCard
               key={section.id}
               section={section}
               courseId={courseId}
               locale={locale}
             />
-          ))
-        }
+          ))}
       </div>
     </div>
   );
 }
 
-function SectionCard({ 
-  section, 
-  courseId, 
-  locale 
-}: { 
-  section: CourseSection; 
-  courseId: string; 
-  locale: string; 
+function SectionCard({
+  section,
+  courseId,
+  locale,
+}: {
+  section: CourseSection;
+  courseId: string;
+  locale: string;
 }) {
   const lessonIds = section.lessons.map(lesson => lesson.id);
   const { progress } = useSectionProgress(section.id, lessonIds);
-  
+
   const isExpanded = false; // Would be managed by state
-  
+
   return (
     <Card className="overflow-hidden">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <LessonProgressRing 
-              completed={progress.lessonsCompleted} 
+            <LessonProgressRing
+              completed={progress.lessonsCompleted}
               total={progress.lessonsTotal}
               size={32}
             />
             <div>
               <CardTitle className="text-lg">{section.title}</CardTitle>
               <p className="text-sm text-muted-foreground">
-                {section.description} • {section.estimatedHours}
+                {section.description}
+                {' '}
+                •
+                {section.estimatedHours}
               </p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <Badge variant="secondary">
-              {progress.lessonsCompleted}/{progress.lessonsTotal} lessons
+              {progress.lessonsCompleted}
+              /
+              {progress.lessonsTotal}
+              {' '}
+              lessons
             </Badge>
             <Button
               variant="ghost"
               size="sm"
               className="p-1"
-              onClick={() => {/* Toggle expand */}}
+              onClick={() => { /* Toggle expand */ }}
             >
               {isExpanded ? '−' : '+'}
             </Button>
           </div>
         </div>
-        
+
         {/* Section Progress Bar */}
         <div className="mt-3">
           <Progress value={progress.completionPercentage} className="h-1.5" />
@@ -191,7 +205,7 @@ function SectionCard({
           <div className="space-y-2">
             {section.lessons
               .sort((a, b) => a.order - b.order)
-              .map((lesson) => (
+              .map(lesson => (
                 <LessonItem
                   key={lesson.id}
                   lesson={lesson}
@@ -199,8 +213,7 @@ function SectionCard({
                   courseId={courseId}
                   locale={locale}
                 />
-              ))
-            }
+              ))}
           </div>
         </CardContent>
       )}
@@ -208,33 +221,33 @@ function SectionCard({
   );
 }
 
-function LessonItem({ 
-  lesson, 
-  sectionId, 
-  courseId, 
-  locale 
-}: { 
-  lesson: { id: string; title: string; duration: string; };
+function LessonItem({
+  lesson,
+  sectionId,
+  courseId,
+  locale,
+}: {
+  lesson: { id: string; title: string; duration: string };
   sectionId: string;
   courseId: string;
   locale: string;
 }) {
   const { progress } = useLessonProgress(lesson.id);
-  
+
   const statusIcons = {
     not_started: '⚪',
     in_progress: '🔵',
-    completed: '✅'
+    completed: '✅',
   };
-  
+
   const statusColors = {
     not_started: 'text-gray-400',
     in_progress: 'text-blue-600',
-    completed: 'text-green-600'
+    completed: 'text-green-600',
   };
-  
+
   const status = progress?.status || 'not_started';
-  
+
   return (
     <Link
       href={`/${locale}/handbook/${courseId}/${sectionId}/${lesson.id}`}
@@ -243,11 +256,12 @@ function LessonItem({
       <span className={`text-lg ${statusColors[status]}`}>
         {statusIcons[status]}
       </span>
-      
+
       <div className="flex-1">
         <h4 className={`font-medium group-hover:text-primary transition-colors ${
           status === 'completed' ? 'text-muted-foreground' : ''
-        }`}>
+        }`}
+        >
           {lesson.title}
         </h4>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -259,7 +273,7 @@ function LessonItem({
           )}
         </div>
       </div>
-      
+
       {status === 'in_progress' && (
         <Badge variant="secondary" className="bg-blue-100 text-blue-800">
           Continue

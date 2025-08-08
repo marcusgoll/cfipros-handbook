@@ -1,10 +1,10 @@
 'use client';
 
-import type { 
-  LessonProgress, 
-  SectionProgress, 
+import type {
+  LessonProgress,
+  LessonStatus,
+  SectionProgress,
   StudyRecommendation,
-  LessonStatus 
 } from '@/types/progress';
 
 // Local storage keys
@@ -14,13 +14,15 @@ const STORAGE_KEYS = {
   COURSE_PROGRESS: 'cfi_handbook_course_progress',
   STUDY_SESSIONS: 'cfi_handbook_study_sessions',
   LEARNING_GOALS: 'cfi_handbook_learning_goals',
-  PREFERENCES: 'cfi_handbook_preferences'
+  PREFERENCES: 'cfi_handbook_preferences',
 } as const;
 
 // Storage helpers
 function getStorageItem<T>(key: string, defaultValue: T): T {
-  if (typeof window === 'undefined') return defaultValue;
-  
+  if (typeof window === 'undefined') {
+    return defaultValue;
+  }
+
   try {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
@@ -31,8 +33,10 @@ function getStorageItem<T>(key: string, defaultValue: T): T {
 }
 
 function setStorageItem<T>(key: string, value: T): void {
-  if (typeof window === 'undefined') return;
-  
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -50,15 +54,15 @@ export class LessonProgressManager {
 
   private loadFromStorage(): void {
     const stored = getStorageItem<Record<string, LessonProgress>>(
-      STORAGE_KEYS.LESSON_PROGRESS, 
-      {}
+      STORAGE_KEYS.LESSON_PROGRESS,
+      {},
     );
-    
+
     Object.entries(stored).forEach(([lessonId, progress]) => {
       this.lessons.set(lessonId, {
         ...progress,
         startedAt: progress.startedAt ? new Date(progress.startedAt) : undefined,
-        completedAt: progress.completedAt ? new Date(progress.completedAt) : undefined
+        completedAt: progress.completedAt ? new Date(progress.completedAt) : undefined,
       });
     });
   }
@@ -78,9 +82,9 @@ export class LessonProgressManager {
       lessonId,
       status: 'in_progress',
       startedAt: existing?.startedAt || new Date(),
-      bookmarked: existing?.bookmarked || false
+      bookmarked: existing?.bookmarked || false,
     };
-    
+
     this.lessons.set(lessonId, progress);
     this.saveToStorage();
   }
@@ -90,16 +94,16 @@ export class LessonProgressManager {
     if (!existing) {
       this.startLesson(lessonId);
     }
-    
+
     const progress: LessonProgress = {
       ...existing,
       lessonId,
       status: 'completed',
       completedAt: new Date(),
       startedAt: existing?.startedAt || new Date(),
-      bookmarked: existing?.bookmarked || false
+      bookmarked: existing?.bookmarked || false,
     };
-    
+
     this.lessons.set(lessonId, progress);
     this.saveToStorage();
   }
@@ -117,13 +121,13 @@ export class LessonProgressManager {
     const existing = this.lessons.get(lessonId) || {
       lessonId,
       status: 'not_started' as LessonStatus,
-      bookmarked: false
+      bookmarked: false,
     };
-    
+
     existing.bookmarked = !existing.bookmarked;
     this.lessons.set(lessonId, existing);
     this.saveToStorage();
-    
+
     return existing.bookmarked;
   }
 
@@ -131,9 +135,9 @@ export class LessonProgressManager {
     const existing = this.lessons.get(lessonId) || {
       lessonId,
       status: 'not_started' as LessonStatus,
-      bookmarked: false
+      bookmarked: false,
     };
-    
+
     existing.notes = note;
     this.lessons.set(lessonId, existing);
     this.saveToStorage();
@@ -182,10 +186,10 @@ export class SectionProgressManager {
 
   private loadFromStorage(): void {
     const stored = getStorageItem<Record<string, SectionProgress>>(
-      STORAGE_KEYS.SECTION_PROGRESS, 
-      {}
+      STORAGE_KEYS.SECTION_PROGRESS,
+      {},
     );
-    
+
     Object.entries(stored).forEach(([sectionId, progress]) => {
       this.sections.set(sectionId, progress);
     });
@@ -202,7 +206,7 @@ export class SectionProgressManager {
   calculateSectionProgress(sectionId: string, lessonIds: string[]): SectionProgress {
     const lessonProgresses = lessonIds.map(id => this.lessonManager.getLessonProgress(id));
     const completedLessons = lessonProgresses.filter(p => p?.status === 'completed').length;
-    
+
     // Find the most recent lesson accessed
     const lastAccessedLesson = lessonProgresses
       .filter(p => p && (p.startedAt || p.completedAt))
@@ -210,7 +214,8 @@ export class SectionProgressManager {
         const aDate = a!.completedAt || a!.startedAt!;
         const bDate = b!.completedAt || b!.startedAt!;
         return bDate.getTime() - aDate.getTime();
-      })[0]?.lessonId;
+      })[0]
+      ?.lessonId;
 
     // Calculate estimated time remaining
     const avgTimePerLesson = 30; // minutes
@@ -220,12 +225,16 @@ export class SectionProgressManager {
     // Determine mastery level
     const completionPercentage = (completedLessons / lessonIds.length) * 100;
     let masteryLevel: SectionProgress['masteryLevel'] = 'beginner';
-    if (completionPercentage >= 90) masteryLevel = 'mastery';
-    else if (completionPercentage >= 70) masteryLevel = 'advanced';
-    else if (completionPercentage >= 40) masteryLevel = 'intermediate';
+    if (completionPercentage >= 90) {
+      masteryLevel = 'mastery';
+    } else if (completionPercentage >= 70) {
+      masteryLevel = 'advanced';
+    } else if (completionPercentage >= 40) {
+      masteryLevel = 'intermediate';
+    }
 
     const sectionTitle = this.getSectionTitle(sectionId);
-    
+
     const progress: SectionProgress = {
       sectionId,
       title: sectionTitle,
@@ -234,12 +243,12 @@ export class SectionProgressManager {
       completionPercentage,
       estimatedTimeRemaining,
       lastAccessedLesson,
-      masteryLevel
+      masteryLevel,
     };
 
     this.sections.set(sectionId, progress);
     this.saveToStorage();
-    
+
     return progress;
   }
 
@@ -257,9 +266,9 @@ export class SectionProgressManager {
       'performance': 'Performance',
       'flight-planning': 'Flight Planning',
       'emergency-procedures': 'Emergency Procedures',
-      'practical-test': 'Practical Test'
+      'practical-test': 'Practical Test',
     };
-    
+
     return titleMap[sectionId] || sectionId;
   }
 
@@ -275,14 +284,14 @@ export class SectionProgressManager {
 // Study Recommendations
 export function generateStudyRecommendations(
   lessonManager: LessonProgressManager,
-  _sectionManager: SectionProgressManager
+  _sectionManager: SectionProgressManager,
 ): StudyRecommendation[] {
   const inProgress = lessonManager.getInProgressLessons();
   const completed = lessonManager.getCompletedLessons();
   const recommendations: StudyRecommendation[] = [];
 
   // Continue in-progress lessons
-  inProgress.forEach(lesson => {
+  inProgress.forEach((lesson) => {
     recommendations.push({
       type: 'continue',
       lessonId: lesson.lessonId,
@@ -290,20 +299,22 @@ export function generateStudyRecommendations(
       reason: 'You started this lesson but haven\'t finished it yet.',
       estimatedTime: 15,
       priority: 9,
-      category: 'In Progress'
+      category: 'In Progress',
     });
   });
 
   // Review recently completed lessons
   const recentlyCompleted = completed
-    .filter(lesson => {
-      if (!lesson.completedAt) return false;
+    .filter((lesson) => {
+      if (!lesson.completedAt) {
+        return false;
+      }
       const daysSince = (Date.now() - lesson.completedAt.getTime()) / (1000 * 60 * 60 * 24);
       return daysSince >= 7 && daysSince <= 14; // Completed 1-2 weeks ago
     })
     .slice(0, 2);
 
-  recentlyCompleted.forEach(lesson => {
+  recentlyCompleted.forEach((lesson) => {
     recommendations.push({
       type: 'review',
       lessonId: lesson.lessonId,
@@ -311,7 +322,7 @@ export function generateStudyRecommendations(
       reason: 'Review this lesson to strengthen your understanding.',
       estimatedTime: 10,
       priority: 6,
-      category: 'Review'
+      category: 'Review',
     });
   });
 
@@ -340,7 +351,7 @@ export function getSectionProgressManager(): SectionProgressManager {
 export function useLessonProgress(lessonId: string) {
   const manager = getLessonProgressManager();
   const progress = manager.getLessonProgress(lessonId);
-  
+
   return {
     progress,
     startLesson: () => manager.startLesson(lessonId),
@@ -348,15 +359,15 @@ export function useLessonProgress(lessonId: string) {
     toggleBookmark: () => manager.toggleBookmark(lessonId),
     addNote: (note: string) => manager.addNote(lessonId, note),
     updateTimeSpent: (minutes: number) => manager.updateTimeSpent(lessonId, minutes),
-    updateKnowledgeCheck: (passed: number, total: number) => 
-      manager.updateKnowledgeCheck(lessonId, passed, total)
+    updateKnowledgeCheck: (passed: number, total: number) =>
+      manager.updateKnowledgeCheck(lessonId, passed, total),
   };
 }
 
-// React hook for section progress  
+// React hook for section progress
 export function useSectionProgress(sectionId: string, lessonIds: string[]) {
   const manager = getSectionProgressManager();
   const progress = manager.calculateSectionProgress(sectionId, lessonIds);
-  
+
   return { progress };
 }
